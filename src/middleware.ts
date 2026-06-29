@@ -5,11 +5,7 @@ import { readDatabase } from "@/lib/db";
 export const runtime = "nodejs";
 
 export async function middleware(request: NextRequest) {
-  // Skip middleware for health check to avoid database issues during startup
-  if (request.nextUrl.pathname === "/api/health") {
-    return NextResponse.next();
-  }
-
+  // Only protect /admin routes
   if (request.nextUrl.pathname.startsWith("/admin")) {
     const token = request.cookies.get("nk-admin-token")?.value;
     
@@ -43,5 +39,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/health"],
+  matcher: "/admin/:path*",
 };
