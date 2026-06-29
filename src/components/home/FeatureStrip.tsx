@@ -4,7 +4,7 @@ import { Truck, ShieldCheck, MessageCircle } from "lucide-react";
 const features = [
   { icon: ShieldCheck, title: "Hamster khoẻ mạnh 100%", desc: "Kiểm tra sức khoẻ trước khi giao" },
   { icon: Truck, title: "Giao hàng toàn quốc", desc: "Đóng gói an toàn, ship tận cửa" },
-  { icon: MessageCircle, title: "Hỗ trợ Zalo 8–21h", desc: "Tư vấn tận tình trước và sau mua" },
+  { icon: MessageCircle, title: "Hỗ trợ Zalo 9–21h", desc: "Tư vấn tận tình trước và sau mua" },
 ];
 
 const FeatureStrip = () => (
