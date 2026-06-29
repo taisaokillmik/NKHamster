@@ -6,7 +6,7 @@ import { Phone } from "lucide-react";
 
 const orderPets = [
   { name: "Nhím", emoji: "🦔", price: "500.000đ – 1.500.000đ", description: "Nhím châu Phi cỡ nhỏ, hiền lành, ít cần chăm sóc, không gây dị ứng.", traits: ["Ít mùi", "Độc lập", "Không cần tắm"] },
-  { name: "Bọ Việt", emoji: "🐛", price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
+  { name: "Bọ Việt", emoji: "🐛", image: "/bọ ú việt.jpg.webp", price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
   { name: "Sóc Bay", emoji: "🐿️", price: "1.200.000đ – 3.000.000đ", description: "Sóc bay Sugar Glider năng động, gắn bó với chủ, có thể lướt trong phòng.", traits: ["Gắn bó với chủ", "Hoạt động ban đêm", "Sống theo đàn"] },
   { name: "Thỏ Việt", emoji: "🐰", price: "300.000đ – 1.000.000đ", description: "Thỏ Việt Nam mềm mại, hiền lành, thích hợp cho gia đình có trẻ nhỏ.", traits: ["Thân thiện", "Dễ thuần hoá", "Thích được vuốt ve"] },
 ];
@@ -36,7 +36,13 @@ export default function OrderPetPage() {
             onClick={() => setSelected(selected === pet.name ? null : pet.name)}
             className={`group text-left rounded-3xl border p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md ${selected === pet.name ? "border-amber-500 bg-amber-50" : "border-amber-100 bg-white"}`}
           >
-            <div className="mb-4 h-36 rounded-2xl bg-amber-50 flex items-center justify-center text-7xl">{pet.emoji}</div>
+            <div className="mb-4 h-36 rounded-2xl bg-amber-50 flex items-center justify-center overflow-hidden">
+              {(pet as any).image ? (
+                <img src={(pet as any).image} alt={pet.name} className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-7xl">{pet.emoji}</span>
+              )}
+            </div>
             <h2 className="text-xl font-semibold text-amber-800">{pet.name}</h2>
             <p className="text-sm text-amber-600 font-medium mt-1">{pet.price}</p>
             <p className="mt-2 text-gray-600 text-sm">{pet.description}</p>
