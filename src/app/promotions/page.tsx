@@ -62,11 +62,11 @@ export default function PromotionsPage() {
 
       <div className="mt-10 rounded-3xl border border-amber-200 bg-gradient-to-r from-amber-100 to-orange-50 p-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-amber-800">Chưa có tài khoản?</h2>
-          <p className="text-gray-600 mt-1 text-sm">Đăng ký ngay để nhận ưu đãi 10% cho đơn đầu tiên.</p>
+          <h2 className="text-xl font-bold text-amber-800">Muốn nhận ưu đãi?</h2>
+          <p className="text-gray-600 mt-1 text-sm">Liên hệ trực tiếp để được tư vấn và áp dụng khuyến mãi.</p>
         </div>
-        <Link href="/account" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-6 py-2.5 transition-colors">
-          Đăng ký ngay
+        <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-6 py-2.5 transition-colors">
+          Liên hệ ngay
         </Link>
       </div>
     </div>
