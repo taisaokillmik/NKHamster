@@ -2,7 +2,7 @@
 const nextConfig = {
   output: "export",
   basePath: '/NKHamster',
-  assetPrefix: '/NKHamster',
+  trailingSlash: true,
   compress: true,
   swcMinify: true,
   images: {

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Phone } from "lucide-react";
+import Image from "next/image";
 
 const orderPets = [
   { name: "Nhím", emoji: "🦔", price: "500.000đ – 1.500.000đ", description: "Nhím châu Phi cỡ nhỏ, hiền lành, ít cần chăm sóc, không gây dị ứng.", traits: ["Ít mùi", "Độc lập", "Không cần tắm"] },
@@ -38,7 +39,7 @@ export default function OrderPetPage() {
           >
             <div className="mb-4 h-36 rounded-2xl bg-amber-50 flex items-center justify-center overflow-hidden">
               {(pet as any).image ? (
-                <img src={(pet as any).image} alt={pet.name} className="w-full h-full object-cover" />
+                <Image src={(pet as any).image} alt={pet.name} fill className="object-cover" />
               ) : (
                 <span className="text-7xl">{pet.emoji}</span>
               )}
