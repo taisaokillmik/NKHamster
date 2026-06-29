@@ -3,7 +3,7 @@ services:
     name: nk-hamster
     runtime: node
     buildCommand: npm install && npm run build
-    startCommand: HOSTNAME=0.0.0.0 node .next/standalone/server.js
+    startCommand: npm run start:render
     envVars:
       - key: NODE_ENV
         value: production
@@ -18,7 +18,7 @@ services:
       - key: EMAIL_FROM_NAME
         sync: false
       - key: NEXT_PUBLIC_SITE_URL
-        sync: false
+        value: https://nkhamster.onrender.com
     disk:
       name: data
       mountPath: /opt/render/project/data

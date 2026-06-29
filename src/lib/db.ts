@@ -18,6 +18,11 @@ const dbPath = process.env.DB_PATH
   ? path.resolve(process.env.DB_PATH)
   : path.resolve(dbDir, "app-db.json");
 
+// Use the directory from dbPath for mkdir operations
+const dbDirForOperations = process.env.DB_PATH 
+  ? path.dirname(dbPath)
+  : dbDir;
+
 // Đảm bảo dbPath là an toàn, tránh path traversal
 function assertSafePath(target: string) {
   // Nếu DB_PATH được set qua env, trust nó (đã được admin config)
@@ -50,7 +55,7 @@ const defaultDatabase = (): DatabaseShape => ({
 export async function readDatabase(): Promise<DatabaseShape> {
   try {
     assertSafePath(dbPath);
-    await fs.mkdir(dbDir, { recursive: true });
+    await fs.mkdir(dbDirForOperations, { recursive: true });
     const file = await fs.readFile(dbPath, "utf8");
     return JSON.parse(file) as DatabaseShape;
   } catch {
@@ -62,7 +67,7 @@ export async function readDatabase(): Promise<DatabaseShape> {
 
 export async function writeDatabase(database: DatabaseShape) {
   assertSafePath(dbPath);
-  await fs.mkdir(dbDir, { recursive: true });
+  await fs.mkdir(dbDirForOperations, { recursive: true });
   await fs.writeFile(dbPath, JSON.stringify(database, null, 2), "utf8");
 }
 
