@@ -16,7 +16,7 @@ const stats = [
 const values = [
   { icon: "✅", title: "Sản phẩm chuẩn", desc: "Mỗi chú hamster được kiểm tra sức khoẻ trước khi đến tay khách hàng." },
   { icon: "🚚", title: "Giao hàng an toàn", desc: "Đóng gói đặc biệt, ưu tiên giao trong khung giờ mát để đảm bảo sức khoẻ thú cưng." },
-  { icon: "💬", title: "Hỗ trợ tận tâm", desc: "Tư vấn miễn phí trước và sau khi mua, hỗ trợ qua Zalo 8:00–21:00 mỗi ngày." },
+  { icon: "💬", title: "Hỗ trợ tận tâm", desc: "Tư vấn miễn phí trước và sau khi mua, hỗ trợ qua Zalo 9:00–21:00 mỗi ngày." },
   { icon: "🔄", title: "Đổi trả minh bạch", desc: "Chính sách đổi trả rõ ràng trong 7 ngày nếu sản phẩm có lỗi từ cửa hàng." },
 ];
 

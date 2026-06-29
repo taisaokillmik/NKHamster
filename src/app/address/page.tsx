@@ -8,7 +8,7 @@ const stores = [
     phone: "0963 107 703",
     owner: "Nhật Khoa",
     zalo: "https://zalo.me/0963107703",
-    hours: "8:00 – 21:00 (Tất cả các ngày)",
+    hours: "9:00 – 21:00 (Tất cả các ngày)",
     mapUrl: "https://maps.google.com/?q=2137+Huynh+Tan+Phat+Nha+Be+HCM",
   },
   {
@@ -18,7 +18,7 @@ const stores = [
     phone: "0394 210 096",
     owner: "Tuấn Phạm",
     zalo: "https://zalo.me/0394210096",
-    hours: "8:00 – 21:00 (Tất cả các ngày)",
+    hours: "9:00 – 21:00 (Tất cả các ngày)",
     mapUrl: "https://maps.google.com/?q=75+Van+Cong+Khai+Thu+Dau+Mot+Binh+Duong",
   },
 ];
