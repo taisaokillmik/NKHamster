@@ -39,11 +39,13 @@ export default function OrderPetPage() {
             onClick={() => setSelected(selected === pet.name ? null : pet.name)}
             className={`group text-left rounded-3xl border p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md ${selected === pet.name ? "border-amber-500 bg-amber-50" : "border-amber-100 bg-white"}`}
           >
-            <div className="mb-4 h-36 rounded-2xl bg-amber-50 flex items-center justify-center overflow-hidden relative">
+            <div className="mb-4 w-full aspect-square rounded-2xl overflow-hidden bg-amber-50">
               {(pet as any).image ? (
-                <img src={(pet as any).image} alt={pet.name} className="w-full h-full object-cover rounded-2xl" />
+                <img src={(pet as any).image} alt={pet.name} className="w-full h-full object-cover object-center" />
               ) : (
-                <span className="text-7xl">{pet.emoji}</span>
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-7xl">{pet.emoji}</span>
+                </div>
               )}
             </div>
             <h2 className="text-xl font-semibold text-amber-800">{pet.name}</h2>
