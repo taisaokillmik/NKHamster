@@ -1,33 +1,15 @@
 "use client";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/shared/ProductCard";
-import { Button } from "@/components/ui/Button";
-import { useCart } from "@/hooks/useCart";
-import { useWishlist } from "@/hooks/useWishlist";
-import { useReviews } from "@/hooks/useReviews";
-import { Heart, Star, ShoppingCart } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedVariant, setSelectedVariant] = useState<"xù" | "sát">("xù");
   const [selectedWinterWhite, setSelectedWinterWhite] = useState("Sóc đen");
-  const [reviewText, setReviewText] = useState("");
-  const [reviewRating, setReviewRating] = useState(5);
-  const [reviewAuthor, setReviewAuthor] = useState("");
-  const [isSubmittingReview, setIsSubmittingReview] = useState(false);
-  const { reviews, addReview, loadReviews } = useReviews();
 
-  useEffect(() => {
-    loadReviews();
-  }, [loadReviews]);
-
-  // Tất cả hooks phải gọi trước bất kỳ return nào
   const product = products.find((p) => p.slug === slug);
-  const productReviews = useMemo(
-    () => (product ? reviews.filter((r) => r.productId === product.id) : []),
-    [reviews, product]
-  );
 
   if (!product) {
     return <div className="container mx-auto px-4 py-10 text-center text-gray-600">Sản phẩm không tồn tại.</div>;
@@ -51,16 +33,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     { label: "Bông lan", price: "100.000đ" },
     { label: "Vàng chanh", price: "100.000đ" },
   ];
-
-  const submitReview = async () => {
-    if (!reviewText.trim() || !reviewAuthor.trim()) return;
-    setIsSubmittingReview(true);
-    await addReview({ productId: product.id, author: reviewAuthor.trim(), rating: reviewRating, comment: reviewText.trim() });
-    setReviewText("");
-    setReviewAuthor("");
-    setReviewRating(5);
-    setIsSubmittingReview(false);
-  };
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -133,53 +105,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           <p className="text-sm text-gray-500">
             Còn hàng: <span className={product.stock <= 3 ? "text-red-500 font-semibold" : ""}>{product.stock} sản phẩm</span>
           </p>
-          <div className="flex gap-3">
-            <Button size="lg" className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
-              disabled={product.stock <= 0}
-              onClick={() => useCart.getState().addItem(product)}>
-              <ShoppingCart className="h-5 w-5 mr-2" /> {product.stock <= 0 ? "Hết hàng" : "Thêm vào giỏ"}
-            </Button>
-            <Button size="lg" variant="outline" className="flex-1" onClick={() => useWishlist.getState().addItem(product)}>
-              <Heart className="h-5 w-5 mr-2" /> Yêu thích
-            </Button>
-          </div>
         </div>
       </div>
-
-      <section className="mt-16 rounded-2xl border border-amber-100 bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-bold text-amber-800 mb-4">Đánh giá khách hàng</h2>
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-3">
-            {productReviews.length === 0 ? (
-              <p className="text-sm text-gray-500">Chưa có đánh giá nào cho sản phẩm này.</p>
-            ) : productReviews.map((review) => (
-              <div key={review.id} className="rounded-2xl border border-amber-100 p-4">
-                <div className="flex items-center justify-between">
-                  <p className="font-semibold text-gray-800">{review.author}</p>
-                  <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map((s) => (
-                      <Star key={s} className={cn("h-4 w-4", s <= review.rating ? "fill-amber-400 text-amber-400" : "text-gray-200")} />
-                    ))}
-                  </div>
-                </div>
-                <p className="mt-2 text-sm text-gray-600">{review.comment}</p>
-                <p className="mt-2 text-xs text-gray-400">{review.createdAt}</p>
-              </div>
-            ))}
-          </div>
-          <div className="rounded-2xl bg-amber-50 p-4">
-            <p className="font-semibold text-amber-800 mb-3">Viết đánh giá</p>
-            <input value={reviewAuthor} onChange={(e) => setReviewAuthor(e.target.value)} placeholder="Tên của bạn" className="w-full rounded-2xl border border-amber-200 p-2 mb-3" />
-            <select value={reviewRating} onChange={(e) => setReviewRating(Number(e.target.value))} className="w-full rounded-2xl border border-amber-200 p-2 mb-3">
-              {[5,4,3,2,1].map((v) => <option key={v} value={v}>{v} sao</option>)}
-            </select>
-            <textarea value={reviewText} onChange={(e) => setReviewText(e.target.value)} rows={4} placeholder="Nội dung đánh giá" className="w-full rounded-2xl border border-amber-200 p-2 mb-3" />
-            <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white" onClick={submitReview} disabled={isSubmittingReview}>
-              {isSubmittingReview ? "Đang gửi..." : "Gửi đánh giá"}
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {related.length > 0 && (
         <section className="mt-16">

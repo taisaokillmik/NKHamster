@@ -1,5 +1,3 @@
-"use client";
-import { useReviews } from "@/hooks/useReviews";
 import { products } from "@/data/products";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,12 +10,7 @@ const SAMPLE_REVIEWS = [
 ];
 
 export default function ReviewsPage() {
-  const userReviews = useReviews((s) => s.reviews);
-  const allReviews = [...userReviews, ...SAMPLE_REVIEWS];
-
-  const avgRating = allReviews.length
-    ? (allReviews.reduce((s, r) => s + r.rating, 0) / allReviews.length).toFixed(1)
-    : "5.0";
+  const avgRating = (SAMPLE_REVIEWS.reduce((s, r) => s + r.rating, 0) / SAMPLE_REVIEWS.length).toFixed(1);
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-4xl">
@@ -33,12 +26,12 @@ export default function ReviewsPage() {
               <Star key={s} className="h-4 w-4 fill-amber-400 text-amber-400" />
             ))}
           </div>
-          <p className="text-xs text-gray-400 mt-0.5">{allReviews.length} đánh giá</p>
+          <p className="text-xs text-gray-400 mt-0.5">{SAMPLE_REVIEWS.length} đánh giá</p>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        {allReviews.map((review) => {
+        {SAMPLE_REVIEWS.map((review) => {
           const product = products.find((p) => p.id === review.productId);
           return (
             <div key={review.id} className="bg-white rounded-2xl border border-amber-100 p-5 shadow-sm">
