@@ -1,0 +1,18 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# database runtime (chỉ ignore file runtime, không ignore thư mục)
+data/app-db.json
+
+# env
+.env
+.env.local
+.env.production
+
+# misc
+.DS_Store
+*.log
