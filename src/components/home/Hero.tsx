@@ -2,8 +2,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
-import Image from "next/image";
-
 const Hero = () => (
   <section className="bg-gradient-to-r from-amber-100 via-amber-50 to-pastel-blue py-16 md:py-24">
     <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
@@ -27,7 +25,7 @@ const Hero = () => (
       </motion.div>
       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex-1 mt-10 md:mt-0 flex justify-center">
         <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-white shadow-2xl flex items-center justify-center overflow-hidden">
-          <Image src="/assets/images/banner.jpg" alt="Banner NK Hamster" fill className="object-cover" />
+          <img src="/NKHamster/assets/images/banner.jpg" alt="Banner NK Hamster" className="w-full h-full object-cover" />
         </div>
       </motion.div>
     </div>
