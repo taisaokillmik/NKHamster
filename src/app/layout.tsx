@@ -8,6 +8,7 @@ import "./globals.css";
 export const metadata = {
   title: "NK Hamster - Cửa hàng Hamster & Phụ kiện",
   description: "Cửa hàng bán chuột Hamster, lồng mica và phụ kiện uy tín",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

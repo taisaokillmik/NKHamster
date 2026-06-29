@@ -14,12 +14,19 @@ export interface DatabaseShape {
 }
 
 const dbDir = path.resolve(process.cwd(), "data");
-const dbPath = path.resolve(dbDir, "app-db.json");
+const dbPath = process.env.DB_PATH 
+  ? path.resolve(process.env.DB_PATH)
+  : path.resolve(dbDir, "app-db.json");
 
-// Đảm bảo dbPath nằm trong thư mục data, tránh path traversal
-function assertSafePath(target: string, base: string) {
-  if (!target.startsWith(base)) {
-    throw new Error("Path traversal detected");
+// Đảm bảo dbPath là an toàn, tránh path traversal
+function assertSafePath(target: string) {
+  // Nếu DB_PATH được set qua env, trust nó (đã được admin config)
+  // Nếu dùng path mặc định, kiểm tra path traversal
+  if (!process.env.DB_PATH) {
+    const base = path.resolve(process.cwd(), "data");
+    if (!target.startsWith(base)) {
+      throw new Error("Path traversal detected");
+    }
   }
 }
 
@@ -42,7 +49,7 @@ const defaultDatabase = (): DatabaseShape => ({
 
 export async function readDatabase(): Promise<DatabaseShape> {
   try {
-    assertSafePath(dbPath, dbDir);
+    assertSafePath(dbPath);
     await fs.mkdir(dbDir, { recursive: true });
     const file = await fs.readFile(dbPath, "utf8");
     return JSON.parse(file) as DatabaseShape;
@@ -54,7 +61,7 @@ export async function readDatabase(): Promise<DatabaseShape> {
 }
 
 export async function writeDatabase(database: DatabaseShape) {
-  assertSafePath(dbPath, dbDir);
+  assertSafePath(dbPath);
   await fs.mkdir(dbDir, { recursive: true });
   await fs.writeFile(dbPath, JSON.stringify(database, null, 2), "utf8");
 }

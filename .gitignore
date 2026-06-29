@@ -12,6 +12,10 @@ data/app-db.json
 .env
 .env.local
 .env.production
+.env.example
+
+# prisma
+prisma/migrations/
 
 # misc
 .DS_Store

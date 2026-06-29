@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "2020", label: "Năm thành lập" },
+  { value: "2018", label: "Năm thành lập" },
   { value: "500+", label: "Khách hàng hài lòng" },
   { value: "2", label: "Chi nhánh" },
   { value: "4.9★", label: "Đánh giá trung bình" },
@@ -29,7 +29,7 @@ export default function AboutPage() {
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Về NK Hamster</p>
         <h1 className="text-3xl font-bold text-amber-800 mt-2">Cửa hàng Hamster & Phụ kiện uy tín</h1>
         <p className="text-gray-600 leading-7 mt-4">
-          NK Hamster được sáng lập năm 2020 bởi <strong>Nhật Khoa</strong> — một người yêu thú cưng với niềm đam mê nuôi hamster từ nhỏ.
+          NK Hamster được sáng lập năm 2018 bởi <strong>Nhật Khoa</strong> — một người yêu thú cưng với niềm đam mê nuôi hamster từ nhỏ.
           Từ một cửa hàng nhỏ tại Nhà Bè, NK Hamster đã mở rộng thêm chi nhánh tại Bình Dương và phục vụ hàng trăm gia đình trên toàn quốc.
         </p>
         <p className="text-gray-600 leading-7 mt-3">

@@ -22,14 +22,26 @@ describe('ProductCard', () => {
   }
 
   beforeEach(() => {
-    ;(useCart as jest.Mock).mockReturnValue({
+    const mockUseCart = useCart as jest.MockedFunction<typeof useCart>
+    const mockUseWishlist = useWishlist as jest.MockedFunction<typeof useWishlist>
+    
+    mockUseCart.mockReturnValue({
       addItem: jest.fn(),
-    })
-    ;(useWishlist as jest.Mock).mockReturnValue({
+      items: [],
+      removeItem: jest.fn(),
+      updateQuantity: jest.fn(),
+      clearCart: jest.fn(),
+      getTotal: jest.fn().mockReturnValue(0),
+      getItemCount: jest.fn().mockReturnValue(0),
+    } as any)
+    
+    mockUseWishlist.mockReturnValue({
       addItem: jest.fn(),
       removeItem: jest.fn(),
       isInWishlist: jest.fn().mockReturnValue(false),
-    })
+      items: [],
+      clearWishlist: jest.fn(),
+    } as any)
   })
 
   it('renders product information correctly', () => {
@@ -43,9 +55,17 @@ describe('ProductCard', () => {
   it('calls addToCart when buy button is clicked', async () => {
     const user = userEvent.setup()
     const mockAddToCart = jest.fn()
-    ;(useCart as jest.Mock).mockReturnValue({
+    const mockUseCart = useCart as jest.MockedFunction<typeof useCart>
+    
+    mockUseCart.mockReturnValue({
       addItem: mockAddToCart,
-    })
+      items: [],
+      removeItem: jest.fn(),
+      updateQuantity: jest.fn(),
+      clearCart: jest.fn(),
+      getTotal: jest.fn().mockReturnValue(0),
+      getItemCount: jest.fn().mockReturnValue(0),
+    } as any)
 
     render(<ProductCard product={mockProduct} />)
     

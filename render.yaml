@@ -7,3 +7,19 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: DB_PATH
+        value: /opt/render/project/data/app-db.json
+      - key: DATABASE_URL
+        generateValue: true
+      - key: EMAIL_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: EMAIL_FROM_NAME
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+    disk:
+      name: data
+      mountPath: /opt/render/project/data
+      sizeGB: 1
