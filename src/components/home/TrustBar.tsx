@@ -3,7 +3,7 @@ import { ShieldCheck, Truck, HeadphonesIcon, Star } from "lucide-react";
 const stats = [
   { icon: ShieldCheck, value: "100%", label: "Sản phẩm chính hãng", sub: "Cam kết chất lượng" },
   { icon: Truck, value: "Toàn quốc", label: "Giao hàng nhanh", sub: "24–48h nội thành" },
-  { icon: HeadphonesIcon, value: "24/7", label: "Hỗ trợ khách hàng", sub: "Zalo & hotline" },
+  { icon: HeadphonesIcon, value: "9–21h", label: "Hỗ trợ khách hàng", sub: "Zalo & hotline" },
   { icon: Star, value: "4.9★", label: "Đánh giá trung bình", sub: "Từ 500+ khách hàng" },
 ];
 
