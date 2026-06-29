@@ -6,7 +6,7 @@ import { Phone } from "lucide-react";
 
 const orderPets = [
   { name: "Nhím", emoji: "🦔", price: "500.000đ – 1.500.000đ", description: "Nhím châu Phi cỡ nhỏ, hiền lành, ít cần chăm sóc, không gây dị ứng.", traits: ["Ít mùi", "Độc lập", "Không cần tắm"] },
-  { name: "Bọ Việt", emoji: "🐛", image: "/bo-viet.webp", price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
+  { name: "Bọ Việt", emoji: "🐛", image: "/bou.jpg", price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
   { name: "Sóc Bay", emoji: "🐿️", price: "1.200.000đ – 3.000.000đ", description: "Sóc bay Sugar Glider năng động, gắn bó với chủ, có thể lướt trong phòng.", traits: ["Gắn bó với chủ", "Hoạt động ban đêm", "Sống theo đàn"] },
   { name: "Thỏ Việt", emoji: "🐰", price: "300.000đ – 1.000.000đ", description: "Thỏ Việt Nam mềm mại, hiền lành, thích hợp cho gia đình có trẻ nhỏ.", traits: ["Thân thiện", "Dễ thuần hoá", "Thích được vuốt ve"] },
 ];
