@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  basePath: "/NKHamster",
+  assetPrefix: "/NKHamster",
   compress: true,
   swcMinify: true,
   images: {
