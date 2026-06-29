@@ -26,7 +26,7 @@ const Hero = () => (
       </motion.div>
       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex-1 mt-10 md:mt-0 flex justify-center">
         <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-white shadow-2xl flex items-center justify-center overflow-hidden">
-          <img src="/banner.jpg" alt="Banner NK Hamster" className="w-full h-full object-cover" />
+          <img src="/NKHamster/banner.jpg" alt="Banner NK Hamster" className="w-full h-full object-cover" />
         </div>
       </motion.div>
     </div>
