@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/Input";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 
-const BASE = '/NKHamster';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 const orderPets = [
   { name: "Nhím", emoji: "🦔", price: "500.000đ – 1.500.000đ", description: "Nhím châu Phi cỡ nhỏ, hiền lành, ít cần chăm sóc, không gây dị ứng.", traits: ["Ít mùi", "Độc lập", "Không cần tắm"] },
-  { name: "Bọ Việt", emoji: "🐛", image: "/bou.webp", price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
+  { name: "Bọ Việt", emoji: "🐛", image: `${BASE}/bou.webp`, price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
   { name: "Sóc Bay", emoji: "🐿️", price: "1.200.000đ – 3.000.000đ", description: "Sóc bay Sugar Glider năng động, gắn bó với chủ, có thể lướt trong phòng.", traits: ["Gắn bó với chủ", "Hoạt động ban đêm", "Sống theo đàn"] },
   { name: "Thỏ Việt", emoji: "🐰", price: "300.000đ – 1.000.000đ", description: "Thỏ Việt Nam mềm mại, hiền lành, thích hợp cho gia đình có trẻ nhỏ.", traits: ["Thân thiện", "Dễ thuần hoá", "Thích được vuốt ve"] },
 ];
@@ -41,7 +41,7 @@ export default function OrderPetPage() {
           >
             <div className="mb-4 h-36 rounded-2xl bg-amber-50 flex items-center justify-center overflow-hidden relative">
               {(pet as any).image ? (
-                <img src={`${BASE}${(pet as any).image}`} alt={pet.name} className="w-full h-full object-cover rounded-2xl" />
+                <img src={(pet as any).image} alt={pet.name} className="w-full h-full object-cover rounded-2xl" />
               ) : (
                 <span className="text-7xl">{pet.emoji}</span>
               )}
