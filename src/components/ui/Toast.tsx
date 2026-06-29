@@ -1,39 +1,38 @@
 "use client";
-import { createContext, useContext, useState, useCallback, ReactNode } from "react";
-import { X } from "lucide-react";
 
-interface Toast { id: number; message: string; type?: "success" | "error" | "info" }
-interface ToastContextType { showToast: (message: string, type?: Toast["type"]) => void }
+import { createContext, useContext, useState, ReactNode } from "react";
 
-const ToastContext = createContext<ToastContextType>({ showToast: () => {} });
+type ToastType = "success" | "error" | "info";
+
+interface ToastContextType {
+  showToast: (message: string, type?: ToastType) => void;
+}
+
+const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 export function ToastProvider({ children }: { children: ReactNode }) {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [toast, setToast] = useState<{ message: string; type: ToastType } | null>(null);
 
-  const showToast = useCallback((message: string, type: Toast["type"] = "success") => {
-    const id = Date.now();
-    setToasts((prev) => [...prev, { id, message, type }]);
-    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 3000);
-  }, []);
-
-  const remove = (id: number) => setToasts((prev) => prev.filter((t) => t.id !== id));
+  const showToast = (message: string, type: ToastType = "info") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
 
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      <div className="fixed bottom-20 right-6 z-50 space-y-2">
-        {toasts.map((toast) => (
-          <div key={toast.id} className={`flex items-center gap-3 rounded-2xl px-4 py-3 shadow-lg text-white text-sm max-w-xs animate-fade-in
-            ${toast.type === "error" ? "bg-red-500" : toast.type === "info" ? "bg-blue-500" : "bg-green-500"}`}>
-            <span className="flex-1">{toast.message}</span>
-            <button onClick={() => remove(toast.id)}><X className="h-4 w-4" /></button>
-          </div>
-        ))}
-      </div>
+      {toast && (
+        <div className="fixed bottom-4 right-4 px-6 py-3 rounded-xl shadow-lg z-50 animate-in fade-in slide-in-from-right duration-300
+          bg-white border border-amber-100">
+          <p className="text-sm font-medium text-gray-800">{toast.message}</p>
+        </div>
+      )}
     </ToastContext.Provider>
   );
 }
 
 export function useToast() {
-  return useContext(ToastContext);
+  const context = useContext(ToastContext);
+  if (!context) throw new Error("useToast must be used within ToastProvider");
+  return context;
 }
