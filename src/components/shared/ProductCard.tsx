@@ -1,6 +1,6 @@
 ﻿"use client";
 import Link from "next/link";
-import { Heart, Star } from "lucide-react";
+import { Heart, Star, AlertTriangle } from "lucide-react";
 import { Product } from "@/types";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useCart } from "@/hooks/useCart";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const hasSale = product.salePrice && product.salePrice < product.price;
+  const isLowStock = product.stock > 0 && product.stock <= 5;
   const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist();
   const isWishlisted = isInWishlist(product.id);
   const addToCart = useCart((s) => s.addItem);
@@ -36,6 +37,12 @@ const ProductCard = ({ product }: { product: Product }) => {
               -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
             </span>
           )}
+          {isLowStock && (
+            <span className="absolute top-2 right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+              <AlertTriangle className="h-3 w-3" />
+              Chỉ còn {product.stock}
+            </span>
+          )}
         </div>
       </Link>
       <div className="p-4">
@@ -49,6 +56,12 @@ const ProductCard = ({ product }: { product: Product }) => {
           <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
           <span className="text-xs text-gray-500">{product.rating} ({product.reviewCount})</span>
         </div>
+        {isLowStock && (
+          <p className="text-xs text-orange-600 font-medium mt-1 flex items-center gap-1">
+            <AlertTriangle className="h-3 w-3" />
+            Sắp hết hàng - Chỉ còn {product.stock} sản phẩm
+          </p>
+        )}
         <div className="mt-2 flex items-center justify-between">
           <div>
             {product.priceLabel ? (

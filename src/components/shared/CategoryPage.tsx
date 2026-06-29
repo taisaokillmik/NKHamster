@@ -12,18 +12,40 @@ interface Props {
 
 export default function CategoryPage({ category, title, description }: Props) {
   const [sortBy, setSortBy] = useState("featured");
+  const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(false);
+  const [minRating, setMinRating] = useState(0);
 
   const items = useMemo(() => {
     let filtered = products.filter((p) => p.category === category);
+    
+    // Price range filter
+    if (priceMin && Number(priceMin) > 0) {
+      filtered = filtered.filter((p) => p.price >= Number(priceMin));
+    }
     if (priceMax && Number(priceMax) > 0) {
       filtered = filtered.filter((p) => p.price <= Number(priceMax));
     }
+    
+    // Stock filter
+    if (inStockOnly) {
+      filtered = filtered.filter((p) => p.stock > 0);
+    }
+    
+    // Rating filter
+    if (minRating > 0) {
+      filtered = filtered.filter((p) => p.rating >= minRating);
+    }
+    
+    // Sorting
     if (sortBy === "price-asc") return [...filtered].sort((a, b) => a.price - b.price);
     if (sortBy === "price-desc") return [...filtered].sort((a, b) => b.price - a.price);
     if (sortBy === "rating") return [...filtered].sort((a, b) => b.rating - a.rating);
+    if (sortBy === "newest") return [...filtered].sort((a, b) => b.id - a.id);
+    
     return filtered;
-  }, [sortBy, priceMax, category]);
+  }, [sortBy, priceMin, priceMax, inStockOnly, minRating, category]);
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -35,17 +57,44 @@ export default function CategoryPage({ category, title, description }: Props) {
         <div className="flex flex-wrap gap-3">
           <input
             type="number"
+            placeholder="Giá tối thiểu (đ)"
+            value={priceMin}
+            onChange={(e) => setPriceMin(e.target.value)}
+            className="rounded-2xl border border-amber-200 px-3 py-2 text-sm w-32"
+          />
+          <input
+            type="number"
             placeholder="Giá tối đa (đ)"
             value={priceMax}
             onChange={(e) => setPriceMax(e.target.value)}
-            className="rounded-2xl border border-amber-200 px-3 py-2 text-sm w-40"
+            className="rounded-2xl border border-amber-200 px-3 py-2 text-sm w-32"
           />
+          <label className="flex items-center gap-2 text-sm text-gray-600">
+            <input
+              type="checkbox"
+              checked={inStockOnly}
+              onChange={(e) => setInStockOnly(e.target.checked)}
+              className="rounded border-amber-300"
+            />
+            Còn hàng
+          </label>
+          <select
+            value={minRating}
+            onChange={(e) => setMinRating(Number(e.target.value))}
+            className="rounded-2xl border border-amber-200 px-3 py-2 text-sm"
+          >
+            <option value={0}>Tất cả đánh giá</option>
+            <option value={4}>⭐ 4+ sao</option>
+            <option value={3}>⭐ 3+ sao</option>
+            <option value={2}>⭐ 2+ sao</option>
+          </select>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="rounded-2xl border border-amber-200 px-3 py-2 text-sm"
           >
             <option value="featured">Nổi bật</option>
+            <option value="newest">Mới nhất</option>
             <option value="price-asc">Giá thấp → cao</option>
             <option value="price-desc">Giá cao → thấp</option>
             <option value="rating">Đánh giá cao nhất</option>

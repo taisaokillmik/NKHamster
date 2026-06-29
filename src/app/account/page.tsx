@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Order } from "@/types";
 import Link from "next/link";
+import { Check } from "lucide-react";
 
 const STATUS_LABELS: Record<string, string> = {
   pending: "⏳ Chờ xác nhận",
@@ -13,6 +14,45 @@ const STATUS_LABELS: Record<string, string> = {
   completed: "🎉 Hoàn thành",
   cancelled: "❌ Đã hủy",
 };
+
+const STATUS_STEPS = ["pending", "confirmed", "shipping", "completed"] as const;
+
+function OrderTimeline({ status }: { status: string }) {
+  if (status === "cancelled") {
+    return <span className="text-sm text-red-500 font-medium">Đơn hàng đã bị hủy</span>;
+  }
+
+  const currentStepIndex = STATUS_STEPS.indexOf(status as any);
+  const isCompleted = status === "completed";
+
+  return (
+    <div className="flex items-center gap-2 mt-3">
+      {STATUS_STEPS.map((step, index) => {
+        const isPast = index < currentStepIndex;
+        const isCurrent = index === currentStepIndex;
+        const isFuture = index > currentStepIndex;
+
+        return (
+          <div key={step} className="flex items-center gap-2 flex-1">
+            <div className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-medium ${
+              isPast || isCurrent ? "bg-amber-500 text-white" : "bg-gray-200 text-gray-500"
+            }`}>
+              {isPast ? <Check className="h-3 w-3" /> : index + 1}
+            </div>
+            <span className={`text-xs ${
+              isPast || isCurrent ? "text-amber-700 font-medium" : "text-gray-400"
+            }`}>
+              {STATUS_LABELS[step]?.replace(/[^\w\s]/g, "").trim()}
+            </span>
+            {index < STATUS_STEPS.length - 1 && (
+              <div className={`h-0.5 flex-1 ${isPast ? "bg-amber-500" : "bg-gray-200"}`} />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function AccountPage() {
   const { user, token, registerUser, loginUser, logout, updateProfile } = useAuth();
@@ -99,6 +139,7 @@ export default function AccountPage() {
                       </div>
                       <span className="text-sm text-amber-700">{STATUS_LABELS[order.status] || order.status}</span>
                     </div>
+                    <OrderTimeline status={order.status} />
                     <div className="mt-2 text-sm text-gray-600 space-y-0.5">
                       {order.items.map((item, i) => (
                         <p key={i}>{item.name} × {item.quantity}</p>

@@ -1,11 +1,12 @@
 ﻿"use client";
 import Link from "next/link";
-import { Heart, ShoppingCart, User, Search, Menu } from "lucide-react";
+import { Heart, User, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useAuth } from "@/hooks/useAuth";
 import { useState } from "react";
+import CartDrawer from "@/components/ui/CartDrawer";
 
 const Header = () => {
   const totalItems = useCart((s) => s.totalItems());
@@ -44,14 +45,7 @@ const Header = () => {
               </span>
             )}
           </Link>
-          <Link href="/cart" className="relative">
-            <ShoppingCart className="h-5 w-5 text-gray-500 hover:text-amber-600" />
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </Link>
+          <CartDrawer />
           <Link href="/account" className="hidden md:inline-flex">
             <Button variant="outline" size="sm">
               <User className="h-4 w-4 mr-2" /> {user ? user.name.split(" ").pop() : "Tài khoản"}
