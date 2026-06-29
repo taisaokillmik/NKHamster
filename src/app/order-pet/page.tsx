@@ -8,10 +8,10 @@ import Image from "next/image";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 const orderPets = [
-  { name: "Nhím", emoji: "🦔", image: `${BASE}/nhimcanh.jpg`, price: "500.000đ – 1.500.000đ", description: "Nhím châu Phi cỡ nhỏ, hiền lành, ít cần chăm sóc, không gây dị ứng.", traits: ["Ít mùi", "Độc lập", "Không cần tắm"] },
-  { name: "Bọ Việt", emoji: "🐛", image: `${BASE}/bou.webp`, price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam, sinh vật độc đáo và lạ mắt, rất dễ nuôi.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
-  { name: "Sóc Bay", emoji: "🐿️", image: `${BASE}/socbay.webp`, price: "1.200.000đ – 3.000.000đ", description: "Sóc bay Sugar Glider năng động, gắn bó với chủ, có thể lướt trong phòng.", traits: ["Gắn bó với chủ", "Hoạt động ban đêm", "Sống theo đàn"] },
-  { name: "Thỏ Việt", emoji: "🐰", image: `${BASE}/thoviet.webp`, price: "300.000đ – 1.000.000đ", description: "Thỏ Việt Nam mềm mại, hiền lành, thích hợp cho gia đình có trẻ nhỏ.", traits: ["Thân thiện", "Dễ thuần hoá", "Thích được vuốt ve"] },
+  { name: "Nhím Cảnh", emoji: "🦔", image: `${BASE}/nhimcanh.jpg`, price: "500.000đ – 1.500.000đ", description: "Nhím châu Phi mini – thú cưng độc lạ, thân hình tròn xinh với bộ gai mềm không đâm người. Hiền lành, sạch sẽ, gần như không có mùi, rất hợp nuôi trong nhà.", traits: ["Ít mùi", "Độc lập", "Không cần tắm"] },
+  { name: "Bọ Ú Việt", emoji: "🐛", image: `${BASE}/bou.webp`, price: "200.000đ – 800.000đ", description: "Bọ que Việt Nam – sinh vật lạ mắt, thân dài như cành cây khô. Cực kỳ dễ nuôi, chỉ cần lá cây tươi, không gian nhỏ, phù hợp cho người mới bắt đầu chơi thú lạ.", traits: ["Ăn lá cây", "Thân thiện", "Ít tốn kém"] },
+  { name: "Sóc Bay", emoji: "🐿️", image: `${BASE}/socbay.webp`, price: "1.200.000đ – 3.000.000đ", description: "Sugar Glider – sóc bay túi nhỏ nhắn, có màng da từ tay đến chân giúp lướt trong không khí. Gắn bó sâu với chủ, thích được ở trong túi áo hoặc ngủ cùng chủ.", traits: ["Gắn bó với chủ", "Hoạt động ban đêm", "Sống theo đàn"] },
+  { name: "Thỏ Việt", emoji: "🐰", image: `${BASE}/thoviet.webp`, price: "300.000đ – 1.000.000đ", description: "Thỏ Việt lông mềm mượt, tính hiền, không cắn. Thích được vuốt ve và chạy nhảy tự do. Dễ thuần hoá, ăn ít, phù hợp cho gia đình có trẻ nhỏ hoặc người mới nuôi thú.", traits: ["Thân thiện", "Dễ thuần hoá", "Thích được vuốt ve"] },
 ];
 
 export default function OrderPetPage() {
