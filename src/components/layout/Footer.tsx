@@ -35,7 +35,8 @@ const Footer = () => (
           <Instagram className="h-5 w-5 cursor-pointer hover:text-amber-800" />
           <Youtube className="h-5 w-5 cursor-pointer hover:text-amber-800" />
         </div>
-        <p className="flex items-center gap-1 text-sm"><Phone className="h-4 w-4" /> 0900 123 456</p>
+        <p className="flex items-center gap-1 text-sm"><Phone className="h-4 w-4" /> 0963 107 703</p>
+        <p className="flex items-center gap-1 text-sm"><Phone className="h-4 w-4" /> 0394 210 096</p>
         <p className="flex items-center gap-1 text-sm"><Mail className="h-4 w-4" /> info@hamsternhaminh.vn</p>
       </div>
     </div>

@@ -11,7 +11,8 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-10 max-w-2xl">
       <h1 className="text-3xl font-bold text-amber-800 mb-8">Liên hệ</h1>
       <div className="space-y-4 mb-8">
-        <p className="flex items-center gap-2"><Phone className="h-5 w-5 text-amber-600"/> Hotline: 0900 123 456</p>
+        <p className="flex items-center gap-2"><Phone className="h-5 w-5 text-amber-600"/> Hotline: 0963 107 703</p>
+        <p className="flex items-center gap-2"><Phone className="h-5 w-5 text-amber-600"/> Hotline: 0394 210 096</p>
         <p className="flex items-center gap-2"><Mail className="h-5 w-5 text-amber-600"/> Email: info@hamsternhaminh.vn</p>
         <p className="flex items-center gap-2"><MapPin className="h-5 w-5 text-amber-600"/> Địa chỉ: 123 Đường ABC, TP.HCM</p>
       </div>
