@@ -6,7 +6,7 @@
   price?: number;
   priceLabel?: string;
   salePrice?: number;
-  image: string;
+  image?: string;
   description: string;
   stock: number;
   rating: number;
