@@ -20,6 +20,7 @@ export const metadata = {
 export default function Home() {
   const hamsters = products.filter((p) => p.category === "hamster");
   const cages = products.filter((p) => p.category === "cage");
+  const foods = products.filter((p) => p.category === "food");
   const accessories = products.filter((p) => p.category === "accessory");
 
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <FeatureStrip />
       <ProductList products={hamsters} title="🐹 Chuột Hamster nổi bật" />
       <ProductList products={cages} title="🏠 Lồng mica bán chạy" columns={3} />
+      <ProductList products={foods} title="🍽 Thức ăn cho Hamster" />
       <ProductList products={accessories} title="🛏 Phụ kiện nổi bật" />
       <BlogPreview blogs={blogs.slice(0, 3)} />
     </>
