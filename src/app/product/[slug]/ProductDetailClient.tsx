@@ -33,11 +33,14 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     { label: "Vàng chanh", price: "100.000đ", image: "/NKHamster/wwvangchanh.jpg" },
   ];
 
+  const selectedWinterWhiteOption = winterWhiteOptions.find((option) => option.label === selectedWinterWhite);
+  const displayImage = isWinterWhiteProduct && selectedWinterWhiteOption ? selectedWinterWhiteOption.image : product.image;
+
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="flex flex-col md:flex-row gap-10">
         <div className="md:w-1/2">
-          <img src={product.image} alt={product.name} className="w-full rounded-2xl shadow" />
+          <img src={displayImage} alt={isWinterWhiteProduct ? selectedWinterWhite : product.name} className="w-full aspect-square rounded-2xl object-cover shadow" />
         </div>
         <div className="md:w-1/2 space-y-6">
           <h1 className="text-3xl font-bold text-amber-800">{product.name}</h1>
@@ -119,5 +122,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     </div>
   );
 }
+
 
 
