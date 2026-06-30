@@ -96,10 +96,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               </div>
             </div>
           )}
-
-          <p className="text-sm text-gray-500">
-            Còn hàng: <span>{product.stock} sản phẩm</span>
-          </p>
         </div>
       </div>
 
@@ -114,6 +110,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     </div>
   );
 }
+
 
 
 
