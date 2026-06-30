@@ -1,7 +1,6 @@
 ﻿import Hero from "@/components/home/Hero";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import ProductList from "@/components/home/ProductList";
-import PromoBanner from "@/components/home/PromoBanner";
 import TrustBar from "@/components/home/TrustBar";
 import FeatureStrip from "@/components/home/FeatureStrip";
 import BlogPreview from "@/components/home/BlogPreview";
@@ -27,7 +26,6 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
-      <PromoBanner />
       <CategoryGrid />
       <FeatureStrip />
       <ProductList products={hamsters} title="🐹 Chuột Hamster nổi bật" />
@@ -37,3 +35,4 @@ export default function Home() {
     </>
   );
 }
+

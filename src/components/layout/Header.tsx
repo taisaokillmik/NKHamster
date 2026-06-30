@@ -43,7 +43,6 @@ const Header = () => {
           <Link href="/foods" className="block text-gray-600 py-1">🍽 Thức ăn</Link>
           <Link href="/accessories" className="block text-gray-600 py-1">🛏 Phụ kiện</Link>
           <Link href="/blog" className="block text-gray-600 py-1">📖 Blog</Link>
-          <Link href="/promotions" className="block text-gray-600 py-1">🎉 Khuyến mãi</Link>
           <Link href="/contact" className="block text-gray-600 py-1">� Liên hệ</Link>
         </div>
       )}
@@ -51,3 +50,4 @@ const Header = () => {
   );
 };
 export default Header;
+
