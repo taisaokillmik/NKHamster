@@ -72,7 +72,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <div className="flex flex-col gap-2">
                 {variantOptions.map((option) => (
                   <button key={option.value} type="button" onClick={() => setSelectedVariant(option.value)}
-                    className={cn("text-left rounded-xl border p-3 transition",
+                    className={cn("text-left rounded-xl border px-4 py-3 transition",
                       selectedVariant === option.value ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
                     <div className="font-medium text-gray-800">{option.label}</div>
                     <div className="text-sm text-gray-500">{option.description}</div>
@@ -85,20 +85,12 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           {isWinterWhiteProduct && (
             <div className="space-y-3">
               <p className="font-semibold text-amber-800">Chọn kiểu Winter White:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {winterWhiteOptions.map((option) => (
                   <button key={option.label} type="button" onClick={() => setSelectedWinterWhite(option.label)}
-                    className={cn("text-left rounded-xl border p-3 transition",
-                      selectedWinterWhite === option.label ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="flex items-center gap-3">
-                      <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-amber-50">
-                        <img src={option.image} alt={option.label} className="h-full w-full object-cover" />
-                      </div>
-                      <div>
-                        <div className="font-medium text-gray-800">{option.label}</div>
-                        <div className="text-sm text-gray-500">{option.price}</div>
-                      </div>
-                    </div>
+                    className={cn("text-left rounded-xl border px-4 py-3 transition",
+                      selectedWinterWhite === option.label ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>                    <div className="font-medium text-gray-800">{option.label}</div>
+                    <div className="text-sm text-gray-500">{option.price}</div>
                   </button>
                 ))}
               </div>
@@ -122,6 +114,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     </div>
   );
 }
+
 
 
 
