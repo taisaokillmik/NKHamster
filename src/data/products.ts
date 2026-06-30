@@ -35,7 +35,7 @@ export const products: Product[] = [
     category: "hamster",
     price: 100000,
     priceLabel: "60.000đ - 100.000đ",
-    image: "https://placehold.co/400x400/FDE68A/92400E?text=Winter+White",
+    image: "/NKHamster/wwtrasua.jpg",
     description: "Hamster Winter White thuần chủng, lông trắng muốt.",
     stock: 8,
     rating: 4.9,
@@ -227,3 +227,4 @@ export const blogs: BlogPost[] = [
     date: "2025-03-05",
   },
 ];
+
