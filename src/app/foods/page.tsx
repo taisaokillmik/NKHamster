@@ -1,8 +1,5 @@
-"use client";
 import Link from "next/link";
-import { useMemo } from "react";
-import ProductCard from "@/components/shared/ProductCard";
-import { products } from "@/data/products";
+import CategoryPage from "@/components/shared/CategoryPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,18 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-const mixedFoodSlugs = [
-  "thuc-an-tron-binh-thuong",
-  "thuc-an-tron-ngon",
-  "thuc-an-hang-h1",
-  "thuc-an-hang-h2-bear",
-];
-
 export default function FoodPage() {
-  const otherFoods = useMemo(() => {
-    return products.filter((p) => p.category === "food" && !mixedFoodSlugs.includes(p.slug));
-  }, []);
-
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="text-center mb-10">
@@ -63,9 +49,7 @@ export default function FoodPage() {
       {/* Other Food Products */}
       <div className="border-t border-amber-100 pt-10">
         <h2 className="text-2xl font-bold text-amber-800 mb-6">Các loại thức ăn khác</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {otherFoods.map((p) => <ProductCard key={p.id} product={p} />)}
-        </div>
+        <CategoryPage category="food" title="" description="" />
       </div>
     </div>
   );
