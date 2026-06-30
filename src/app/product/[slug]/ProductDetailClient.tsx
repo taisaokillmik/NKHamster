@@ -48,20 +48,20 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             {isBearVariantProduct ? (
               <div className="space-y-2">
                 <span className="text-sm text-gray-500">{product.priceLabel}</span>
-                <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString()}đ</p>
+                <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString("vi-VN")}đ</p>
               </div>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
             ) : hasSale ? (
               <div className="flex items-center gap-3">
-                <span className="text-4xl font-bold text-red-500">{product.salePrice!.toLocaleString()}đ</span>
-                <span className="text-xl text-gray-400 line-through">{product.price.toLocaleString()}đ</span>
+                <span className="text-4xl font-bold text-red-500">{product.salePrice!.toLocaleString("vi-VN")}đ</span>
+                <span className="text-xl text-gray-400 line-through">{product.price.toLocaleString("vi-VN")}đ</span>
                 <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
                   -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
                 </span>
               </div>
             ) : (
-              <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString()}đ</span>
+              <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}đ</span>
             )}
           </div>
           <p className="text-gray-600">{product.description}</p>
@@ -110,6 +110,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     </div>
   );
 }
+
 
 
 

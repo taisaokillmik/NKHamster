@@ -26,11 +26,11 @@ const ProductCard = ({ product }: { product: Product }) => {
             <span className="text-lg font-bold text-amber-700">{product.priceLabel}</span>
           ) : hasSale ? (
             <>
-              <span className="text-lg font-bold text-amber-700">{product.salePrice!.toLocaleString()}đ</span>
-              <span className="ml-2 text-sm line-through text-gray-400">{product.price.toLocaleString()}đ</span>
+              <span className="text-lg font-bold text-amber-700">{product.salePrice!.toLocaleString("vi-VN")}đ</span>
+              <span className="ml-2 text-sm line-through text-gray-400">{product.price.toLocaleString("vi-VN")}đ</span>
             </>
           ) : (
-            <span className="text-lg font-bold text-amber-700">{product.price.toLocaleString()}đ</span>
+            <span className="text-lg font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}đ</span>
           )}
         </div>
       </div>
@@ -38,4 +38,5 @@ const ProductCard = ({ product }: { product: Product }) => {
   );
 };
 export default ProductCard;
+
 
