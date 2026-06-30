@@ -3,7 +3,7 @@
   name: string;
   slug: string;
   category: "hamster" | "cage" | "food" | "accessory";
-  price: number;
+  price?: number;
   priceLabel?: string;
   salePrice?: number;
   image: string;
