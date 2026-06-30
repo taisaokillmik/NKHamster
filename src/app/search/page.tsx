@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useMemo, useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/shared/ProductCard";
@@ -10,7 +10,6 @@ export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
-  const [minRating, setMinRating] = useState("");
   const [category, setCategory] = useState("all");
   const [sortBy, setSortBy] = useState("featured");
   const [showFilters, setShowFilters] = useState(false);
@@ -35,33 +34,24 @@ export default function SearchPage() {
     if (priceMax && Number(priceMax) > 0) {
       results = results.filter((p) => p.price <= Number(priceMax));
     }
-
-    // Rating
-    if (minRating && Number(minRating) > 0) {
-      results = results.filter((p) => p.rating >= Number(minRating));
-    }
-
-    // Category
+// Category
     if (category !== "all") {
       results = results.filter((p) => p.category === category);
     }
 
     // Sort
     if (sortBy === "price-asc") return [...results].sort((a, b) => a.price - b.price);
-    if (sortBy === "price-desc") return [...results].sort((a, b) => b.price - a.price);
-    if (sortBy === "rating") return [...results].sort((a, b) => b.rating - a.rating);
-    if (sortBy === "newest") return [...results].sort((a, b) => b.id - a.id);
+    if (sortBy === "price-desc") return [...results].sort((a, b) => b.price - a.price);    if (sortBy === "newest") return [...results].sort((a, b) => b.id - a.id);
 
     return results;
-  }, [query, priceMin, priceMax, minRating, category, sortBy]);
+  }, [query, priceMin, priceMax, category, sortBy]);
 
-  const hasActiveFilters = query || priceMin || priceMax || minRating || category !== "all";
+  const hasActiveFilters = query || priceMin || priceMax || category !== "all";
 
   const clearFilters = () => {
     setQuery("");
     setPriceMin("");
     setPriceMax("");
-    setMinRating("");
     setCategory("all");
     setSortBy("featured");
   };
@@ -97,37 +87,6 @@ export default function SearchPage() {
         <div className="bg-white rounded-2xl border border-amber-100 p-6 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Giá tối thiểu (đ)</label>
-              <Input
-                type="number"
-                value={priceMin}
-                onChange={(e) => setPriceMin(e.target.value)}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Giá tối đa (đ)</label>
-              <Input
-                type="number"
-                value={priceMax}
-                onChange={(e) => setPriceMax(e.target.value)}
-                placeholder="Không giới hạn"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Đánh giá tối thiểu</label>
-              <select
-                value={minRating}
-                onChange={(e) => setMinRating(e.target.value)}
-                className="w-full rounded-2xl border border-amber-200 px-3 py-2 text-sm"
-              >
-                <option value="">Tất cả</option>
-                <option value="4">4+ sao</option>
-                <option value="4.5">4.5+ sao</option>
-                <option value="4.8">4.8+ sao</option>
-              </select>
-            </div>
-            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Danh mục</label>
               <select
                 value={category}
@@ -153,7 +112,6 @@ export default function SearchPage() {
                 <option value="featured">Nổi bật</option>
                 <option value="price-asc">Giá thấp → cao</option>
                 <option value="price-desc">Giá cao → thấp</option>
-                <option value="rating">Đánh giá cao nhất</option>
                 <option value="newest">Mới nhất</option>
               </select>
             </div>
@@ -195,3 +153,4 @@ export default function SearchPage() {
     </div>
   );
 }
+

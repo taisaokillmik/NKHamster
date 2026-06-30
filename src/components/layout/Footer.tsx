@@ -16,7 +16,6 @@ const Footer = () => (
           <li><Link href="/about" className="hover:text-amber-600">Giới thiệu</Link></li>
           <li><Link href="/blog" className="hover:text-amber-600">Blog</Link></li>
           <li><Link href="/promotions" className="hover:text-amber-600">Khuyến mãi</Link></li>
-          <li><Link href="/reviews" className="hover:text-amber-600">Đánh giá</Link></li>
           <li><Link href="/contact" className="hover:text-amber-600">Liên hệ</Link></li>
         </ul>
       </div>
@@ -46,3 +45,4 @@ const Footer = () => (
   </footer>
 );
 export default Footer;
+

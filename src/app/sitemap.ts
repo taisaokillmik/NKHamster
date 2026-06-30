@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+﻿import { MetadataRoute } from 'next'
 import { products } from '@/data/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -90,12 +90,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/reviews`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
       url: `${baseUrl}/search`,
       lastModified: new Date(),
       changeFrequency: 'daily',
@@ -112,3 +106,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...productPages]
 }
+

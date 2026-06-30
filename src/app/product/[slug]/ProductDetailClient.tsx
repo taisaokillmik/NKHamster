@@ -1,8 +1,7 @@
-"use client";
+﻿"use client";
 import { useMemo, useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/shared/ProductCard";
-import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function ProductDetailClient({ slug }: { slug: string }) {
@@ -42,12 +41,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
         </div>
         <div className="md:w-1/2 space-y-6">
           <h1 className="text-3xl font-bold text-amber-800">{product.name}</h1>
-          <div className="flex items-center gap-2">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className={cn("h-5 w-5", i < Math.floor(product.rating) ? "fill-amber-400 text-amber-400" : "text-gray-300")} />
-            ))}
-            <span className="text-sm text-gray-500">({product.reviewCount} đánh giá)</span>
-          </div>
           <div>
             {isBearVariantProduct ? (
               <div className="space-y-2">
@@ -103,7 +96,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           )}
 
           <p className="text-sm text-gray-500">
-            Còn hàng: <span className={product.stock <= 3 ? "text-red-500 font-semibold" : ""}>{product.stock} sản phẩm</span>
+            Còn hàng: <span>{product.stock} sản phẩm</span>
           </p>
         </div>
       </div>
@@ -119,3 +112,4 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     </div>
   );
 }
+

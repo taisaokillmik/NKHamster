@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useMemo, useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/shared/ProductCard";
@@ -15,7 +15,6 @@ export default function CategoryPage({ category, title, description }: Props) {
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
-  const [minRating, setMinRating] = useState(0);
 
   const items = useMemo(() => {
     let filtered = products.filter((p) => p.category === category);
@@ -32,20 +31,12 @@ export default function CategoryPage({ category, title, description }: Props) {
     if (inStockOnly) {
       filtered = filtered.filter((p) => p.stock > 0);
     }
-    
-    // Rating filter
-    if (minRating > 0) {
-      filtered = filtered.filter((p) => p.rating >= minRating);
-    }
-    
-    // Sorting
+// Sorting
     if (sortBy === "price-asc") return [...filtered].sort((a, b) => a.price - b.price);
-    if (sortBy === "price-desc") return [...filtered].sort((a, b) => b.price - a.price);
-    if (sortBy === "rating") return [...filtered].sort((a, b) => b.rating - a.rating);
-    if (sortBy === "newest") return [...filtered].sort((a, b) => b.id - a.id);
+    if (sortBy === "price-desc") return [...filtered].sort((a, b) => b.price - a.price);    if (sortBy === "newest") return [...filtered].sort((a, b) => b.id - a.id);
     
     return filtered;
-  }, [sortBy, priceMin, priceMax, inStockOnly, minRating, category]);
+  }, [sortBy, priceMin, priceMax, inStockOnly, category]);
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -79,16 +70,6 @@ export default function CategoryPage({ category, title, description }: Props) {
             Còn hàng
           </label>
           <select
-            value={minRating}
-            onChange={(e) => setMinRating(Number(e.target.value))}
-            className="rounded-2xl border border-amber-200 px-3 py-2 text-sm"
-          >
-            <option value={0}>Tất cả đánh giá</option>
-            <option value={4}>⭐ 4+ sao</option>
-            <option value={3}>⭐ 3+ sao</option>
-            <option value={2}>⭐ 2+ sao</option>
-          </select>
-          <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="rounded-2xl border border-amber-200 px-3 py-2 text-sm"
@@ -97,7 +78,6 @@ export default function CategoryPage({ category, title, description }: Props) {
             <option value="newest">Mới nhất</option>
             <option value="price-asc">Giá thấp → cao</option>
             <option value="price-desc">Giá cao → thấp</option>
-            <option value="rating">Đánh giá cao nhất</option>
           </select>
         </div>
       </div>
@@ -116,3 +96,4 @@ export default function CategoryPage({ category, title, description }: Props) {
     </div>
   );
 }
+

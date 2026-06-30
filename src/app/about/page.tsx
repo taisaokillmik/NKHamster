@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,7 +10,6 @@ const stats = [
   { value: "2018", label: "Năm thành lập" },
   { value: "500+", label: "Khách hàng hài lòng" },
   { value: "2", label: "Chi nhánh" },
-  { value: "4.9★", label: "Đánh giá trung bình" },
 ];
 
 const values = [
@@ -82,3 +81,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
