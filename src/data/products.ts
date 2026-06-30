@@ -134,6 +134,7 @@ export const products: Product[] = [
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
+    price: 15000,
     image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Treat",
     description: "Thực phẩm khác bổ sung vitamin.",
     stock: 25,
