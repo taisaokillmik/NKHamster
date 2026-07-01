@@ -1,9 +1,5 @@
 "use client";
-import { useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import { Phone } from "lucide-react";
-import Image from "next/image";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
@@ -15,38 +11,19 @@ const orderPets = [
 ];
 
 export default function OrderPetPage() {
-  const [selected, setSelected] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", phone: "", note: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <div className="container mx-auto px-4 py-16 max-w-5xl">
       <div className="mb-10 text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-amber-600 font-semibold">Order Pet</p>
         <h1 className="text-4xl font-bold text-amber-800 mt-3">Đặt thú nuôi đặc biệt</h1>
-        <p className="text-gray-600 mt-3 max-w-xl mx-auto">Ngoài Hamster, NK Hamster còn nhận order các loài thú cưng đặc biệt theo yêu cầu. Chọn loài bạn muốn và để lại thông tin.</p>
+        <p className="text-gray-600 mt-3 max-w-xl mx-auto">Ngoài Hamster, NK Hamster còn nhận order các loài thú cưng đặc biệt theo yêu cầu. Chọn loài bạn muốn và liên hệ trực tiếp qua Zalo.</p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 mb-12">
         {orderPets.map((pet) => (
-          <button
-            key={pet.name}
-            onClick={() => setSelected(selected === pet.name ? null : pet.name)}
-            className={`group text-left rounded-3xl border p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md ${selected === pet.name ? "border-amber-500 bg-amber-50" : "border-amber-100 bg-white"}`}
-          >
+          <div key={pet.name} className="text-left rounded-3xl border border-amber-100 bg-white p-6 shadow-sm">
             <div className="mb-4 w-full aspect-square rounded-2xl overflow-hidden bg-amber-50">
-              {(pet as any).image ? (
-                <img src={(pet as any).image} alt={pet.name} className="w-full h-full object-cover object-center" />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-7xl">{pet.emoji}</span>
-                </div>
-              )}
+              <img src={pet.image} alt={pet.name} className="w-full h-full object-cover object-center" />
             </div>
             <h2 className="text-xl font-semibold text-amber-800">{pet.name}</h2>
             <p className="text-sm text-amber-600 font-medium mt-1">{pet.price}</p>
@@ -56,60 +33,21 @@ export default function OrderPetPage() {
                 <span key={t} className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">{t}</span>
               ))}
             </div>
-          </button>
+          </div>
         ))}
       </div>
 
       <div className="max-w-xl mx-auto">
-        <div className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm">
-          <h2 className="text-xl font-bold text-amber-800 mb-1">Đặt hàng ngay</h2>
-          <p className="text-sm text-gray-500 mb-6">Để lại thông tin, chúng tôi sẽ liên hệ tư vấn và báo giá trong vòng 24h.</p>
-
-          {submitted ? (
-            <div className="rounded-2xl bg-green-50 border border-green-200 p-6 text-center">
-              <p className="font-semibold text-green-700">Đã ghi nhận yêu cầu!</p>
-              <p className="text-sm text-gray-600 mt-1">Chúng tôi sẽ liên hệ qua số <strong>{form.phone}</strong> sớm nhất.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="text-sm font-medium text-gray-700 block mb-1">Loài muốn đặt</label>
-                <select
-                  className="w-full rounded-2xl border border-amber-200 px-3 py-2 text-sm"
-                  value={selected || ""}
-                  onChange={(e) => setSelected(e.target.value)}
-                  required
-                >
-                  <option value="">-- Chọn loài --</option>
-                  {orderPets.map((p) => <option key={p.name} value={p.name}>{p.name}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700 block mb-1">Họ tên *</label>
-                <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Nguyễn Văn A" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700 block mb-1">Số điện thoại / Zalo *</label>
-                <Input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="0912 345 678" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700 block mb-1">Ghi chú thêm</label>
-                <textarea rows={3} className="w-full rounded-2xl border border-amber-200 p-3 text-sm" value={form.note} onChange={(e) => setForm({ ...form, note: e.target.value })} placeholder="Màu sắc, giới tính, số lượng..." />
-              </div>
-              <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600 text-white">Gửi yêu cầu đặt hàng</Button>
-            </form>
-          )}
-
-          <div className="mt-6 pt-5 border-t border-amber-100 space-y-2 text-sm text-gray-600">
-            <p className="font-medium text-gray-700">Hoặc liên hệ trực tiếp qua Zalo:</p>
-            <div className="flex flex-col gap-2">
-              <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 hover:underline font-semibold">
-                <Phone className="h-4 w-4" /> 0963 107 703 (Nhật Khoa)
-              </a>
-              <a href="https://zalo.me/0394210096" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 hover:underline font-semibold">
-                <Phone className="h-4 w-4" /> 0394 210 096 (Tuấn Phạm)
-              </a>
-            </div>
+        <div className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm space-y-4 text-center">
+          <h2 className="text-xl font-bold text-amber-800">Liên hệ đặt hàng</h2>
+          <p className="text-sm text-gray-500">Nhắn tin trực tiếp qua Zalo để được tư vấn và báo giá nhanh nhất.</p>
+          <div className="flex flex-col gap-3">
+            <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 text-sm transition-colors">
+              <Phone className="h-4 w-4" /> 0963 107 703 (Nhật Khoa)
+            </a>
+            <a href="https://zalo.me/0394210096" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 text-sm transition-colors">
+              <Phone className="h-4 w-4" /> 0394 210 096 (Tuấn Phạm)
+            </a>
           </div>
         </div>
       </div>
