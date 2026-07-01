@@ -19,7 +19,7 @@ export const products: Product[] = [
     slug: "hamster-bear-tang-to",
     category: "hamster",
     price: 500000,
-    image: "https://placehold.co/400x400/FDE68A/92400E?text=Tang+To",
+    image: "/NKHamster/beartangto.jpg",
     description: "Hamster Bear tạng to, béo tròn và dễ thương, phù hợp cho người thích thú nuôi hamster đáng yêu.",
     stock: 4,
     featured: true,
