@@ -20,10 +20,9 @@ export default function ShippingPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-amber-50">
-              <tr><td className="p-3">Nội thành TP.HCM & Bình Dương</td><td className="p-3">2–4 giờ</td><td className="p-3 text-green-600 font-medium">15.000đ – 25.000đ</td></tr>
-              <tr><td className="p-3">Ngoại thành / tỉnh lân cận</td><td className="p-3">24–48 giờ</td><td className="p-3">30.000đ – 50.000đ</td></tr>
-              <tr><td className="p-3">Toàn quốc (miền Trung, miền Bắc)</td><td className="p-3">2–4 ngày</td><td className="p-3">50.000đ – 100.000đ</td></tr>
-              <tr><td className="p-3 font-medium text-green-700">Đơn hàng ≥ 1.000.000đ</td><td className="p-3">–</td><td className="p-3 font-bold text-green-600">Miễn phí</td></tr>
+              <tr><td className="p-3">Nội thành TP.HCM</td><td className="p-3">2–4 giờ</td><td className="p-3 text-green-600 font-medium">Theo app Grab / Ahamove</td></tr>
+              <tr><td className="p-3">Ngoại thành TP.HCM & Bình Dương</td><td className="p-3">–</td><td className="p-3 text-amber-600 font-medium">Liên hệ để báo giá</td></tr>
+              <tr><td className="p-3">Miền Trung / Miền Bắc</td><td className="p-3">–</td><td className="p-3 text-amber-600 font-medium">Liên hệ để báo giá</td></tr>
             </tbody>
           </table>
         </div>
