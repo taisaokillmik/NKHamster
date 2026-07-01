@@ -14,16 +14,16 @@ export const metadata: Metadata = {
 
 export default function FoodPage() {
   const foodProducts = products.filter(p => p.category === "food");
-  const mixedFood = foodProducts.filter(p => p.slug === "thuc-an-tron-hamster");
-  const otherFood = foodProducts.filter(p => p.slug !== "thuc-an-tron-hamster");
+  const mainFood = foodProducts.filter(p => p.slug === "an-dam");
+  const otherFood = foodProducts.filter(p => p.slug !== "an-dam");
 
   return (
     <div className="container mx-auto px-4 py-10">
-      {/* Thức ăn trộn hamster */}
+      {/* Ăn dặm */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-amber-800 mb-6">🍽 Thức ăn trộn hamster</h2>
+        <h2 className="text-2xl font-bold text-amber-800 mb-6">🍽 Thức ăn</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mixedFood.map(product => (
+          {mainFood.map(product => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
               <div className="p-4">

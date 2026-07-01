@@ -107,7 +107,7 @@ export const products: Product[] = [
   },
   {
     id: 9,
-    name: "Thức ăn trộn hamster",
+    name: "Thức ăn",
     slug: "thuc-an-tron-hamster",
     category: "food",
     price: 35000,
