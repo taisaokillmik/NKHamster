@@ -100,9 +100,16 @@ export default function OrderPetPage() {
             </form>
           )}
 
-          <div className="mt-6 pt-5 border-t border-amber-100 flex items-center gap-3 text-sm text-gray-600">
-            <Phone className="h-4 w-4 text-amber-500 flex-shrink-0" />
-            <span>Hoặc liên hệ trực tiếp: <a href="tel:0963107703" className="font-semibold text-amber-700">0963 107 703</a> (Zalo Nhật Khoa)</span>
+          <div className="mt-6 pt-5 border-t border-amber-100 space-y-2 text-sm text-gray-600">
+            <p className="font-medium text-gray-700">Hoặc liên hệ trực tiếp qua Zalo:</p>
+            <div className="flex flex-col gap-2">
+              <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 hover:underline font-semibold">
+                <Phone className="h-4 w-4" /> 0963 107 703 (Nhật Khoa)
+              </a>
+              <a href="https://zalo.me/0394210096" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 hover:underline font-semibold">
+                <Phone className="h-4 w-4" /> 0394 210 096 (Tuấn Phạm)
+              </a>
+            </div>
           </div>
         </div>
       </div>
