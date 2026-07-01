@@ -19,40 +19,67 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const blogContents: Record<string, string[]> = {
+type BlogLine = { type: "heading" | "bullet" | "text"; content: string };
+
+const blogContents: Record<string, BlogLine[]> = {
   "cach-nuoi-hamster": [
-    "Hamster là một trong những thú cưng dễ nuôi và đáng yêu nhất. Trước khi đón hamster về nhà, bạn cần chuẩn bị đầy đủ: lồng phù hợp, thức ăn, nước uống và chất độn chuồng.",
-    "🏠 Lồng: Nên chọn lồng có chiều ngang tối thiểu 60cm để hamster có đủ không gian vận động. Lồng mica hoặc lồng nhựa đều phù hợp, miễn là có đủ thông gió.",
-    "🍽 Thức ăn: Hamster ăn hỗn hợp hạt, rau củ tươi và protein nhỏ. Tránh cho ăn hành, tỏi, nho, socola vì rất độc với hamster.",
-    "💧 Nước: Dùng bình nước nhỏ gắn vào lồng, thay nước mỗi ngày. Không để nước trong bát vì hamster có thể bị ướt và lạnh.",
-    "🛏 Chất độn chuồng: Dùng mùn cưa, rơm hoặc giấy xé nhỏ, dày 5–10cm để hamster đào bới — đây là bản năng tự nhiên của chúng.",
-    "🌡 Nhiệt độ: Hamster nhạy cảm với nhiệt độ. Giữ phòng ở 18–24°C, tránh để gần điều hòa hoặc ánh nắng trực tiếp.",
-    "Với sự chăm sóc đúng cách, hamster có thể sống khỏe mạnh 2–3 năm và là người bạn đồng hành tuyệt vời!",
+    { type: "heading", content: "1. Chuẩn bị chuồng nuôi" },
+    { type: "bullet", content: "Chọn lồng rộng rãi, thông thoáng." },
+    { type: "bullet", content: "Trang bị đầy đủ: nhà ngủ, bánh xe chạy, bình nước, chén ăn và lớp lót chuồng." },
+    { type: "heading", content: "2. Thức ăn" },
+    { type: "bullet", content: "Cho hamster ăn thức ăn chuyên dụng kết hợp với rau củ, hoa hoặc trái cây sấy khô." },
+    { type: "bullet", content: "Luôn chuẩn bị nước sạch mỗi ngày." },
+    { type: "bullet", content: "Không cho ăn socola, đồ mặn, cay hoặc nhiều đường." },
+    { type: "heading", content: "3. Vệ sinh chuồng" },
+    { type: "bullet", content: "Dọn thức ăn thừa và khu vực đi vệ sinh hằng ngày." },
+    { type: "bullet", content: "Thay lớp lót và vệ sinh chuồng định kỳ để giữ môi trường sạch sẽ." },
+    { type: "heading", content: "4. Chơi với hamster" },
+    { type: "bullet", content: "Để hamster làm quen với môi trường mới trong vài ngày đầu." },
+    { type: "bullet", content: "Chơi nhẹ nhàng và không đánh thức khi hamster đang ngủ." },
+    { type: "heading", content: "5. Lưu ý" },
+    { type: "bullet", content: "Không nuôi chung nhiều hamster trưởng thành trong cùng một chuồng." },
+    { type: "bullet", content: "Không tắm bằng nước, chỉ sử dụng cát tắm chuyên dụng." },
+    { type: "bullet", content: "Đặt chuồng ở nơi thoáng mát, tránh ánh nắng trực tiếp." },
+    { type: "heading", content: "6. Dấu hiệu hamster khỏe mạnh" },
+    { type: "bullet", content: "Ăn uống bình thường." },
+    { type: "bullet", content: "Lông mượt, mắt sáng." },
+    { type: "bullet", content: "Hoạt động nhanh nhẹn vào buổi tối." },
+    { type: "text", content: "Chỉ cần một chiếc chuồng phù hợp, thức ăn đầy đủ, nước sạch và sự chăm sóc đúng cách, hamster sẽ luôn khỏe mạnh và mang đến cho bạn nhiều niềm vui." },
   ],
   "chon-long-hamster": [
-    "Lồng là môi trường sống quan trọng nhất của hamster. Việc chọn lồng phù hợp ảnh hưởng trực tiếp đến sức khỏe và hạnh phúc của bé.",
-    "🔷 Lồng mica trong suốt: Ưu điểm là dễ quan sát, đẹp mắt và giữ chất độn chuồng không rơi ra ngoài. Nhược điểm là thông gió kém hơn nếu chỉ có lưới ở trên.",
-    "🔶 Lồng nhựa mini: Giá rẻ, dễ vệ sinh, phù hợp cho người mới nuôi hoặc dùng tạm. Tuy nhiên không gian nhỏ, không phù hợp dài hạn.",
-    "🔹 Lồng nhiều tầng: Rộng rãi, hamster có nhiều không gian khám phá. Phù hợp với các giống hamster lớn như Bear hoặc Campbell.",
-    "📏 Kích thước tối thiểu: Theo khuyến nghị quốc tế, lồng hamster nên có diện tích đáy tối thiểu 900cm² (ví dụ 45×20cm) để đảm bảo phúc lợi động vật.",
-    "Kết luận: Nếu ngân sách cho phép, hãy chọn lồng mica 2 tầng hoặc lồng nhiều tầng để hamster được thoải mái nhất.",
+    { type: "text", content: "Lồng là môi trường sống quan trọng nhất của hamster. Việc chọn lồng phù hợp ảnh hưởng trực tiếp đến sức khỏe và hạnh phúc của bé." },
+    { type: "bullet", content: "🔷 Lồng mica trong suốt: Ưu điểm là dễ quan sát, đẹp mắt và giữ chất độn chuồng không rơi ra ngoài. Nhược điểm là thông gió kém hơn nếu chỉ có lưới ở trên." },
+    { type: "bullet", content: "🔶 Lồng nhựa mini: Giá rẻ, dễ vệ sinh, phù hợp cho người mới nuôi hoặc dùng tạm. Tuy nhiên không gian nhỏ, không phù hợp dài hạn." },
+    { type: "bullet", content: "🔹 Lồng nhiều tầng: Rộng rãi, hamster có nhiều không gian khám phá. Phù hợp với các giống hamster lớn như Bear hoặc Campbell." },
+    { type: "bullet", content: "📏 Kích thước tối thiểu: Theo khuyến nghị quốc tế, lồng hamster nên có diện tích đáy tối thiểu 900cm² (ví dụ 45×20cm) để đảm bảo phúc lợi động vật." },
+    { type: "text", content: "Kết luận: Nếu ngân sách cho phép, hãy chọn lồng mica 2 tầng hoặc lồng nhiều tầng để hamster được thoải mái nhất." },
   ],
   "thuc-an-tot-nhat": [
-    "Chế độ ăn cân bằng là yếu tố then chốt để hamster sống khỏe và lâu. Dưới đây là hướng dẫn đầy đủ về thức ăn cho hamster.",
-    "✅ Thức ăn nên cho: Hạt hỗn hợp (lúa mì, yến mạch, hạt hướng dương ít), rau xanh (cải bó xôi, bông cải xanh, dưa chuột), trái cây ít đường (táo, dưa hấu bỏ hạt), protein (trứng luộc, thịt gà luộc, côn trùng sấy).",
-    "❌ Thức ăn TUYỆT ĐỐI KHÔNG cho: Hành, tỏi, nho, nho khô, socola, kẹo ngọt, thức ăn nhiều muối hoặc gia vị, trái cây có hạt cứng.",
-    "🥜 Hạt hướng dương: Hamster rất thích nhưng hàm lượng chất béo cao. Chỉ nên cho 3–5 hạt/ngày như phần thưởng.",
-    "🌿 Rau củ: Cho ăn lượng nhỏ mỗi ngày, tươi và đã rửa sạch. Tránh rau bị dập hoặc héo.",
-    "🍬 Snack thưởng: Bánh thưởng dinh dưỡng, snack phô mai hoặc snack sấy có thể dùng để tạo sự kết nối với hamster. Không nên cho quá nhiều.",
-    "Hãy duy trì chế độ ăn đều đặn, theo dõi cân nặng và hoạt động của hamster để điều chỉnh khẩu phần phù hợp!",
+    { type: "text", content: "Chế độ ăn cân bằng là yếu tố then chốt để hamster sống khỏe và lâu. Dưới đây là hướng dẫn đầy đủ về thức ăn cho hamster." },
+    { type: "bullet", content: "✅ Thức ăn nên cho: Hạt hỗn hợp (lúa mì, yến mạch, hạt hướng dương ít), rau xanh (cải bó xôi, bông cải xanh, dưa chuột), trái cây ít đường (táo, dưa hấu bỏ hạt), protein (trứng luộc, thịt gà luộc, côn trùng sấy)." },
+    { type: "bullet", content: "❌ Thức ăn TUYỆT ĐỐI KHÔNG cho: Hành, tỏi, nho, nho khô, socola, kẹo ngọt, thức ăn nhiều muối hoặc gia vị, trái cây có hạt cứng." },
+    { type: "bullet", content: "🥜 Hạt hướng dương: Hamster rất thích nhưng hàm lượng chất béo cao. Chỉ nên cho 3–5 hạt/ngày như phần thưởng." },
+    { type: "bullet", content: "🌿 Rau củ: Cho ăn lượng nhỏ mỗi ngày, tươi và đã rửa sạch. Tránh rau bị dập hoặc héo." },
+    { type: "bullet", content: "🍬 Snack thưởng: Bánh thưởng dinh dưỡng, snack phô mai hoặc snack sấy có thể dùng để tạo sự kết nối với hamster. Không nên cho quá nhiều." },
+    { type: "text", content: "Hãy duy trì chế độ ăn đều đặn, theo dõi cân nặng và hoạt động của hamster để điều chỉnh khẩu phần phù hợp!" },
   ],
 };
+
+function renderLine(line: BlogLine, i: number) {
+  if (line.type === "heading") {
+    return <h2 key={i} className="text-xl font-bold text-amber-800 mt-6 mb-2">{line.content}</h2>;
+  }
+  if (line.type === "bullet") {
+    return <li key={i} className="flex gap-2"><span className="text-amber-500 mt-1">•</span><span>{line.content}</span></li>;
+  }
+  return <p key={i} className="text-gray-700 leading-7">{line.content}</p>;
+}
 
 export default function BlogDetailPage({ params }: { params: { slug: string } }) {
   const post = blogs.find((b) => b.slug === params.slug);
   if (!post) notFound();
 
-  const content = blogContents[post.slug] || [post.content];
+  const lines = blogContents[post.slug];
   const otherPosts = blogs.filter((b) => b.slug !== post.slug);
 
   return (
@@ -64,10 +91,14 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
         <div className="p-8">
           <p className="text-xs text-gray-400 mb-3">{post.date}</p>
           <h1 className="text-3xl font-bold text-amber-800 mb-6">{post.title}</h1>
-          <div className="space-y-4 text-gray-700 leading-7">
-            {content.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+          <div className="space-y-2 text-gray-700 leading-7">
+            {lines ? (
+              <ul className="space-y-1">
+                {lines.map((line, i) => renderLine(line, i))}
+              </ul>
+            ) : (
+              <p>{post.content}</p>
+            )}
           </div>
         </div>
       </article>
