@@ -1,4 +1,10 @@
-﻿export interface Product {
+﻿export interface Variant {
+  label: string;
+  price: number;
+  description?: string;
+}
+
+export interface Product {
   id: number;
   name: string;
   slug: string;
@@ -12,6 +18,7 @@
   rating?: number;
   reviewCount?: number;
   featured?: boolean;
+  variants?: Variant[];
 }
 
 export interface BlogPost {

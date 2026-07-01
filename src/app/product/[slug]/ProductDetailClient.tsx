@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedVariant, setSelectedVariant] = useState<"xù" | "sát">("xù");
   const [selectedWinterWhite, setSelectedWinterWhite] = useState("Sóc đen");
+  const [selectedFoodVariant, setSelectedFoodVariant] = useState(0);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -18,8 +19,10 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const hasSale = product.salePrice && product.salePrice < product.price;
   const isBearVariantProduct = product.slug === "bear-long-hair";
   const isWinterWhiteProduct = product.slug === "winter-white";
+  const isFoodVariantProduct = product.slug === "thuc-an-tron-hamster" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
+  const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
 
   const variantOptions = [
     { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu." },
@@ -50,6 +53,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                 <span className="text-sm text-gray-500">{product.priceLabel}</span>
                 <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString("vi-VN")}đ</p>
               </div>
+            ) : isFoodVariantProduct ? (
+              <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}đ</p>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
             ) : hasSale ? (
@@ -91,6 +96,22 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                     className={cn("text-left rounded-xl border px-4 py-3 transition",
                       selectedWinterWhite === option.label ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>                    <div className="font-medium text-gray-800">{option.label}</div>
                     <div className="text-sm text-gray-500">{option.price}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isFoodVariantProduct && (
+            <div className="space-y-3">
+              <p className="font-semibold text-amber-800">Chọn loại thức ăn:</p>
+              <div className="flex flex-col gap-2">
+                {product.variants!.map((variant, index) => (
+                  <button key={index} type="button" onClick={() => setSelectedFoodVariant(index)}
+                    className={cn("text-left rounded-xl border px-4 py-3 transition flex justify-between items-center",
+                      selectedFoodVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                    <div className="font-medium text-gray-800">{variant.label}</div>
+                    <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
                   </button>
                 ))}
               </div>
