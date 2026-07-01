@@ -8,6 +8,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedVariant, setSelectedVariant] = useState<"xù" | "sát">("xù");
   const [selectedWinterWhite, setSelectedWinterWhite] = useState("Sóc đen");
   const [selectedFoodVariant, setSelectedFoodVariant] = useState(0);
+  const [selectedSnackVariant, setSelectedSnackVariant] = useState(0);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -20,9 +21,11 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isBearVariantProduct = product.slug === "bear-long-hair";
   const isWinterWhiteProduct = product.slug === "winter-white";
   const isFoodVariantProduct = product.slug === "thuc-an-tron-hamster" && product.variants;
+  const isSnackVariantProduct = product.slug === "an-dam" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
   const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
+  const selectedSnackPrice = isSnackVariantProduct ? product.variants![selectedSnackVariant].price : product.price;
 
   const variantOptions = [
     { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu." },
@@ -38,10 +41,13 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
   const selectedWinterWhiteOption = winterWhiteOptions.find((option) => option.label === selectedWinterWhite);
   const selectedFoodVariantData = isFoodVariantProduct ? product.variants![selectedFoodVariant] : null;
+  const selectedSnackVariantData = isSnackVariantProduct ? product.variants![selectedSnackVariant] : null;
   
   let displayImage = product.image;
   if (isFoodVariantProduct && selectedFoodVariantData && selectedFoodVariantData.image) {
     displayImage = selectedFoodVariantData.image;
+  } else if (isSnackVariantProduct && selectedSnackVariantData && selectedSnackVariantData.image) {
+    displayImage = selectedSnackVariantData.image;
   } else if (isWinterWhiteProduct && selectedWinterWhiteOption) {
     displayImage = selectedWinterWhiteOption.image;
   }
@@ -62,6 +68,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               </div>
             ) : isFoodVariantProduct ? (
               <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}đ</p>
+            ) : isSnackVariantProduct ? (
+              <p className="text-4xl font-bold text-amber-700">{selectedSnackPrice.toLocaleString("vi-VN")}đ</p>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
             ) : hasSale ? (
@@ -117,6 +125,22 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                   <button key={index} type="button" onClick={() => setSelectedFoodVariant(index)}
                     className={cn("text-left rounded-xl border px-4 py-3 transition flex justify-between items-center",
                       selectedFoodVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                    <div className="font-medium text-gray-800">{variant.label}</div>
+                    <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isSnackVariantProduct && (
+            <div className="space-y-3">
+              <p className="font-semibold text-amber-800">Chọn loại ăn dặm:</p>
+              <div className="flex flex-col gap-2">
+                {product.variants!.map((variant, index) => (
+                  <button key={index} type="button" onClick={() => setSelectedSnackVariant(index)}
+                    className={cn("text-left rounded-xl border px-4 py-3 transition flex justify-between items-center",
+                      selectedSnackVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
                     <div className="font-medium text-gray-800">{variant.label}</div>
                     <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
                   </button>
