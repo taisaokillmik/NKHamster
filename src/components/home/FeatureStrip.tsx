@@ -25,7 +25,7 @@ const FeatureStrip = () => (
       </div>
       <div className="mt-5 pt-5 border-t border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-gray-600 text-sm">Chưa biết chọn loại nào? <strong>Tư vấn miễn phí!</strong></p>
-        <Link href="https://zalo.me/0963107703" target="_blank" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-5 py-2 text-sm transition-colors">
+        <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-5 py-2 text-sm transition-colors">
           Liên hệ ngay
         </Link>
       </div>
