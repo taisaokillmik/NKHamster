@@ -95,7 +95,7 @@ export const products: Product[] = [
     slug: "thuc-an-tron-hamster",
     category: "food",
     price: 35000,
-    image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Food",
+    image: "/NKHamster/tronngon.jpg",
     description: "Thức ăn trộn hamster giàu dinh dưỡng cho hamster.",
     stock: 20,
     variants: [
