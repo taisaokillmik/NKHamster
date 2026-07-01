@@ -9,7 +9,7 @@ export interface Product {
   id: number;
   name: string;
   slug: string;
-  category: "hamster" | "cage" | "food" | "accessory" | "other-food";
+  category: "hamster" | "cage" | "food" | "accessory";
   price?: number;
   priceLabel?: string;
   salePrice?: number;
