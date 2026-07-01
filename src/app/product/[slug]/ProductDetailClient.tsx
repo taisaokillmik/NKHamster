@@ -82,8 +82,10 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                   -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
                 </span>
               </div>
-            ) : (
+            ) : product.price ? (
               <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}đ</span>
+            ) : (
+              <span className="text-4xl font-bold text-amber-700">Liên hệ</span>
             )}
           </div>
           <p className="text-gray-600">{product.description}</p>
