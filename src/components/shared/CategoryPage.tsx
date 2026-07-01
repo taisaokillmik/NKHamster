@@ -1,5 +1,4 @@
 "use client";
-import { useMemo, useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/shared/ProductCard";
 import { Product } from "@/types";
@@ -11,33 +10,13 @@ interface Props {
 }
 
 export default function CategoryPage({ category, title, description }: Props) {
-  const [sortBy, setSortBy] = useState("default");
-
-  const items = useMemo(() => {
-    const filtered = products.filter((p) => p.category === category);
-    if (sortBy === "price-asc") return [...filtered].sort((a, b) => a.price - b.price);
-    if (sortBy === "price-desc") return [...filtered].sort((a, b) => b.price - a.price);
-    if (sortBy === "newest") return [...filtered].sort((a, b) => b.id - a.id);
-    return filtered;
-  }, [sortBy, category]);
+  const items = products.filter((p) => p.category === category);
 
   return (
     <div className="container mx-auto px-4 py-10">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-amber-800">{title}</h1>
-          <p className="text-gray-600 mt-1">{description}</p>
-        </div>
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="rounded-2xl border border-amber-200 px-3 py-2 text-sm"
-        >
-          <option value="default">Mặc định</option>
-          <option value="newest">Mới nhất</option>
-          <option value="price-asc">Giá thấp → cao</option>
-          <option value="price-desc">Giá cao → thấp</option>
-        </select>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-amber-800">{title}</h1>
+        <p className="text-gray-600 mt-1">{description}</p>
       </div>
 
       {items.length === 0 ? (
