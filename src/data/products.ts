@@ -133,6 +133,7 @@ export const products: Product[] = [
       { label: "Táo đỏ", price: 10000, image: "/taodo.jpg" },
       { label: "Yến mạch", price: 10000, image: "/yenmach.jpg" },
       { label: "Súp thưởng", price: 15000, image: "/supthuong.jpg" },
+      { label: "Pudding sữa dê", price: 10000, image: "/pudding.jpg" },
     ],
   },
   {
