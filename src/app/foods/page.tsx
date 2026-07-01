@@ -32,7 +32,7 @@ export default function FoodPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <img src="https://placehold.co/400x400/FCE7F3/9D174D?text=Cho+Meo" alt="Thức ăn chó mèo" className="w-full h-48 object-cover" />
             <div className="p-4">
-              <h3 className="font-semibold text-lg mb-2">🐶🐱 Thức ăn chó mèo</h3>
+              <h3 className="font-semibold text-lg mb-2">Thực phẩm khác</h3>
               <p className="text-gray-600 text-sm mb-3">Thức ăn cho chó và mèo các loại.</p>
               <span className="text-amber-600 font-bold text-lg">Liên hệ</span>
             </div>
