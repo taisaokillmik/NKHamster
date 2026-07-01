@@ -17,7 +17,7 @@ export default function BlogPage() {
             <div className="p-4">
               <h3 className="font-semibold text-amber-800">{post.title}</h3>
               <p className="text-sm text-gray-600 mt-1">{post.excerpt}</p>
-              <span className="text-xs text-gray-400 mt-2 block">{post.date}</span>
+              <span className="text-xs text-gray-400 mt-2 block"></span>
             </div>
           </Link>
         ))}

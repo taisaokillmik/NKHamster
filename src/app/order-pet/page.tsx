@@ -67,7 +67,6 @@ export default function OrderPetPage() {
 
           {submitted ? (
             <div className="rounded-2xl bg-green-50 border border-green-200 p-6 text-center">
-              <p className="text-2xl mb-2">🎉</p>
               <p className="font-semibold text-green-700">Đã ghi nhận yêu cầu!</p>
               <p className="text-sm text-gray-600 mt-1">Chúng tôi sẽ liên hệ qua số <strong>{form.phone}</strong> sớm nhất.</p>
             </div>
@@ -82,7 +81,7 @@ export default function OrderPetPage() {
                   required
                 >
                   <option value="">-- Chọn loài --</option>
-                  {orderPets.map((p) => <option key={p.name} value={p.name}>{p.emoji} {p.name}</option>)}
+                  {orderPets.map((p) => <option key={p.name} value={p.name}>{p.name}</option>)}
                 </select>
               </div>
               <div>
