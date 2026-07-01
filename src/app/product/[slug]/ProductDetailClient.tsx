@@ -38,14 +38,14 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
   const selectedWinterWhiteOption = winterWhiteOptions.find((option) => option.label === selectedWinterWhite);
   const selectedFoodVariantData = isFoodVariantProduct ? product.variants![selectedFoodVariant] : null;
-  const displayImage = isFoodVariantProduct && selectedFoodVariantData ? selectedFoodVariantData.image : 
+  const displayImage = isFoodVariantProduct && selectedFoodVariantData?.image ? selectedFoodVariantData.image : 
     (isWinterWhiteProduct && selectedWinterWhiteOption ? selectedWinterWhiteOption.image : product.image);
 
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="flex flex-col md:flex-row gap-10">
         <div className="md:w-1/2">
-          <img src={displayImage} alt={isWinterWhiteProduct ? selectedWinterWhite : product.name} className="w-full aspect-square rounded-2xl object-cover shadow" />
+          <img src={displayImage || "https://placehold.co/400x400/999/fff?text=No+Image"} alt={isWinterWhiteProduct ? selectedWinterWhite : product.name} className="w-full aspect-square rounded-2xl object-cover shadow" />
         </div>
         <div className="md:w-1/2 space-y-6">
           <h1 className="text-3xl font-bold text-amber-800">{product.name}</h1>
