@@ -176,6 +176,15 @@ export const products: Product[] = [
     description: "Cát tắm vệ sinh cho hamster, giúp lông sạch đẹp.",
     stock: 50,
   },
+  {
+    id: 16,
+    name: "Thực phẩm khác",
+    slug: "thuc-pham-khac",
+    category: "food",
+    image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Thuc+pham+khac",
+    description: "Các loại thực phẩm khác cho hamster và thú cưng.",
+    stock: 0,
+  },
 ];
 
 export const categories = [
