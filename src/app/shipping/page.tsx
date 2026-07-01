@@ -40,7 +40,7 @@ export default function ShippingPage() {
 
       <div className="rounded-2xl border border-amber-100 bg-white p-6 shadow-sm space-y-3">
         <h2 className="font-semibold text-amber-800 text-lg">Đơn vị vận chuyển</h2>
-        <p className="text-sm text-gray-600">NK Hamster sử dụng GHN, GHTK và grab/be theo yêu cầu cho đơn nội thành. Khách hàng có thể chọn đơn vị ship khi liên hệ đặt hàng.</p>
+        <p className="text-sm text-gray-600">NK Hamster sử dụng <strong>Grab</strong> và <strong>Ahamove</strong> cho đơn nội thành. Khách hàng có thể chọn đơn vị ship khi liên hệ đặt hàng.</p>
       </div>
 
       <p className="text-sm text-gray-500">Câu hỏi về vận chuyển? <Link href="/contact" className="text-amber-600 hover:underline">Liên hệ chúng tôi</Link>.</p>
