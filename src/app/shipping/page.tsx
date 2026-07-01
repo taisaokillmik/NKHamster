@@ -20,8 +20,8 @@ export default function ShippingPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-amber-50">
-              <tr><td className="p-3">Nội thành TP.HCM & Bình Dương</td><td className="p-3">2–4 giờ</td><td className="p-3 text-green-600 font-medium">15.000đ – 25.000đ</td></tr>
-              <tr><td className="p-3">Ngoại thành / tỉnh lân cận</td><td className="p-3">24–48 giờ</td><td className="p-3">30.000đ – 50.000đ</td></tr>
+              <tr><td className="p-3">Nội thành TP.HCM (bán kính ≤ 20km)</td><td className="p-3">2–4 giờ</td><td className="p-3 text-green-600 font-medium">15.000đ – 25.000đ</td></tr>
+              <tr><td className="p-3">Ngoại thành TP.HCM & Bình Dương</td><td className="p-3">24–48 giờ</td><td className="p-3">30.000đ – 50.000đ</td></tr>
               <tr><td className="p-3">Toàn quốc (miền Trung, miền Bắc)</td><td className="p-3">2–4 ngày</td><td className="p-3">50.000đ – 100.000đ</td></tr>
               <tr><td className="p-3 font-medium text-green-700">Đơn hàng ≥ 1.000.000đ</td><td className="p-3">–</td><td className="p-3 font-bold text-green-600">Miễn phí</td></tr>
             </tbody>
@@ -34,7 +34,7 @@ export default function ShippingPage() {
         <ul className="space-y-2 text-gray-700 text-sm">
           <li className="flex gap-2"><span className="text-amber-500">•</span> Hamster được đóng gói trong hộp thoáng khí với thức ăn và chất độn.</li>
           <li className="flex gap-2"><span className="text-amber-500">•</span> Ưu tiên giao trong khung giờ <strong>7:00 – 11:00</strong> hoặc <strong>17:00 – 20:00</strong> để tránh nắng nóng.</li>
-          <li className="flex gap-2"><span className="text-amber-500">•</span> Khuyến nghị <strong>không ship thú cưng</strong> vào các tỉnh xa (trên 500km) vào mùa hè.</li>
+          <li className="flex gap-2"><span className="text-amber-500">•</span> <strong>Chỉ giao thú cưng nội thành TP.HCM bán kính ≤ 20km</strong>, không ship thú cưng đi tỉnh hoặc ngoại thành xa.</li>
           <li className="flex gap-2"><span className="text-amber-500">•</span> Khi nhận hàng, kiểm tra ngay và quay video unbox để đảm bảo quyền lợi.</li>
         </ul>
       </div>
