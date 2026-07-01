@@ -13,7 +13,7 @@ const Hero = () => (
           </div>
         </Link>
         <h1 className="text-4xl md:text-6xl font-bold text-amber-800 mb-4">
-          NK Hamster <br /><span className="text-amber-500">Dễ thương nhất</span>
+          NK Hamster
         </h1>
         <p className="text-lg text-gray-600 mb-8 max-w-lg">
           Chuột Hamster khỏe mạnh, lồng mica cao cấp, phụ kiện đầy đủ. Giao hàng toàn quốc.
