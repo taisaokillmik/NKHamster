@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function FoodPage() {
   const foodProducts = products.filter(p => p.category === "food");
-  const mainFood = foodProducts.filter(p => p.slug === "an-dam");
-  const otherFood = foodProducts.filter(p => p.slug !== "an-dam");
+  const mainFood = foodProducts.filter(p => p.slug === "thuc-an-tron-hamster" || p.slug === "an-dam");
+  const otherFood = foodProducts.filter(p => p.slug === "thuc-pham-khac");
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -29,10 +29,7 @@ export default function FoodPage() {
               <div className="p-4">
                 <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
                 <p className="text-gray-600 text-sm mb-3">{product.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-amber-600 font-bold text-lg">{product.price.toLocaleString()}đ</span>
-                  <span className="text-yellow-500">⭐ {product.rating}</span>
-                </div>
+                <span className="text-amber-600 font-bold text-lg">{product.price.toLocaleString()}đ</span>
               </div>
             </div>
           ))}
@@ -49,10 +46,7 @@ export default function FoodPage() {
               <div className="p-4">
                 <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
                 <p className="text-gray-600 text-sm mb-3">{product.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-amber-600 font-bold text-lg">{product.price.toLocaleString()}đ</span>
-                  <span className="text-yellow-500">⭐ {product.rating}</span>
-                </div>
+                <span className="text-amber-600 font-bold text-lg">{product.price.toLocaleString()}đ</span>
               </div>
             </div>
           ))}

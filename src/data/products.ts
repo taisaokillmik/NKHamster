@@ -11,8 +11,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FDE68A/92400E?text=Bear+Hamster",
     description: "Chú Hamster Bear lông xù và lông sát, khỏe mạnh, thân thiện.",
     stock: 5,
-    rating: 4.8,
-    reviewCount: 12,
     featured: true,
   },
   {
@@ -24,8 +22,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FDE68A/92400E?text=Tang+To",
     description: "Hamster Bear tạng to, béo tròn và dễ thương, phù hợp cho người thích thú nuôi hamster đáng yêu.",
     stock: 4,
-    rating: 4.7,
-    reviewCount: 9,
     featured: true,
   },
   {
@@ -38,8 +34,6 @@ export const products: Product[] = [
     image: "/NKHamster/wwtrasua.jpg",
     description: "Hamster Winter White thuần chủng, lông trắng muốt.",
     stock: 8,
-    rating: 4.9,
-    reviewCount: 20,
     featured: true,
   },
   {
@@ -52,8 +46,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FDE68A/92400E?text=Robo+Hamster",
     description: "Hamster Robo nhanh nhẹn, thích hợp cho người mới nuôi.",
     stock: 12,
-    rating: 4.7,
-    reviewCount: 15,
   },
   {
     id: 5,
@@ -65,8 +57,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FDE68A/92400E?text=Campbell",
     description: "Hamster Campbell hiền lành, dễ chăm sóc.",
     stock: 10,
-    rating: 4.6,
-    reviewCount: 8,
   },
   {
     id: 6,
@@ -77,8 +67,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/D1FAE5/065F46?text=Cage+Mica",
     description: "Lồng mica trong suốt 2 tầng, kèm phụ kiện.",
     stock: 3,
-    rating: 4.6,
-    reviewCount: 8,
     featured: true,
   },
   {
@@ -90,8 +78,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/D1FAE5/065F46?text=Mini+Cage",
     description: "Lồng nhựa mini tiện lợi, dễ vệ sinh.",
     stock: 15,
-    rating: 4.5,
-    reviewCount: 10,
   },
   {
     id: 8,
@@ -102,8 +88,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/D1FAE5/065F46?text=Big+Cage",
     description: "Lồng nhiều tầng cho hamster thỏa thích vận động.",
     stock: 2,
-    rating: 4.9,
-    reviewCount: 5,
   },
   {
     id: 9,
@@ -114,8 +98,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Food",
     description: "Thức ăn trộn hamster giàu dinh dưỡng cho hamster.",
     stock: 20,
-    rating: 4.7,
-    reviewCount: 25,
   },
   {
     id: 10,
@@ -126,8 +108,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Snack",
     description: "Ăn dặm thơm ngon, hamster rất thích.",
     stock: 30,
-    rating: 4.8,
-    reviewCount: 18,
   },
   {
     id: 11,
@@ -138,8 +118,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Treat",
     description: "Thực phẩm khác bổ sung vitamin.",
     stock: 25,
-    rating: 4.6,
-    reviewCount: 14,
   },
   {
     id: 12,
@@ -150,8 +128,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Wheel",
     description: "Bánh xe chạy êm, an toàn cho hamster.",
     stock: 18,
-    rating: 4.5,
-    reviewCount: 9,
   },
   {
     id: 13,
@@ -162,8 +138,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=House",
     description: "Nhà ngủ bằng gỗ tự nhiên, ấm áp.",
     stock: 10,
-    rating: 4.8,
-    reviewCount: 22,
   },
   {
     id: 14,
@@ -174,8 +148,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Bottle",
     description: "Bình nước mini dễ lắp đặt, không rò rỉ.",
     stock: 40,
-    rating: 4.4,
-    reviewCount: 16,
   },
   {
     id: 15,
@@ -186,8 +158,6 @@ export const products: Product[] = [
     image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Sand",
     description: "Cát tắm vệ sinh cho hamster, giúp lông sạch đẹp.",
     stock: 50,
-    rating: 4.7,
-    reviewCount: 30,
   },
 ];
 
