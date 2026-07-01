@@ -23,7 +23,6 @@ const Footer = () => (
         <ul className="space-y-2 text-sm text-gray-600">
           <li><Link href="/shipping" className="hover:text-amber-600">Chính sách vận chuyển</Link></li>
           <li><Link href="/returns" className="hover:text-amber-600">Đổi trả hàng</Link></li>
-          <li><Link href="/faq" className="hover:text-amber-600">FAQ</Link></li>
         </ul>
       </div>
       <div>
