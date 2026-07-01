@@ -28,8 +28,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const selectedSnackPrice = isSnackVariantProduct ? product.variants![selectedSnackVariant].price : product.price;
 
   const variantOptions = [
-    { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu." },
-    { value: "sát" as const, label: "Lông sát", description: "Bộ lông ngắn, bóng mượt và hiện đại." },
+    { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu.", image: "/NKHamster/bearxu.jpg" },
+    { value: "sát" as const, label: "Lông sát", description: "Bộ lông ngắn, bóng mượt và hiện đại.", image: "/NKHamster/bearsat.jpg" },
   ];
   const winterWhiteOptions = [
     { label: "Sóc đen", price: "60.000đ", image: "/NKHamster/wwsocden.jpg" },
@@ -44,7 +44,9 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const selectedSnackVariantData = isSnackVariantProduct ? product.variants![selectedSnackVariant] : null;
   
   let displayImage = product.image;
-  if (isFoodVariantProduct && selectedFoodVariantData && selectedFoodVariantData.image) {
+  if (isBearVariantProduct) {
+    displayImage = variantOptions.find(o => o.value === selectedVariant)?.image || product.image;
+  } else if (isFoodVariantProduct && selectedFoodVariantData && selectedFoodVariantData.image) {
     displayImage = selectedFoodVariantData.image;
   } else if (isSnackVariantProduct && selectedSnackVariantData && selectedSnackVariantData.image) {
     displayImage = selectedSnackVariantData.image;

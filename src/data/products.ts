@@ -8,7 +8,7 @@ export const products: Product[] = [
     category: "hamster",
     price: 100000,
     priceLabel: "100.000đ - 120.000đ",
-    image: "https://placehold.co/400x400/FDE68A/92400E?text=Bear+Hamster",
+    image: "/NKHamster/bearsat.jpg",
     description: "Chú Hamster Bear lông xù và lông sát, khỏe mạnh, thân thiện.",
     stock: 5,
     featured: true,
