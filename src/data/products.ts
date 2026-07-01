@@ -99,10 +99,10 @@ export const products: Product[] = [
     description: "Thức ăn trộn hamster giàu dinh dưỡng cho hamster.",
     stock: 20,
     variants: [
-      { label: "Trộn bình thường", price: 25000 },
-      { label: "Trộn ngon", price: 35000 },
-      { label: "H1", price: 110000 },
-      { label: "H2 chuyên dụng hamster bear", price: 120000 },
+      { label: "Trộn bình thường", price: 25000, image: "/tron.jpg" },
+      { label: "Trộn ngon", price: 35000, image: "/tronngon.jpg" },
+      { label: "H1", price: 110000, image: "/h1.jpg" },
+      { label: "H2 chuyên dụng hamster bear", price: 120000, image: "/h2.jpg" },
     ],
   },
   {

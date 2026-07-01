@@ -37,7 +37,9 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   ];
 
   const selectedWinterWhiteOption = winterWhiteOptions.find((option) => option.label === selectedWinterWhite);
-  const displayImage = isWinterWhiteProduct && selectedWinterWhiteOption ? selectedWinterWhiteOption.image : product.image;
+  const selectedFoodVariantData = isFoodVariantProduct ? product.variants![selectedFoodVariant] : null;
+  const displayImage = isFoodVariantProduct && selectedFoodVariantData ? selectedFoodVariantData.image : 
+    (isWinterWhiteProduct && selectedWinterWhiteOption ? selectedWinterWhiteOption.image : product.image);
 
   return (
     <div className="container mx-auto px-4 py-10">
