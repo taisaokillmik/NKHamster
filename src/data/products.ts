@@ -137,16 +137,6 @@ export const products: Product[] = [
   },
   {
     id: 11,
-    name: "Thực phẩm khác",
-    slug: "thuc-pham-khac",
-    category: "food",
-    price: 15000,
-    image: "https://placehold.co/400x400/FCE7F3/9D174D?text=Treat",
-    description: "Thực phẩm khác bổ sung vitamin.",
-    stock: 25,
-  },
-  {
-    id: 12,
     name: "Bánh Xe Chạy",
     slug: "banh-xe",
     category: "accessory",
@@ -172,7 +162,7 @@ export const products: Product[] = [
     category: "accessory",
     price: 50000,
     image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Bottle",
-    description: "Bình nước mini dễ lắp đặt, không rò rỉ.",
+    description: "Bình nước mini dễ lắp đặt, không rò rò rỉ.",
     stock: 40,
   },
   {
@@ -223,4 +213,3 @@ export const blogs: BlogPost[] = [
     date: "2025-03-05",
   },
 ];
-
