@@ -73,7 +73,7 @@ export default function AboutPage() {
           <Link href="/address" className="inline-flex items-center justify-center rounded-2xl border border-amber-500 text-amber-700 hover:bg-amber-50 font-medium px-5 py-2.5 text-sm transition-colors">
             Địa chỉ
           </Link>
-          <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-5 py-2.5 text-sm transition-colors">
+          <Link href="https://zalo.me/0963107703" target="_blank" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-5 py-2.5 text-sm transition-colors">
             Liên hệ ngay
           </Link>
         </div>

@@ -43,7 +43,7 @@ export default function ShippingPage() {
         <p className="text-sm text-gray-600">NK Hamster sử dụng <strong>Grab</strong> và <strong>Ahamove</strong> cho đơn nội thành. Khách hàng có thể chọn đơn vị ship khi liên hệ đặt hàng.</p>
       </div>
 
-      <p className="text-sm text-gray-500">Câu hỏi về vận chuyển? <Link href="/contact" className="text-amber-600 hover:underline">Liên hệ chúng tôi</Link>.</p>
+      <p className="text-sm text-gray-500">Cần hỗ trợ? <a href="https://zalo.me/0963107703" target="_blank" className="text-amber-600 hover:underline">Liên hệ Zalo</a>.</p>
     </div>
   );
 }

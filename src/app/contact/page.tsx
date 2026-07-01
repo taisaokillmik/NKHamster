@@ -1,39 +1,21 @@
-﻿"use client";
-import { useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Phone, Mail, MapPin } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "Liên hệ | NK Hamster" };
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
   return (
-    <div className="container mx-auto px-4 py-10 max-w-2xl">
-      <h1 className="text-3xl font-bold text-amber-800 mb-8">Liên hệ</h1>
-      <div className="space-y-4 mb-8">
-        <p className="flex items-center gap-2"><Phone className="h-5 w-5 text-amber-600"/> Hotline: 0963 107 703</p>
-        <p className="flex items-center gap-2"><Phone className="h-5 w-5 text-amber-600"/> Hotline: 0394 210 096</p>
-        <p className="flex items-center gap-2"><Mail className="h-5 w-5 text-amber-600"/> Email: info@hamsternhaminh.vn</p>
-        <p className="flex items-center gap-2"><MapPin className="h-5 w-5 text-amber-600"/> Địa chỉ: 123 Đường ABC, TP.HCM</p>
-      </div>
-      {submitted ? (
-        <div className="rounded-2xl border border-green-200 bg-green-50 p-6 text-green-700">
-          Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.
-        </div>
-      ) : (
-        <form
-          className="space-y-4 bg-white p-6 rounded-2xl shadow-sm border border-amber-100"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSubmitted(true);
-          }}
-        >
-          <Input placeholder="Họ tên" required />
-          <Input placeholder="Email" type="email" required />
-          <textarea rows={4} className="w-full rounded-2xl border border-amber-200 p-3" placeholder="Nội dung" required></textarea>
-          <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600 text-white">Gửi liên hệ</Button>
-        </form>
-      )}
+    <div className="container mx-auto px-4 py-10 max-w-2xl text-center space-y-4">
+      <h1 className="text-3xl font-bold text-amber-800">Liên hệ</h1>
+      <p className="text-gray-600">Nhắn tin trực tiếp qua Zalo để được tư vấn nhanh nhất.</p>
+      <a
+        href="https://zalo.me/0963107703"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-3 text-lg transition-colors"
+      >
+        Nhắn Zalo ngay
+      </a>
+      <p className="text-sm text-gray-500">Hotline: <a href="tel:0963107703" className="text-amber-600 font-semibold">0963 107 703</a> — Hỗ trợ 9:00–21:00 mỗi ngày</p>
     </div>
   );
 }

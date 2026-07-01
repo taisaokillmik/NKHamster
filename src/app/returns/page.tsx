@@ -45,7 +45,7 @@ export default function ReturnsPage() {
         </ol>
       </div>
 
-      <p className="text-sm text-gray-500">Cần hỗ trợ? <Link href="/contact" className="text-amber-600 hover:underline">Liên hệ chúng tôi</Link> hoặc gọi <a href="tel:0963107703" className="text-amber-600 hover:underline">0963 107 703</a>.</p>
+      <p className="text-sm text-gray-500">Cần hỗ trợ? <a href="https://zalo.me/0963107703" target="_blank" className="text-amber-600 hover:underline">Liên hệ Zalo</a> hoặc gọi <a href="tel:0963107703" className="text-amber-600 hover:underline">0963 107 703</a>.</p>
     </div>
   );
 }
