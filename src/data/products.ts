@@ -123,7 +123,7 @@ export const products: Product[] = [
       { label: "Hoa hồng", price: 10000, image: "/NKHamster/hoahong.jpg" },
       { label: "Hạt hướng dương", price: 10000, image: "/NKHamster/huongduong.jpg" },
       { label: "Hạt kaytee", price: 10000, image: "/NKHamster/kaytee.jpg" },
-      { label: "Kỉ từ", price: 10000, image: "/NKHamster/kitu.jpg" },
+      { label: "Kỉ tử", price: 10000, image: "/NKHamster/kitu.jpg" },
       { label: "Mè đen", price: 10000, image: "/NKHamster/meden.jpg" },
       { label: "Ngũ cốc", price: 10000, image: "/NKHamster/ngucoc.jpg" },
       { label: "Sâu lớn", price: 10000, image: "/NKHamster/saulon.jpg" },
