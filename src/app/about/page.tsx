@@ -69,13 +69,16 @@ export default function AboutPage() {
           <h3 className="text-xl font-bold text-amber-800">Muốn tìm hiểu thêm?</h3>
           <p className="text-gray-600 text-sm mt-1">Xem địa chỉ cửa hàng hoặc liên hệ trực tiếp với chúng tôi.</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Link href="/address" className="inline-flex items-center justify-center rounded-2xl border border-amber-500 text-amber-700 hover:bg-amber-50 font-medium px-5 py-2.5 text-sm transition-colors">
             Địa chỉ
           </Link>
-          <Link href="https://zalo.me/0963107703" target="_blank" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-5 py-2.5 text-sm transition-colors">
-            Liên hệ ngay
-          </Link>
+          <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-medium px-5 py-2.5 text-sm transition-colors">
+            Zalo Nhật Khoa — 0963 107 703
+          </a>
+          <a href="https://zalo.me/0394210096" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-medium px-5 py-2.5 text-sm transition-colors">
+            Zalo Tuấn Phạm — 0394 210 096
+          </a>
         </div>
       </div>
     </div>
