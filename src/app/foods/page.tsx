@@ -31,6 +31,10 @@ export default function FoodPage() {
           ))}
         </div>
       </div>
+      <div className="mt-12">
+        <h2 className="text-2xl font-bold text-amber-800 mb-6">🌿 Thực phẩm khác</h2>
+        <p className="text-gray-500 text-sm">Sắp có sản phẩm.</p>
+      </div>
     </div>
   );
 }
