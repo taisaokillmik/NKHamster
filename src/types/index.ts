@@ -9,8 +9,8 @@
   image?: string;
   description: string;
   stock: number;
-  rating: number;
-  reviewCount: number;
+  rating?: number;
+  reviewCount?: number;
   featured?: boolean;
 }
 
