@@ -48,14 +48,10 @@ export default function AddressPage() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                <div className="flex items-center gap-3">
-                  <a href={`tel:${store.phone.replace(/\s/g, "")}`} className="hover:text-amber-700 font-medium">{store.phone}</a>
-                  <span className="text-gray-400">•</span>
-                  <a href={store.zalo} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 bg-blue-500 text-white px-3 py-0.5 rounded-full text-xs hover:bg-blue-600">
-                    Zalo {store.owner}
-                  </a>
-                </div>
+                <a href={store.zalo} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 bg-blue-500 text-white px-3 py-1 rounded-full text-xs hover:bg-blue-600">
+                  Zalo {store.owner} — {store.phone}
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-amber-500 flex-shrink-0" />
