@@ -14,12 +14,12 @@ const stores = [
   {
     id: 2,
     name: "NK Hamster – Chi nhánh Bình Dương",
-    address: "75 Văn Công Khai, Phường Chánh Nghĩa, TP. Thủ Dầu Một, Bình Dương",
+    address: "Số 9 Lào Cai, Chánh Nghĩa, Thủ Dầu Một (kế hải sản Tư Nhớ 2)",
     phone: "0394 210 096",
     owner: "Tuấn Phạm",
     zalo: "https://zalo.me/0394210096",
-    hours: "9:00 – 21:00 (Tất cả các ngày)",
-    mapUrl: "https://maps.google.com/?q=75+Van+Cong+Khai+Thu+Dau+Mot+Binh+Duong",
+    hours: "8:00 – 22:00 (Tất cả các ngày)",
+    mapUrl: "https://maps.google.com/?q=9+Lao+Cai+Thu+Dau+Mot+Binh+Duong",
   },
 ];
 
