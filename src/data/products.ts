@@ -149,15 +149,30 @@ export const products: Product[] = [
     description: "Bánh xe chạy êm, an toàn cho hamster.",
     stock: 18,
     variants: [
-      { label: "Wheel nhỏ", price: 30000, details: "d=12cm — 30.000đ" },
-      { label: "Wheel lớn", price: 60000, details: "d=15cm — 60.000đ" },
-      { label: "Wheel Silent", price: 75000, priceLabel: "75.000đ - 170.000đ", details: "d=14cm: 75.000đ\n16cm: 85.000đ\n18cm: 130.000đ\n21cm: 170.000đ" },
-      { label: "Wheel Carcoon trong", price: 80000, priceLabel: "80.000đ - 100.000đ", details: "d=14cm: 80.000đ\n17cm: 100.000đ" },
-      { label: "Wheel Candy", price: 320000, priceLabel: "320.000đ - 370.000đ", details: "d=21cm: 320.000đ\n26cm: 370.000đ" },
-      { label: "Wheel Candy trong", price: 300000, priceLabel: "300.000đ - 350.000đ", details: "d=18cm: 300.000đ\n21cm: 350.000đ" },
-      { label: "Wheel Hoa Cúc Mica", price: 180000, priceLabel: "180.000đ - 260.000đ", details: "d=18cm: 180.000đ\n21cm: 210.000đ\n23cm: 230.000đ\n26cm: 260.000đ" },
-      { label: "Wheel Hoa Cúc Gỗ", price: 130000, priceLabel: "130.000đ - 210.000đ", details: "d=18cm: 130.000đ\n21cm: 160.000đ\n23cm: 180.000đ\n26cm: 210.000đ" },
-      { label: "Wheel Bucastae kèm đế", price: 590000, details: "d=26cm — 590.000đ" },
+      { label: "Wheel nhỏ", price: 30000, wheelDetails: [{ size: "12cm", price: "30.000đ" }] },
+      { label: "Wheel lớn", price: 60000, wheelDetails: [{ size: "15cm", price: "60.000đ" }] },
+      { label: "Wheel Silent", price: 75000, priceLabel: "75.000đ - 170.000đ", wheelDetails: [
+        { size: "14cm", price: "75.000đ" }, { size: "16cm", price: "85.000đ" },
+        { size: "18cm", price: "130.000đ" }, { size: "21cm", price: "170.000đ" },
+      ] },
+      { label: "Wheel Carcoon trong", price: 80000, priceLabel: "80.000đ - 100.000đ", wheelDetails: [
+        { size: "14cm", price: "80.000đ" }, { size: "17cm", price: "100.000đ" },
+      ] },
+      { label: "Wheel Candy", price: 320000, priceLabel: "320.000đ - 370.000đ", wheelDetails: [
+        { size: "21cm", price: "320.000đ" }, { size: "26cm", price: "370.000đ" },
+      ] },
+      { label: "Wheel Candy trong", price: 300000, priceLabel: "300.000đ - 350.000đ", wheelDetails: [
+        { size: "18cm", price: "300.000đ" }, { size: "21cm", price: "350.000đ" },
+      ] },
+      { label: "Wheel Hoa Cúc Mica", price: 180000, priceLabel: "180.000đ - 260.000đ", wheelDetails: [
+        { size: "18cm", price: "180.000đ" }, { size: "21cm", price: "210.000đ" },
+        { size: "23cm", price: "230.000đ" }, { size: "26cm", price: "260.000đ" },
+      ] },
+      { label: "Wheel Hoa Cúc Gỗ", price: 130000, priceLabel: "130.000đ - 210.000đ", wheelDetails: [
+        { size: "18cm", price: "130.000đ" }, { size: "21cm", price: "160.000đ" },
+        { size: "23cm", price: "180.000đ" }, { size: "26cm", price: "210.000đ" },
+      ] },
+      { label: "Wheel Bucastae kèm đế", price: 590000, wheelDetails: [{ size: "26cm", price: "590.000đ" }] },
     ],
   },
   {

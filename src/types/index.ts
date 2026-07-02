@@ -1,8 +1,13 @@
-﻿export interface Variant {
+﻿export interface WheelDetail {
+  size: string;
+  price: string;
+}
+
+export interface Variant {
   label: string;
   price: number;
   priceLabel?: string;
-  details?: string;
+  wheelDetails?: WheelDetail[];
   description?: string;
   image?: string;
 }

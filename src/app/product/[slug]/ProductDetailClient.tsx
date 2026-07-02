@@ -175,8 +175,14 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                     <div className="text-amber-600 font-bold text-sm mt-0.5">
                       {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
                     </div>
-                    {variant.details && (
-                      <div className="text-gray-500 text-xs mt-1 whitespace-pre-line leading-relaxed">{variant.details}</div>
+                    {variant.wheelDetails && variant.wheelDetails.length > 0 && (
+                      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 mt-1.5">
+                        {variant.wheelDetails.map((d, i) => (
+                          <div key={i} className="text-xs text-gray-500 whitespace-nowrap">
+                            {d.size}: <span className="font-medium text-gray-700">{d.price}</span>
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </button>
                 ))}
