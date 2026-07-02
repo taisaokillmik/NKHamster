@@ -149,30 +149,30 @@ export const products: Product[] = [
     description: "Bánh xe chạy êm, an toàn cho hamster.",
     stock: 18,
     variants: [
-      { label: "Wheel nhỏ", price: 30000, wheelDetails: [{ size: "12cm", price: "30.000đ" }] },
-      { label: "Wheel lớn", price: 60000, wheelDetails: [{ size: "15cm", price: "60.000đ" }] },
-      { label: "Wheel Silent", price: 75000, priceLabel: "75.000đ - 170.000đ", wheelDetails: [
+      { label: "Wheel nhỏ", price: 30000, image: "/NKHamster/wnho.jpg", wheelDetails: [{ size: "12cm", price: "30.000đ" }] },
+      { label: "Wheel lớn", price: 60000, image: "/NKHamster/wlon.jpg", wheelDetails: [{ size: "15cm", price: "60.000đ" }] },
+      { label: "Wheel Silent", price: 75000, priceLabel: "75.000đ - 170.000đ", image: "/NKHamster/wsilent.jpg", wheelDetails: [
         { size: "14cm", price: "75.000đ" }, { size: "16cm", price: "85.000đ" },
         { size: "18cm", price: "130.000đ" }, { size: "21cm", price: "170.000đ" },
       ] },
-      { label: "Wheel Carcoon trong", price: 80000, priceLabel: "80.000đ - 100.000đ", wheelDetails: [
+      { label: "Wheel Carcoon trong", price: 80000, priceLabel: "80.000đ - 100.000đ", image: "/NKHamster/wcarcoon.jpg", wheelDetails: [
         { size: "14cm", price: "80.000đ" }, { size: "17cm", price: "100.000đ" },
       ] },
-      { label: "Wheel Candy", price: 320000, priceLabel: "320.000đ - 370.000đ", wheelDetails: [
+      { label: "Wheel Candy", price: 320000, priceLabel: "320.000đ - 370.000đ", image: "/NKHamster/wcandy.jpg", wheelDetails: [
         { size: "21cm", price: "320.000đ" }, { size: "26cm", price: "370.000đ" },
       ] },
-      { label: "Wheel Candy trong", price: 300000, priceLabel: "300.000đ - 350.000đ", wheelDetails: [
+      { label: "Wheel Candy trong", price: 300000, priceLabel: "300.000đ - 350.000đ", image: "/NKHamster/wcandytrong.jpg", wheelDetails: [
         { size: "18cm", price: "300.000đ" }, { size: "21cm", price: "350.000đ" },
       ] },
-      { label: "Wheel Hoa Cúc Mica", price: 180000, priceLabel: "180.000đ - 260.000đ", wheelDetails: [
+      { label: "Wheel Hoa Cúc Mica", price: 180000, priceLabel: "180.000đ - 260.000đ", image: "/NKHamster/whoacucmica.jpg", wheelDetails: [
         { size: "18cm", price: "180.000đ" }, { size: "21cm", price: "210.000đ" },
         { size: "23cm", price: "230.000đ" }, { size: "26cm", price: "260.000đ" },
       ] },
-      { label: "Wheel Hoa Cúc Gỗ", price: 130000, priceLabel: "130.000đ - 210.000đ", wheelDetails: [
+      { label: "Wheel Hoa Cúc Gỗ", price: 130000, priceLabel: "130.000đ - 210.000đ", image: "/NKHamster/whoacucgo.jpg", wheelDetails: [
         { size: "18cm", price: "130.000đ" }, { size: "21cm", price: "160.000đ" },
         { size: "23cm", price: "180.000đ" }, { size: "26cm", price: "210.000đ" },
       ] },
-      { label: "Wheel Bucastae kèm đế", price: 590000, wheelDetails: [{ size: "26cm", price: "590.000đ" }] },
+      { label: "Wheel Bucastae kèm đế", price: 590000, image: "/NKHamster/wbucastae.jpg", wheelDetails: [{ size: "26cm", price: "590.000đ" }] },
     ],
   },
   {

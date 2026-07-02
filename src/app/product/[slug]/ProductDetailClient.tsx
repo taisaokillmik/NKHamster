@@ -46,6 +46,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const selectedFoodVariantData = isFoodVariantProduct ? product.variants![selectedFoodVariant] : null;
   const selectedSnackVariantData = isSnackVariantProduct ? product.variants![selectedSnackVariant] : null;
   
+  const selectedWheelVariantData = isWheelVariantProduct ? product.variants![selectedWheelVariant] : null;
+  
   let displayImage = product.image;
   if (isBearVariantProduct) {
     displayImage = variantOptions.find(o => o.value === selectedVariant)?.image || product.image;
@@ -55,6 +57,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     displayImage = selectedSnackVariantData.image;
   } else if (isWinterWhiteProduct && selectedWinterWhiteOption) {
     displayImage = selectedWinterWhiteOption.image;
+  } else if (isWheelVariantProduct && selectedWheelVariantData && selectedWheelVariantData.image) {
+    displayImage = selectedWheelVariantData.image;
   }
 
   return (
