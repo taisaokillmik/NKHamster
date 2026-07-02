@@ -10,6 +10,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedFoodVariant, setSelectedFoodVariant] = useState(0);
   const [selectedSnackVariant, setSelectedSnackVariant] = useState(0);
   const [selectedWheelVariant, setSelectedWheelVariant] = useState(0);
+  const [selectedHouseVariant, setSelectedHouseVariant] = useState(0);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -24,11 +25,13 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isFoodVariantProduct = product.slug === "thuc-an-tron-hamster" && product.variants;
   const isSnackVariantProduct = product.slug === "an-dam" && product.variants;
   const isWheelVariantProduct = product.slug === "banh-xe" && product.variants;
+  const isHouseVariantProduct = product.slug === "nha-ngu-go" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
   const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
   const selectedSnackPrice = isSnackVariantProduct ? product.variants![selectedSnackVariant].price : product.price;
   const selectedWheelPrice = isWheelVariantProduct ? product.variants![selectedWheelVariant].price : product.price;
+  const selectedHousePrice = isHouseVariantProduct ? product.variants![selectedHouseVariant].price : product.price;
 
   const variantOptions = [
     { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu.", image: "/NKHamster/bearxu.jpg" },
@@ -47,6 +50,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const selectedSnackVariantData = isSnackVariantProduct ? product.variants![selectedSnackVariant] : null;
   
   const selectedWheelVariantData = isWheelVariantProduct ? product.variants![selectedWheelVariant] : null;
+  const selectedHouseVariantData = isHouseVariantProduct ? product.variants![selectedHouseVariant] : null;
   
   let displayImage = product.image;
   if (isBearVariantProduct) {
@@ -83,6 +87,13 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <div className="space-y-1">
                 <p className="text-4xl font-bold text-amber-700">
                   {product.variants![selectedWheelVariant].priceLabel || selectedWheelPrice!.toLocaleString("vi-VN") + "đ"}
+                </p>
+                <span className="text-sm text-gray-500">Phạm vi: {product.priceLabel}</span>
+              </div>
+            ) : isHouseVariantProduct ? (
+              <div className="space-y-1">
+                <p className="text-4xl font-bold text-amber-700">
+                  {product.variants![selectedHouseVariant].priceLabel || selectedHousePrice!.toLocaleString("vi-VN") + "đ"}
                 </p>
                 <span className="text-sm text-gray-500">Phạm vi: {product.priceLabel}</span>
               </div>
@@ -175,6 +186,33 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                   <button key={index} type="button" onClick={() => setSelectedWheelVariant(index)}
                     className={cn("rounded-xl border px-3 py-3 transition text-left",
                       selectedWheelVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                    <div className="font-medium text-gray-800 text-sm">{variant.label}</div>
+                    <div className="text-amber-600 font-bold text-sm mt-0.5">
+                      {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
+                    </div>
+                    {variant.wheelDetails && variant.wheelDetails.length > 0 && (
+                      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 mt-1.5">
+                        {variant.wheelDetails.map((d, i) => (
+                          <div key={i} className="text-xs text-gray-500 whitespace-nowrap">
+                            {d.size}: <span className="font-medium text-gray-700">{d.price}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isHouseVariantProduct && (
+            <div className="space-y-3">
+              <p className="font-semibold text-amber-800">Chọn loại nhà ngủ:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                {product.variants!.map((variant, index) => (
+                  <button key={index} type="button" onClick={() => setSelectedHouseVariant(index)}
+                    className={cn("rounded-xl border px-3 py-3 transition text-left",
+                      selectedHouseVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
                     <div className="font-medium text-gray-800 text-sm">{variant.label}</div>
                     <div className="text-amber-600 font-bold text-sm mt-0.5">
                       {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
