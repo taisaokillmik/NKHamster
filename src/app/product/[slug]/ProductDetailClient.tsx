@@ -211,9 +211,9 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {product.variants!.map((variant, index) => (
                   <button key={index} type="button" onClick={() => setSelectedHouseVariant(index)}
-                    className={cn("rounded-xl border px-3 py-3 transition text-left",
+                    className={cn("rounded-xl border px-3.5 py-3 transition text-left",
                       selectedHouseVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800 text-sm">{variant.label}</div>
+                    <div className="font-medium text-gray-800 text-sm leading-snug">{variant.label}</div>
                     <div className="text-amber-600 font-bold text-sm mt-0.5">
                       {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
                     </div>
