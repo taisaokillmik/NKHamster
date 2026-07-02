@@ -78,7 +78,9 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             ) : isWheelVariantProduct ? (
               <div className="space-y-2">
                 <span className="text-sm text-gray-500">{product.priceLabel}</span>
-                <p className="text-4xl font-bold text-amber-700">{selectedWheelPrice!.toLocaleString("vi-VN")}đ</p>
+                <p className="text-4xl font-bold text-amber-700">
+                  {product.variants![selectedWheelVariant].priceLabel || selectedWheelPrice!.toLocaleString("vi-VN") + "đ"}
+                </p>
               </div>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
@@ -164,13 +166,15 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           {isWheelVariantProduct && (
             <div className="space-y-3">
               <p className="font-semibold text-amber-800">Chọn loại bánh xe:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {product.variants!.map((variant, index) => (
                   <button key={index} type="button" onClick={() => setSelectedWheelVariant(index)}
-                    className={cn("rounded-xl border px-3 py-3 transition text-left text-sm flex justify-between items-center",
+                    className={cn("rounded-xl border px-2 py-2 transition text-center text-sm",
                       selectedWheelVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800">{variant.label}</div>
-                    <div className="text-amber-600 font-semibold text-sm">{variant.price.toLocaleString("vi-VN")}đ</div>
+                    <div className="font-medium text-gray-800 text-xs leading-tight">{variant.label}</div>
+                    <div className="text-amber-600 font-semibold text-xs mt-1">
+                      {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
+                    </div>
                   </button>
                 ))}
               </div>

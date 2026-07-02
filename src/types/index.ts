@@ -1,6 +1,7 @@
 ﻿export interface Variant {
   label: string;
   price: number;
+  priceLabel?: string;
   description?: string;
   image?: string;
 }
