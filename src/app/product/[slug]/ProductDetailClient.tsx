@@ -218,9 +218,9 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                       {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
                     </div>
                     {variant.wheelDetails && variant.wheelDetails.length > 0 && (
-                      <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 mt-1.5">
+                      <div className="mt-1.5 space-y-0.5">
                         {variant.wheelDetails.map((d, i) => (
-                          <div key={i} className="text-xs text-gray-500 whitespace-nowrap">
+                          <div key={i} className="text-xs text-gray-500">
                             {d.size}: <span className="font-medium text-gray-700">{d.price}</span>
                           </div>
                         ))}
