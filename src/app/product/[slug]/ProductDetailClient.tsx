@@ -63,6 +63,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     displayImage = selectedWinterWhiteOption.image;
   } else if (isWheelVariantProduct && selectedWheelVariantData && selectedWheelVariantData.image) {
     displayImage = selectedWheelVariantData.image;
+  } else if (isHouseVariantProduct && selectedHouseVariantData && selectedHouseVariantData.image) {
+    displayImage = selectedHouseVariantData.image;
   }
 
   return (
