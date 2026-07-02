@@ -2,6 +2,7 @@
   label: string;
   price: number;
   priceLabel?: string;
+  details?: string;
   description?: string;
   image?: string;
 }

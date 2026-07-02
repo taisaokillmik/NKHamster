@@ -169,12 +169,15 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {product.variants!.map((variant, index) => (
                   <button key={index} type="button" onClick={() => setSelectedWheelVariant(index)}
-                    className={cn("rounded-xl border px-3 py-2 transition text-left",
+                    className={cn("rounded-xl border px-3 py-3 transition text-left",
                       selectedWheelVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
                     <div className="font-medium text-gray-800 text-sm">{variant.label}</div>
                     <div className="text-amber-600 font-bold text-sm mt-0.5">
                       {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
                     </div>
+                    {variant.details && (
+                      <div className="text-gray-500 text-xs mt-1 whitespace-pre-line leading-relaxed">{variant.details}</div>
+                    )}
                   </button>
                 ))}
               </div>
