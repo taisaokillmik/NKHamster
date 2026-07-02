@@ -9,6 +9,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedWinterWhite, setSelectedWinterWhite] = useState("Sóc đen");
   const [selectedFoodVariant, setSelectedFoodVariant] = useState(0);
   const [selectedSnackVariant, setSelectedSnackVariant] = useState(0);
+  const [selectedWheelVariant, setSelectedWheelVariant] = useState(0);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -22,10 +23,12 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isWinterWhiteProduct = product.slug === "winter-white";
   const isFoodVariantProduct = product.slug === "thuc-an-tron-hamster" && product.variants;
   const isSnackVariantProduct = product.slug === "an-dam" && product.variants;
+  const isWheelVariantProduct = product.slug === "banh-xe" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
   const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
   const selectedSnackPrice = isSnackVariantProduct ? product.variants![selectedSnackVariant].price : product.price;
+  const selectedWheelPrice = isWheelVariantProduct ? product.variants![selectedWheelVariant].price : product.price;
 
   const variantOptions = [
     { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu.", image: "/NKHamster/bearxu.jpg" },
@@ -72,6 +75,11 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}đ</p>
             ) : isSnackVariantProduct ? (
               <p className="text-4xl font-bold text-amber-700">{selectedSnackPrice.toLocaleString("vi-VN")}đ</p>
+            ) : isWheelVariantProduct ? (
+              <div className="space-y-2">
+                <span className="text-sm text-gray-500">{product.priceLabel}</span>
+                <p className="text-4xl font-bold text-amber-700">{selectedWheelPrice!.toLocaleString("vi-VN")}đ</p>
+              </div>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
             ) : hasSale ? (
@@ -147,6 +155,22 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                       selectedSnackVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
                     <div className="font-medium text-gray-800">{variant.label}</div>
                     <div className="text-amber-600 font-semibold text-xs">{variant.price.toLocaleString("vi-VN")}đ</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isWheelVariantProduct && (
+            <div className="space-y-3">
+              <p className="font-semibold text-amber-800">Chọn loại bánh xe:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {product.variants!.map((variant, index) => (
+                  <button key={index} type="button" onClick={() => setSelectedWheelVariant(index)}
+                    className={cn("rounded-xl border px-3 py-3 transition text-left text-sm flex justify-between items-center",
+                      selectedWheelVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                    <div className="font-medium text-gray-800">{variant.label}</div>
+                    <div className="text-amber-600 font-semibold text-sm">{variant.price.toLocaleString("vi-VN")}đ</div>
                   </button>
                 ))}
               </div>
