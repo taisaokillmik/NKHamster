@@ -208,7 +208,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           {isHouseVariantProduct && (
             <div className="space-y-3">
               <p className="font-semibold text-amber-800">Chọn loại nhà ngủ:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {product.variants!.map((variant, index) => (
                   <button key={index} type="button" onClick={() => setSelectedHouseVariant(index)}
                     className={cn("rounded-xl border px-3 py-3 transition text-left",
