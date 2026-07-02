@@ -208,20 +208,20 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           {isHouseVariantProduct && (
             <div className="space-y-3">
               <p className="font-semibold text-amber-800">Chọn loại nhà ngủ:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {product.variants!.map((variant, index) => (
                   <button key={index} type="button" onClick={() => setSelectedHouseVariant(index)}
-                    className={cn("rounded-xl border px-4 py-3 transition text-left",
+                    className={cn("rounded-xl border px-2 py-2.5 transition text-left",
                       selectedHouseVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800 text-sm leading-snug">{variant.label}</div>
-                    <div className="text-amber-600 font-bold text-sm mt-0.5">
+                    <div className="font-medium text-gray-800 text-xs leading-snug">{variant.label}</div>
+                    <div className="text-amber-600 font-bold text-xs mt-0.5">
                       {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
                     </div>
                     {variant.wheelDetails && variant.wheelDetails.length > 0 && (
-                      <div className="mt-1.5 space-y-0.5">
+                      <div className="mt-1 space-y-0">
                         {variant.wheelDetails.map((d, i) => (
-                          <div key={i} className="text-xs text-gray-500">
-                            {d.size}: <span className="font-medium text-gray-700">{d.price}</span>
+                          <div key={i} className="text-[10px] text-gray-500 leading-tight">
+                            {d.size} <span className="text-gray-700 font-medium">{d.price}</span>
                           </div>
                         ))}
                       </div>
