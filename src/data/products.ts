@@ -145,7 +145,7 @@ export const products: Product[] = [
     category: "accessory",
     price: 30000,
     priceLabel: "30.000đ - 590.000đ",
-    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Wheel",
+    image: "/NKHamster/wcandytrong.jpg",
     description: "Bánh xe chạy êm, an toàn cho hamster.",
     stock: 18,
     variants: [
@@ -182,7 +182,7 @@ export const products: Product[] = [
     category: "accessory",
     price: 100000,
     priceLabel: "100.000đ - 200.000đ",
-    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=House",
+    image: "/NKHamster/hsongsinh.jpg",
     description: "Nhà ngủ bằng gỗ tự nhiên, ấm áp.",
     stock: 10,
     variants: [
