@@ -102,8 +102,8 @@ export const products: Product[] = [
     variants: [
       { label: "Trộn bình thường", price: 25000, image: "/NKHamster/tron.jpg" },
       { label: "Trộn ngon", price: 35000, image: "/NKHamster/tronngon.jpg" },
-      { label: "H1", price: 110000, image: "/NKHamster/h1.jpg" },
-      { label: "H2 chuyên dụng hamster bear", price: 120000, image: "/NKHamster/h2.jpg" },
+      { label: "Thức Ăn Hãng Bucastate H1", price: 110000, image: "/NKHamster/h1.jpg" },
+      { label: "Thức Ăn Hãng Bucastate H2 (dành cho hamster bear)", price: 120000, image: "/NKHamster/h2.jpg" },
     ],
   },
   {
