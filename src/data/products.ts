@@ -264,6 +264,17 @@ export const products: Product[] = [
   },
   {
     id: 20,
+    name: "Thang Phân Khu",
+    slug: "thang-phan-khu",
+    category: "accessory",
+    price: 45000,
+    priceLabel: "45.000đ - 90.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Thang+Phan+Khu",
+    description: "Thang phân khu giúp chia lồng thành nhiều tầng, tiện lợi cho hamster.",
+    stock: 25,
+  },
+  {
+    id: 21,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
