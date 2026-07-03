@@ -12,6 +12,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedWheelVariant, setSelectedWheelVariant] = useState(0);
   const [selectedHouseVariant, setSelectedHouseVariant] = useState(0);
   const [selectedSandVariant, setSelectedSandVariant] = useState(0);
+  const [selectedWoodVariant, setSelectedWoodVariant] = useState(0);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -28,6 +29,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isWheelVariantProduct = product.slug === "banh-xe" && product.variants;
   const isHouseVariantProduct = (product.slug === "nha-ngu-go" || product.slug === "nha-ngu-su") && product.variants;
   const isSandVariantProduct = product.slug === "cat-tam" && product.variants;
+  const isWoodVariantProduct = product.slug === "phu-kien-go-thong" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
   const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
@@ -35,6 +37,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const selectedWheelPrice = isWheelVariantProduct ? product.variants![selectedWheelVariant].price : product.price;
   const selectedHousePrice = isHouseVariantProduct ? product.variants![selectedHouseVariant].price : product.price;
   const selectedSandPrice = isSandVariantProduct ? product.variants![selectedSandVariant].price : product.price;
+  const selectedWoodPrice = isWoodVariantProduct ? product.variants![selectedWoodVariant].price : product.price;
+  const selectedWoodVariantData = isWoodVariantProduct ? product.variants![selectedWoodVariant] : null;
 
   const variantOptions = [
     { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu.", image: "/NKHamster/bearxu.jpg" },
@@ -107,6 +111,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               </div>
             ) : isSandVariantProduct ? (
               <p className="text-4xl font-bold text-amber-700">{selectedSandPrice!.toLocaleString("vi-VN")}đ</p>
+            ) : isWoodVariantProduct ? (
+              <p className="text-4xl font-bold text-amber-700">{selectedWoodPrice!.toLocaleString("vi-VN")}đ</p>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
             ) : hasSale ? (
@@ -252,6 +258,22 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                       selectedSandVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
                     <div className="font-medium text-gray-800">{variant.label}</div>
                     <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isWoodVariantProduct && (
+            <div className="space-y-3">
+              <p className="font-semibold text-amber-800">Chọn phụ kiện:</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {product.variants!.map((variant, index) => (
+                  <button key={index} type="button" onClick={() => setSelectedWoodVariant(index)}
+                    className={cn("rounded-xl border px-2 py-2.5 transition text-left",
+                      selectedWoodVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                    <div className="font-medium text-gray-800 text-xs leading-snug">{variant.label}</div>
+                    <div className="text-amber-600 font-bold text-xs mt-0.5">{variant.price.toLocaleString("vi-VN")}đ</div>
                   </button>
                 ))}
               </div>
