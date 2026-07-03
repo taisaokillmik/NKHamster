@@ -319,6 +319,17 @@ export const products: Product[] = [
   },
   {
     id: 25,
+    name: "Đế nước - Đế wheel - Ghế ăn dặm",
+    slug: "de-nuoc-de-wheel-ghe-an-dam",
+    category: "accessory",
+    price: 30000,
+    priceLabel: "30.000đ - 70.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=De+Nuoc+De+Wheel+Ghe",
+    description: "Đế nước, đế bánh xe và ghế ăn dặm tiện lợi cho lồng hamster.",
+    stock: 35,
+  },
+  {
+    id: 26,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
