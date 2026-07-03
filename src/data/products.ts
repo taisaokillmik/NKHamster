@@ -330,6 +330,17 @@ export const products: Product[] = [
   },
   {
     id: 26,
+    name: "Lót chuồng",
+    slug: "lot-chuong",
+    category: "accessory",
+    price: 25000,
+    priceLabel: "25.000đ - 60.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Lot+Chuong",
+    description: "Lót chuồng êm ái, thấm hút tốt, giúp chuồng luôn khô thoáng.",
+    stock: 40,
+  },
+  {
+    id: 27,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
