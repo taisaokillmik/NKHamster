@@ -251,11 +251,11 @@ export const products: Product[] = [
     category: "accessory",
     price: 50000,
     priceLabel: "50.000đ - 150.000đ",
-    image: "/NKHamster/hnho.jpg",
+    image: "/NKHamster/hmini.jpg",
     description: "Các phụ kiện làm từ gỗ thông tự nhiên, an toàn cho hamster.",
     stock: 20,
     variants: [
-      { label: "Nhà Ngủ Gỗ Mini", price: 35000, image: "/NKHamster/hnho.jpg" },
+      { label: "Nhà Ngủ Gỗ Mini", price: 35000, image: "/NKHamster/hmini.jpg" },
       { label: "Nhà Ngủ Gỗ Vừa", price: 65000, image: "/NKHamster/htrung.jpg" },
       { label: "Nhà Ngủ Gỗ Lớn", price: 150000, image: "/NKHamster/hlon.jpg" },
       { label: "Nhà Sàn Nhỏ", price: 60000, image: "/NKHamster/nhasannho.jpg" },
