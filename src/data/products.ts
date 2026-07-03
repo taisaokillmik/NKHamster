@@ -236,9 +236,13 @@ export const products: Product[] = [
     category: "accessory",
     price: 35000,
     priceLabel: "15.000đ - 50.000đ",
-    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Sand",
+    image: "/NKHamster/cattamth.jpg",
     description: "Cát tắm vệ sinh cho hamster, giúp lông sạch đẹp.",
     stock: 50,
+    variants: [
+      { label: "Cát Tắm Thường (1kg)", price: 15000, image: "/NKHamster/cattamth.jpg" },
+      { label: "Cát Tắm Jolly (500gr)", price: 20000, image: "/NKHamster/cattamjolly.jpg" },
+    ],
   },
   {
     id: 18,

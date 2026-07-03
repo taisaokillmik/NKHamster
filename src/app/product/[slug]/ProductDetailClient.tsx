@@ -11,6 +11,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const [selectedSnackVariant, setSelectedSnackVariant] = useState(0);
   const [selectedWheelVariant, setSelectedWheelVariant] = useState(0);
   const [selectedHouseVariant, setSelectedHouseVariant] = useState(0);
+  const [selectedSandVariant, setSelectedSandVariant] = useState(0);
 
   const product = products.find((p) => p.slug === slug);
 
@@ -26,12 +27,14 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isSnackVariantProduct = product.slug === "an-dam" && product.variants;
   const isWheelVariantProduct = product.slug === "banh-xe" && product.variants;
   const isHouseVariantProduct = (product.slug === "nha-ngu-go" || product.slug === "nha-ngu-su") && product.variants;
+  const isSandVariantProduct = product.slug === "cat-tam" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
   const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
   const selectedSnackPrice = isSnackVariantProduct ? product.variants![selectedSnackVariant].price : product.price;
   const selectedWheelPrice = isWheelVariantProduct ? product.variants![selectedWheelVariant].price : product.price;
   const selectedHousePrice = isHouseVariantProduct ? product.variants![selectedHouseVariant].price : product.price;
+  const selectedSandPrice = isSandVariantProduct ? product.variants![selectedSandVariant].price : product.price;
 
   const variantOptions = [
     { value: "xù" as const, label: "Lông xù", description: "Bộ lông dày, mềm mại và đáng yêu.", image: "/NKHamster/bearxu.jpg" },
@@ -51,6 +54,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   
   const selectedWheelVariantData = isWheelVariantProduct ? product.variants![selectedWheelVariant] : null;
   const selectedHouseVariantData = isHouseVariantProduct ? product.variants![selectedHouseVariant] : null;
+  const selectedSandVariantData = isSandVariantProduct ? product.variants![selectedSandVariant] : null;
   
   let displayImage = product.image;
   if (isBearVariantProduct) {
@@ -65,6 +69,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     displayImage = selectedWheelVariantData.image;
   } else if (isHouseVariantProduct && selectedHouseVariantData && selectedHouseVariantData.image) {
     displayImage = selectedHouseVariantData.image;
+  } else if (isSandVariantProduct && selectedSandVariantData && selectedSandVariantData.image) {
+    displayImage = selectedSandVariantData.image;
   }
 
   return (
@@ -99,6 +105,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                 </p>
                 <span className="text-sm text-gray-500">Phạm vi: {product.priceLabel}</span>
               </div>
+            ) : isSandVariantProduct ? (
+              <p className="text-4xl font-bold text-amber-700">{selectedSandPrice!.toLocaleString("vi-VN")}đ</p>
             ) : product.priceLabel ? (
               <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
             ) : hasSale ? (
@@ -228,6 +236,22 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                         ))}
                       </div>
                     )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isSandVariantProduct && (
+            <div className="space-y-3">
+              <p className="font-semibold text-amber-800">Chọn loại cát tắm:</p>
+              <div className="flex flex-col gap-2">
+                {product.variants!.map((variant, index) => (
+                  <button key={index} type="button" onClick={() => setSelectedSandVariant(index)}
+                    className={cn("text-left rounded-xl border px-4 py-3 transition flex justify-between items-center",
+                      selectedSandVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                    <div className="font-medium text-gray-800">{variant.label}</div>
+                    <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
                   </button>
                 ))}
               </div>
