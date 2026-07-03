@@ -253,6 +253,17 @@ export const products: Product[] = [
   },
   {
     id: 19,
+    name: "Nhà Tắm Cát",
+    slug: "nha-tam-cat",
+    category: "accessory",
+    price: 80000,
+    priceLabel: "80.000đ - 120.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Nha+Tam+Cat",
+    description: "Nhà tắm cát giúp hamster vệ sinh lông sạch sẽ, thoải mái.",
+    stock: 15,
+  },
+  {
+    id: 20,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
