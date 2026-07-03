@@ -286,6 +286,17 @@ export const products: Product[] = [
   },
   {
     id: 22,
+    name: "Tầng - Bàn",
+    slug: "tang-ban",
+    category: "accessory",
+    price: 35000,
+    priceLabel: "35.000đ - 80.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Tang+Ban",
+    description: "Tầng và bàn cho lồng hamster, giúp mở rộng không gian sống.",
+    stock: 30,
+  },
+  {
+    id: 23,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
