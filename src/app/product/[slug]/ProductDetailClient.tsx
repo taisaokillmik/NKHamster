@@ -75,6 +75,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     displayImage = selectedHouseVariantData.image;
   } else if (isSandVariantProduct && selectedSandVariantData && selectedSandVariantData.image) {
     displayImage = selectedSandVariantData.image;
+  } else if (isWoodVariantProduct && selectedWoodVariantData && selectedWoodVariantData.image) {
+    displayImage = selectedWoodVariantData.image;
   }
 
   return (
