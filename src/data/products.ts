@@ -172,8 +172,7 @@ export const products: Product[] = [
         { size: "18cm", price: "130.000đ" }, { size: "21cm", price: "160.000đ" },
         { size: "23cm", price: "180.000đ" }, { size: "26cm", price: "210.000đ" },
       ] },
-      { label: "Wheel Bucastae kèm đế", price: 590000, image: "/NKHamster/wbucastae.jpg", wheelDetails: [{ size: "26cm", price: "590.000đ" }] },
-      { label: "Wheel Bucastae", price: 500000, image: "/NKHamster/wbuca.jpg", wheelDetails: [{ size: "26cm", price: "500.000đ" }] },
+      { label: "Wheel Bucastae kèm đế", price: 590000, image: "/NKHamster/wbuca.jpg", wheelDetails: [{ size: "26cm", price: "590.000đ" }] },
     ],
   },
   {
