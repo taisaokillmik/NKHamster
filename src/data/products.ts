@@ -250,7 +250,7 @@ export const products: Product[] = [
     slug: "phu-kien-go-thong",
     category: "accessory",
     price: 50000,
-    priceLabel: "50.000đ - 150.000đ",
+    priceLabel: "35.000đ - 150.000đ",
     image: "/NKHamster/hmini.jpg",
     description: "Các phụ kiện làm từ gỗ thông tự nhiên, an toàn cho hamster.",
     stock: 20,
