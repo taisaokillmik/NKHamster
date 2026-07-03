@@ -203,6 +203,23 @@ export const products: Product[] = [
   },
   {
     id: 14,
+    name: "Nhà Ngủ Sứ",
+    slug: "nha-ngu-su",
+    category: "accessory",
+    price: 150000,
+    priceLabel: "150.000đ - 250.000đ",
+    image: "/NKHamster/hsongsinh.jpg",
+    description: "Nhà ngủ bằng sứ an toàn, dễ vệ sinh cho hamster.",
+    stock: 10,
+    variants: [
+      { label: "Nhà Ngủ sứ tròn", price: 150000, image: "/NKHamster/hsongsinh.jpg", wheelDetails: [{ size: "15x15x12", price: "150.000đ" }] },
+      { label: "Nhà Ngủ sứ oval", price: 180000, image: "/NKHamster/hsongsinh.jpg", wheelDetails: [{ size: "18x14x13", price: "180.000đ" }] },
+      { label: "Nhà Ngủ sứ hình thú", price: 200000, image: "/NKHamster/hsongsinh.jpg", wheelDetails: [{ size: "16x12x14", price: "200.000đ" }] },
+      { label: "Nhà Ngủ sứ lớn", price: 250000, image: "/NKHamster/hsongsinh.jpg", wheelDetails: [{ size: "20x16x15", price: "250.000đ" }] },
+    ],
+  },
+  {
+    id: 15,
     name: "Bình Nước Mini",
     slug: "binh-nuoc-mini",
     category: "accessory",
@@ -213,7 +230,7 @@ export const products: Product[] = [
     stock: 40,
   },
   {
-    id: 15,
+    id: 16,
     name: "Cát Tắm Hamster",
     slug: "cat-tam",
     category: "accessory",
@@ -224,7 +241,7 @@ export const products: Product[] = [
     stock: 50,
   },
   {
-    id: 16,
+    id: 17,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",

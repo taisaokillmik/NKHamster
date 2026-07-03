@@ -25,7 +25,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isFoodVariantProduct = product.slug === "thuc-an-tron-hamster" && product.variants;
   const isSnackVariantProduct = product.slug === "an-dam" && product.variants;
   const isWheelVariantProduct = product.slug === "banh-xe" && product.variants;
-  const isHouseVariantProduct = product.slug === "nha-ngu-go" && product.variants;
+  const isHouseVariantProduct = (product.slug === "nha-ngu-go" || product.slug === "nha-ngu-su") && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
   const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
   const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
