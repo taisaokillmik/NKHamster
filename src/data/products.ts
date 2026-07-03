@@ -297,6 +297,17 @@ export const products: Product[] = [
   },
   {
     id: 23,
+    name: "Thang Gỗ",
+    slug: "thang-go",
+    category: "accessory",
+    price: 25000,
+    priceLabel: "25.000đ - 50.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Thang+Go",
+    description: "Thang gỗ tự nhiên, chắc chắn giúp hamster di chuyển giữa các tầng.",
+    stock: 40,
+  },
+  {
+    id: 24,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
