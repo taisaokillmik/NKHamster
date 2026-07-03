@@ -308,6 +308,17 @@ export const products: Product[] = [
   },
   {
     id: 24,
+    name: "Chén Ăn Sứ",
+    slug: "chen-an-su",
+    category: "accessory",
+    price: 20000,
+    priceLabel: "20.000đ - 45.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Chen+An+Su",
+    description: "Chén ăn bằng sứ an toàn, dễ vệ sinh cho hamster.",
+    stock: 50,
+  },
+  {
+    id: 25,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
