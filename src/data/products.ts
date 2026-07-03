@@ -275,6 +275,17 @@ export const products: Product[] = [
   },
   {
     id: 21,
+    name: "Hầm Đào - Trú - Leo",
+    slug: "ham-dao-tru-leo",
+    category: "accessory",
+    price: 60000,
+    priceLabel: "60.000đ - 120.000đ",
+    image: "https://placehold.co/400x400/DBEAFE/1E3A8A?text=Ham+Dao+Tru+Leo",
+    description: "Hầm đào trú ẩn và leo trèo, giúp hamster vui chơi và khám phá.",
+    stock: 20,
+  },
+  {
+    id: 22,
     name: "Thực phẩm khác",
     slug: "thuc-pham-khac",
     category: "food",
