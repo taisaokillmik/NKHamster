@@ -264,7 +264,32 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <p className="font-semibold text-gray-800 flex items-center gap-2">
                 <span>🎨</span> Chọn loại thức ăn:
               </p>
-              {renderVariantList(product.variants!, selectedFoodVariant, setSelectedFoodVariant)}
+              <div className="grid grid-cols-2 gap-3">
+                {product.variants!.map((v, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setSelectedFoodVariant(i)}
+                    className={cn(
+                      "group rounded-xl border-2 px-4 py-3 transition-all duration-200 text-center",
+                      "hover:shadow-md hover:-translate-y-0.5",
+                      selectedFoodVariant === i
+                        ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+                        : "border-gray-200 bg-white hover:border-amber-300"
+                    )}
+                  >
+                    {v.image && (
+                      <div className="w-14 h-14 mx-auto mb-2 rounded-full overflow-hidden bg-gray-50">
+                        <img src={v.image} alt={v.label} className="w-full h-full object-cover" />
+                      </div>
+                    )}
+                    <div className="font-medium text-gray-800 text-sm">{v.label}</div>
+                    <div className="text-amber-600 font-semibold text-xs mt-1">
+                      {v.price.toLocaleString("vi-VN")}₫
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
