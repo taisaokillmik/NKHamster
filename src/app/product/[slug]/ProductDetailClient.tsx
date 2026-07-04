@@ -272,10 +272,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
           <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">{renderPrice()}</div>
 
-          <div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
-            <h2 className="mb-2 text-base font-semibold text-gray-900">Mô tả sản phẩm</h2>
-            <p className="leading-relaxed text-gray-700">{product.description}</p>
-          </div>
 
           {/* Variant Selectors */}
           {isBearVariantProduct && (
@@ -508,11 +504,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             </div>
           </div>
 
-          <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-3">
-            <li className="rounded-md border border-gray-200 bg-white px-3 py-2 text-center">Giao hàng toàn quốc</li>
-            <li className="rounded-md border border-gray-200 bg-white px-3 py-2 text-center">Cam kết chất lượng</li>
-            <li className="rounded-md border border-gray-200 bg-white px-3 py-2 text-center">Tư vấn miễn phí</li>
-          </ul>
         </section>
       </div>
 
