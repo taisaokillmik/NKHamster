@@ -202,26 +202,26 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
               <p className="font-semibold text-gray-800 flex items-center gap-2">
                 <span>🎨</span> Chọn kiểu lông:
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 {variantOptions.map((option) => (
                   <button
                     key={option.value}
                     type="button"
                     onClick={() => setSelectedVariant(option.value)}
                     className={cn(
-                      "group text-left rounded-xl border-2 px-4 py-3 transition-all duration-200",
+                      "group rounded-xl border-2 px-4 py-3 transition-all duration-200 text-center",
                       "hover:shadow-md hover:-translate-y-0.5",
                       selectedVariant === option.value
                         ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
                         : "border-gray-200 bg-white hover:border-amber-300"
                     )}
                   >
-                    <div className="font-medium text-gray-800">{option.label}</div>
-                    <div className="text-sm text-gray-500">{option.description}</div>
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="text-amber-600 font-bold text-sm bg-amber-50 px-2.5 py-0.5 rounded-full">
-                        {bearVariantPrices[option.value].toLocaleString("vi-VN")}₫
-                      </span>
+                    <div className="w-14 h-14 mx-auto mb-2 rounded-full overflow-hidden bg-gray-50 ring-1 ring-gray-200">
+                      <img src={option.image} alt={option.label} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="font-medium text-gray-800 text-sm">{option.label}</div>
+                    <div className="text-amber-600 font-semibold text-xs mt-1">
+                      {bearVariantPrices[option.value].toLocaleString("vi-VN")}₫
                     </div>
                   </button>
                 ))}
