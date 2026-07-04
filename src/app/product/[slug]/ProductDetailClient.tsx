@@ -494,20 +494,31 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             </div>
           )}
 
-          {/* Add to Cart Button */}
-          <button
-            type="button"
-            disabled={product.stock === 0}
-            className={cn(
-              "w-full py-4 rounded-2xl font-bold text-lg transition-all duration-200",
-              "hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
-              product.stock > 0
-                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
-            )}
-          >
-            {product.stock > 0 ? "🛒 Thêm vào giỏ hàng" : "🚫 Tạm hết hàng"}
-          </button>
+          {/* Contact Actions */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="https://www.facebook.com/nkhamsterpage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "flex-1 py-4 rounded-2xl font-bold text-lg text-center transition-all duration-200",
+                "hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
+                "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600"
+              )}
+            >
+              💬 Liên hệ đặt mua
+            </a>
+            <a
+              href="tel:0389363046"
+              className={cn(
+                "flex-1 py-4 rounded-2xl font-bold text-lg text-center transition-all duration-200",
+                "hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
+                "bg-white border-2 border-amber-500 text-amber-600 hover:bg-amber-50"
+              )}
+            >
+              📞 Gọi 0389.363.046
+            </a>
+          </div>
 
           {/* Quick Info */}
           <div className="grid grid-cols-3 gap-3">
