@@ -482,27 +482,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             </div>
           )}
 
-          <div className="space-y-3">
-            <h2 className="text-sm font-semibold text-gray-900">Liên hệ đặt mua qua Zalo</h2>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <a
-                href="https://zalo.me/0963107703"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md border border-gray-300 bg-white px-4 py-3 text-center font-medium text-gray-900 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-              >
-                Nhật Khoa — 0963 107 703
-              </a>
-              <a
-                href="https://zalo.me/0394210096"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md border border-gray-300 bg-white px-4 py-3 text-center font-medium text-gray-900 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-              >
-                Tuấn Phạm — 0394 210 096
-              </a>
-            </div>
-          </div>
 
         </section>
       </div>
