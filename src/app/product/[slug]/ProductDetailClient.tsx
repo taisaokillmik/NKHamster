@@ -89,17 +89,29 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const renderPrice = () => {
     if (isBearVariantProduct) {
       return (
-        <div className="space-y-1">
-          <span className="text-sm text-gray-500">Giá: {product.priceLabel}</span>
-          <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString("vi-VN")}₫</p>
+        <div className="space-y-1 relative z-10">
+          <span className="inline-flex items-center gap-1 text-sm text-gray-500 bg-amber-50/80 px-3 py-0.5 rounded-full">
+            💰 Giá: {product.priceLabel}
+          </span>
+          <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+            {selectedBearPrice.toLocaleString("vi-VN")}₫
+          </p>
         </div>
       );
     }
     if (isFoodVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}₫</p>;
+      return (
+        <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+          {selectedFoodPrice.toLocaleString("vi-VN")}₫
+        </p>
+      );
     }
     if (isSnackVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedSnackPrice.toLocaleString("vi-VN")}₫</p>;
+      return (
+        <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+          {selectedSnackPrice.toLocaleString("vi-VN")}₫
+        </p>
+      );
     }
     if (isWheelVariantProduct || isHouseVariantProduct) {
       const selectedIdx = isWheelVariantProduct ? selectedWheelVariant : selectedHouseVariant;
@@ -108,43 +120,73 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
       const price = variants[selectedIdx].price;
       return (
         <div className="space-y-1">
-          <p className="text-4xl font-bold text-amber-700">{label || price.toLocaleString("vi-VN") + "₫"}</p>
-          <span className="text-sm text-gray-500">Phạm vi giá: {product.priceLabel}</span>
+          <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+            {label || price.toLocaleString("vi-VN") + "₫"}
+          </p>
+          <span className="inline-flex items-center gap-1 text-sm text-gray-500 bg-amber-50/80 px-3 py-0.5 rounded-full">
+            📊 Phạm vi giá: {product.priceLabel}
+          </span>
         </div>
       );
     }
     if (isSandVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedSandPrice!.toLocaleString("vi-VN")}₫</p>;
+      return (
+        <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+          {selectedSandPrice!.toLocaleString("vi-VN")}₫
+        </p>
+      );
     }
     if (isWoodVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedWoodPrice!.toLocaleString("vi-VN")}₫</p>;
+      return (
+        <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+          {selectedWoodPrice!.toLocaleString("vi-VN")}₫
+        </p>
+      );
     }
     if (isNhaTamCatProduct) {
       return (
         <div className="space-y-1">
-          <p className="text-4xl font-bold text-amber-700">{selectedNhaTamCatPrice!.toLocaleString("vi-VN")}₫</p>
-          <span className="text-sm text-gray-500">Phạm vi giá: {product.priceLabel}</span>
+          <p className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+            {selectedNhaTamCatPrice!.toLocaleString("vi-VN")}₫
+          </p>
+          <span className="inline-flex items-center gap-1 text-sm text-gray-500 bg-amber-50/80 px-3 py-0.5 rounded-full">
+            📊 Phạm vi giá: {product.priceLabel}
+          </span>
         </div>
       );
     }
     if (product.priceLabel) {
-      return <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>;
+      return (
+        <span className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+          {product.priceLabel}
+        </span>
+      );
     }
     if (hasSale) {
       return (
         <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-4xl font-bold text-red-500">{product.salePrice!.toLocaleString("vi-VN")}₫</span>
+          <span className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent">
+            {product.salePrice!.toLocaleString("vi-VN")}₫
+          </span>
           <span className="text-xl text-gray-400 line-through">{product.price.toLocaleString("vi-VN")}₫</span>
-          <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
-            -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
+          <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1.5 rounded-full text-sm font-semibold shadow-sm">
+            🔥 -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
           </span>
         </div>
       );
     }
     if (product.price) {
-      return <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}₫</span>;
+      return (
+        <span className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+          {product.price.toLocaleString("vi-VN")}₫
+        </span>
+      );
     }
-    return <span className="text-4xl font-bold text-amber-700">Liên hệ</span>;
+    return (
+      <span className="inline-flex items-center gap-2 text-2xl font-bold text-gray-500">
+        <span className="text-3xl">📞</span> Liên hệ
+      </span>
+    );
   };
 
   // Helper to render variant buttons (grid with optional images)
@@ -264,14 +306,20 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             <h1 className="text-2xl font-semibold text-gray-900">{product.name}</h1>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">{renderPrice()}</div>
+          <div className="relative overflow-hidden rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 via-white to-orange-50 px-5 py-4 shadow-lg shadow-amber-100/50">
+            <div className="absolute top-0 right-0 w-20 h-20">
+              <div className="absolute top-0 right-0 w-0 h-0 border-t-[80px] border-r-[80px] border-t-amber-100/40 border-r-transparent"></div>
+              <span className="absolute top-1 right-1 text-lg">🏷️</span>
+            </div>
+            {renderPrice()}
+          </div>
 
 
           {/* Variant Selectors */}
           {isBearVariantProduct && (
             <div className="space-y-3">
               <p className="font-semibold text-gray-800 flex items-center gap-2">
-                <span>🎨</span> Chọn kiểu lông:
+                <span>�</span> Chọn kiểu lông:
               </p>
               <div className="flex flex-col gap-2">
                 {variantOptions.map((option) => (
