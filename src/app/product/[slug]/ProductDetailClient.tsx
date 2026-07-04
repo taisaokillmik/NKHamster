@@ -33,14 +33,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const isWoodVariantProduct = product.slug === "phu-kien-go-thong" && product.variants;
   const isNhaTamCatProduct = product.slug === "nha-tam-cat" && product.variants;
   const bearVariantPrices = { xù: 120000, sát: 100000 } as const;
-  const selectedBearPrice = isBearVariantProduct ? bearVariantPrices[selectedVariant] : product.price;
-  const selectedFoodPrice = isFoodVariantProduct ? product.variants![selectedFoodVariant].price : product.price;
-  const selectedSnackPrice = isSnackVariantProduct ? product.variants![selectedSnackVariant].price : product.price;
-  const selectedWheelPrice = isWheelVariantProduct ? product.variants![selectedWheelVariant].price : product.price;
-  const selectedHousePrice = isHouseVariantProduct ? product.variants![selectedHouseVariant].price : product.price;
-  const selectedSandPrice = isSandVariantProduct ? product.variants![selectedSandVariant].price : product.price;
-  const selectedWoodPrice = isWoodVariantProduct ? product.variants![selectedWoodVariant].price : product.price;
-  const selectedNhaTamCatPrice = isNhaTamCatProduct ? product.variants![selectedNhaTamCatVariant].price : product.price;
   const selectedWoodVariantData = isWoodVariantProduct ? product.variants![selectedWoodVariant] : null;
   const selectedNhaTamCatVariantData = isNhaTamCatProduct ? product.variants![selectedNhaTamCatVariant] : null;
 
@@ -85,67 +77,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     displayImage = selectedNhaTamCatVariantData.image;
   }
 
-  // Helper to render price display consistently
-  const renderPrice = () => {
-    if (isBearVariantProduct) {
-      return (
-        <div className="space-y-1">
-          <span className="text-sm text-gray-500">Giá: {product.priceLabel}</span>
-          <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString("vi-VN")}₫</p>
-        </div>
-      );
-    }
-    if (isFoodVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}₫</p>;
-    }
-    if (isSnackVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedSnackPrice.toLocaleString("vi-VN")}₫</p>;
-    }
-    if (isWheelVariantProduct || isHouseVariantProduct) {
-      const selectedIdx = isWheelVariantProduct ? selectedWheelVariant : selectedHouseVariant;
-      const variants = product.variants!;
-      const label = variants[selectedIdx].priceLabel;
-      const price = variants[selectedIdx].price;
-      return (
-        <div className="space-y-1">
-          <p className="text-4xl font-bold text-amber-700">{label || price.toLocaleString("vi-VN") + "₫"}</p>
-          <span className="text-sm text-gray-500">Phạm vi giá: {product.priceLabel}</span>
-        </div>
-      );
-    }
-    if (isSandVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedSandPrice!.toLocaleString("vi-VN")}₫</p>;
-    }
-    if (isWoodVariantProduct) {
-      return <p className="text-4xl font-bold text-amber-700">{selectedWoodPrice!.toLocaleString("vi-VN")}₫</p>;
-    }
-    if (isNhaTamCatProduct) {
-      return (
-        <div className="space-y-1">
-          <p className="text-4xl font-bold text-amber-700">{selectedNhaTamCatPrice!.toLocaleString("vi-VN")}₫</p>
-          <span className="text-sm text-gray-500">Phạm vi giá: {product.priceLabel}</span>
-        </div>
-      );
-    }
-    if (product.priceLabel) {
-      return <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>;
-    }
-    if (hasSale) {
-      return (
-        <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-4xl font-bold text-red-500">{product.salePrice!.toLocaleString("vi-VN")}₫</span>
-          <span className="text-xl text-gray-400 line-through">{product.price.toLocaleString("vi-VN")}₫</span>
-          <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
-            -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
-          </span>
-        </div>
-      );
-    }
-    if (product.price) {
-      return <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}₫</span>;
-    }
-    return <span className="text-4xl font-bold text-amber-700">Liên hệ</span>;
-  };
 
   // Helper to render variant buttons (grid with optional images)
   const renderVariantGrid = (
@@ -264,8 +195,6 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             <h1 className="text-2xl font-semibold text-gray-900">{product.name}</h1>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">{renderPrice()}</div>
-
 
           {/* Variant Selectors */}
           {isBearVariantProduct && (
@@ -289,6 +218,11 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                   >
                     <div className="font-medium text-gray-800">{option.label}</div>
                     <div className="text-sm text-gray-500">{option.description}</div>
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="text-amber-600 font-bold text-sm bg-amber-50 px-2.5 py-0.5 rounded-full">
+                        {bearVariantPrices[option.value].toLocaleString("vi-VN")}₫
+                      </span>
+                    </div>
                   </button>
                 ))}
               </div>
