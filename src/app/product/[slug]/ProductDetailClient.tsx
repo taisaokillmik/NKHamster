@@ -218,71 +218,63 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   );
 
   return (
-    <div className="container mx-auto px-4 py-10">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-6">
-        <a href="/" className="hover:text-amber-600 transition">Trang chủ</a>
+    <div className="container mx-auto max-w-6xl px-4 py-8">
+      <nav aria-label="Breadcrumb" className="mb-4 text-sm text-gray-600">
+        <a href="/" className="underline-offset-2 hover:underline">
+          Trang chủ
+        </a>
         <span className="mx-2">/</span>
-        <span className="text-gray-800 font-medium">{product.name}</span>
+        <span aria-current="page" className="font-medium text-gray-900">
+          {product.name}
+        </span>
       </nav>
 
-      <div className="flex flex-col lg:flex-row gap-10">
-        {/* Left: Image */}
-        <div className="lg:w-1/2">
-          <div className="sticky top-24">
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-amber-50 to-white border border-gray-100 shadow-lg">
-              <img
-                src={displayImage || "https://placehold.co/300x300/999/fff?text=No+Image"}
-                alt={product.name}
-                className="w-full aspect-square object-cover transition-all duration-300"
-              />
-              {hasSale && (
-                <span className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                  Giảm {Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
-                </span>
-              )}
-              {product.stock > 0 && product.stock <= 5 && (
-                <span className="absolute top-4 right-4 bg-orange-400 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
-                  Sắp hết
-                </span>
-              )}
-              {product.stock === 0 && (
-                <span className="absolute top-4 right-4 bg-gray-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
-                  Hết hàng
-                </span>
-              )}
-            </div>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <section aria-label="Hình ảnh sản phẩm">
+          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+            <img
+              src={displayImage || "https://placehold.co/300x300/999/fff?text=No+Image"}
+              alt={product.name}
+              className="aspect-square w-full object-cover"
+            />
           </div>
-        </div>
-
-        {/* Right: Details */}
-        <div className="lg:w-1/2 space-y-6">
-          {/* Title & Stock */}
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-xs font-medium text-amber-600 bg-amber-100 px-3 py-1 rounded-full uppercase tracking-wide">
-                {product.category === "hamster" ? "🐹 Hamster" : product.category === "cage" ? "🏠 Lồng" : product.category === "food" ? "🍽 Thức ăn" : "🛏 Phụ kiện"}
+          <div className="mt-3 flex flex-wrap gap-2 text-sm">
+            {hasSale && (
+              <span className="rounded border border-red-200 bg-red-50 px-2 py-1 text-red-700">
+                Giảm {Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
               </span>
-              {product.stock > 5 && (
-                <span className="text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                  Còn hàng
-                </span>
-              )}
-            </div>
-            <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+            )}
+            {product.stock > 0 && product.stock <= 5 && (
+              <span className="rounded border border-orange-200 bg-orange-50 px-2 py-1 text-orange-700">Sắp hết</span>
+            )}
+            {product.stock === 0 && (
+              <span className="rounded border border-gray-300 bg-gray-50 px-2 py-1 text-gray-700">Hết hàng</span>
+            )}
+            {product.stock > 5 && (
+              <span className="rounded border border-green-200 bg-green-50 px-2 py-1 text-green-700">Còn hàng</span>
+            )}
+          </div>
+        </section>
+
+        <section aria-label="Thông tin sản phẩm" className="space-y-5">
+          <div className="space-y-2">
+            <p className="text-sm text-gray-600">
+              {product.category === "hamster"
+                ? "Hamster"
+                : product.category === "cage"
+                  ? "Lồng"
+                  : product.category === "food"
+                    ? "Thức ăn"
+                    : "Phụ kiện"}
+            </p>
+            <h1 className="text-2xl font-semibold text-gray-900">{product.name}</h1>
           </div>
 
-          {/* Price */}
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl px-6 py-4 border border-amber-100">
-            {renderPrice()}
-          </div>
+          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">{renderPrice()}</div>
 
-          {/* Description */}
-          <div className="bg-white rounded-xl border border-gray-100 px-5 py-4">
-            <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-              <span>📝</span> Mô tả sản phẩm
-            </h3>
-            <p className="text-gray-600 leading-relaxed">{product.description}</p>
+          <div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+            <h2 className="mb-2 text-base font-semibold text-gray-900">Mô tả sản phẩm</h2>
+            <p className="leading-relaxed text-gray-700">{product.description}</p>
           </div>
 
           {/* Variant Selectors */}
@@ -494,55 +486,34 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             </div>
           )}
 
-          {/* Contact Actions */}
-          <div className="flex flex-col gap-3">
-            <div className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-              <span>💬</span> Liên hệ đặt mua qua Zalo:
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
+          <div className="space-y-3">
+            <h2 className="text-sm font-semibold text-gray-900">Liên hệ đặt mua qua Zalo</h2>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <a
                 href="https://zalo.me/0963107703"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(
-                  "flex-1 py-4 px-4 rounded-2xl font-bold text-lg text-center transition-all duration-200",
-                  "hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
-                  "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600"
-                )}
+                className="rounded-md border border-gray-300 bg-white px-4 py-3 text-center font-medium text-gray-900 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               >
-                🟢 Nhật Khoa — 0963 107 703
+                Nhật Khoa — 0963 107 703
               </a>
               <a
                 href="https://zalo.me/0394210096"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(
-                  "flex-1 py-4 px-4 rounded-2xl font-bold text-lg text-center transition-all duration-200",
-                  "hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
-                  "bg-white border-2 border-amber-500 text-amber-600 hover:bg-amber-50"
-                )}
+                className="rounded-md border border-gray-300 bg-white px-4 py-3 text-center font-medium text-gray-900 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               >
-                🟢 Tuấn Phạm — 0394 210 096
+                Tuấn Phạm — 0394 210 096
               </a>
             </div>
           </div>
 
-          {/* Quick Info */}
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-green-50 rounded-xl px-4 py-3 text-center border border-green-100">
-              <div className="text-lg">🚚</div>
-              <div className="text-xs font-medium text-green-700 mt-1">Giao hàng toàn quốc</div>
-            </div>
-            <div className="bg-blue-50 rounded-xl px-4 py-3 text-center border border-blue-100">
-              <div className="text-lg">🛡️</div>
-              <div className="text-xs font-medium text-blue-700 mt-1">Cam kết chất lượng</div>
-            </div>
-            <div className="bg-purple-50 rounded-xl px-4 py-3 text-center border border-purple-100">
-              <div className="text-lg">💬</div>
-              <div className="text-xs font-medium text-purple-700 mt-1">Tư vấn miễn phí</div>
-            </div>
-          </div>
-        </div>
+          <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-3">
+            <li className="rounded-md border border-gray-200 bg-white px-3 py-2 text-center">Giao hàng toàn quốc</li>
+            <li className="rounded-md border border-gray-200 bg-white px-3 py-2 text-center">Cam kết chất lượng</li>
+            <li className="rounded-md border border-gray-200 bg-white px-3 py-2 text-center">Tư vấn miễn phí</li>
+          </ul>
+        </section>
       </div>
 
       {/* Related Products */}
