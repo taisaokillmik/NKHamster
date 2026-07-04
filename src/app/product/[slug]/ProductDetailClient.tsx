@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { products } from "@/data/products";
 import ProductCard from "@/components/shared/ProductCard";
 import { cn } from "@/lib/utils";
@@ -85,73 +85,226 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     displayImage = selectedNhaTamCatVariantData.image;
   }
 
+  // Helper to render price display consistently
+  const renderPrice = () => {
+    if (isBearVariantProduct) {
+      return (
+        <div className="space-y-1">
+          <span className="text-sm text-gray-500">Giá: {product.priceLabel}</span>
+          <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString("vi-VN")}₫</p>
+        </div>
+      );
+    }
+    if (isFoodVariantProduct) {
+      return <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}₫</p>;
+    }
+    if (isSnackVariantProduct) {
+      return <p className="text-4xl font-bold text-amber-700">{selectedSnackPrice.toLocaleString("vi-VN")}₫</p>;
+    }
+    if (isWheelVariantProduct || isHouseVariantProduct) {
+      const selectedIdx = isWheelVariantProduct ? selectedWheelVariant : selectedHouseVariant;
+      const variants = product.variants!;
+      const label = variants[selectedIdx].priceLabel;
+      const price = variants[selectedIdx].price;
+      return (
+        <div className="space-y-1">
+          <p className="text-4xl font-bold text-amber-700">{label || price.toLocaleString("vi-VN") + "₫"}</p>
+          <span className="text-sm text-gray-500">Phạm vi giá: {product.priceLabel}</span>
+        </div>
+      );
+    }
+    if (isSandVariantProduct) {
+      return <p className="text-4xl font-bold text-amber-700">{selectedSandPrice!.toLocaleString("vi-VN")}₫</p>;
+    }
+    if (isWoodVariantProduct) {
+      return <p className="text-4xl font-bold text-amber-700">{selectedWoodPrice!.toLocaleString("vi-VN")}₫</p>;
+    }
+    if (isNhaTamCatProduct) {
+      return (
+        <div className="space-y-1">
+          <p className="text-4xl font-bold text-amber-700">{selectedNhaTamCatPrice!.toLocaleString("vi-VN")}₫</p>
+          <span className="text-sm text-gray-500">Phạm vi giá: {product.priceLabel}</span>
+        </div>
+      );
+    }
+    if (product.priceLabel) {
+      return <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>;
+    }
+    if (hasSale) {
+      return (
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="text-4xl font-bold text-red-500">{product.salePrice!.toLocaleString("vi-VN")}₫</span>
+          <span className="text-xl text-gray-400 line-through">{product.price.toLocaleString("vi-VN")}₫</span>
+          <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
+            -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
+          </span>
+        </div>
+      );
+    }
+    if (product.price) {
+      return <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}₫</span>;
+    }
+    return <span className="text-4xl font-bold text-amber-700">Liên hệ</span>;
+  };
+
+  // Helper to render variant buttons (grid with optional images)
+  const renderVariantGrid = (
+    variants: { label: string; price: number; image?: string }[],
+    selected: number,
+    onSelect: (i: number) => void,
+    cols: string = "grid-cols-4",
+  ) => (
+    <div className={cn("grid", cols, "gap-3")}>
+      {variants.map((v, i) => (
+        <button
+          key={i}
+          type="button"
+          onClick={() => onSelect(i)}
+          className={cn(
+            "group rounded-xl border-2 px-3 py-3 transition-all duration-200 text-center",
+            "hover:shadow-md hover:-translate-y-0.5",
+            selected === i
+              ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+              : "border-gray-200 bg-white hover:border-amber-300"
+          )}
+        >
+          {v.image && (
+            <div className="w-12 h-12 mx-auto mb-2 rounded-lg overflow-hidden bg-gray-50">
+              <img
+                src={v.image}
+                alt={v.label}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          <div className="font-medium text-gray-800 text-xs leading-snug">{v.label}</div>
+          <div className="text-amber-600 font-bold text-xs mt-1 bg-amber-50 rounded-full px-2 py-0.5 inline-block">
+            {v.price.toLocaleString("vi-VN")}₫
+          </div>
+        </button>
+      ))}
+    </div>
+  );
+
+  // Helper to render vertical list variants
+  const renderVariantList = (
+    variants: { label: string; price: number; image?: string }[],
+    selected: number,
+    onSelect: (i: number) => void,
+  ) => (
+    <div className="flex flex-col gap-2">
+      {variants.map((v, i) => (
+        <button
+          key={i}
+          type="button"
+          onClick={() => onSelect(i)}
+          className={cn(
+            "group text-left rounded-xl border-2 px-4 py-3 transition-all duration-200",
+            "hover:shadow-md hover:-translate-y-0.5",
+            selected === i
+              ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+              : "border-gray-200 bg-white hover:border-amber-300"
+          )}
+        >
+          <div className="flex justify-between items-center">
+            <div className="font-medium text-gray-800">{v.label}</div>
+            <div className="text-amber-600 font-semibold bg-amber-50 px-3 py-0.5 rounded-full">
+              {v.price.toLocaleString("vi-VN")}₫
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <div className="container mx-auto px-4 py-10">
-      <div className="flex flex-col md:flex-row gap-10">
-        <div className="md:w-1/2 flex justify-center">
-          <img src={displayImage || "https://placehold.co/300x300/999/fff?text=No+Image"} alt={isWinterWhiteProduct ? selectedWinterWhite : product.name} className="w-full max-w-md aspect-square rounded-lg object-cover shadow" />
-        </div>
-        <div className="md:w-1/2 space-y-6">
-          <h1 className="text-3xl font-bold text-amber-800">{product.name}</h1>
-          <div>
-            {isBearVariantProduct ? (
-              <div className="space-y-2">
-                <span className="text-sm text-gray-500">{product.priceLabel}</span>
-                <p className="text-4xl font-bold text-amber-700">{selectedBearPrice.toLocaleString("vi-VN")}đ</p>
-              </div>
-            ) : isFoodVariantProduct ? (
-              <p className="text-4xl font-bold text-amber-700">{selectedFoodPrice.toLocaleString("vi-VN")}đ</p>
-            ) : isSnackVariantProduct ? (
-              <p className="text-4xl font-bold text-amber-700">{selectedSnackPrice.toLocaleString("vi-VN")}đ</p>
-            ) : isWheelVariantProduct ? (
-              <div className="space-y-1">
-                <p className="text-4xl font-bold text-amber-700">
-                  {product.variants![selectedWheelVariant].priceLabel || selectedWheelPrice!.toLocaleString("vi-VN") + "đ"}
-                </p>
-                <span className="text-sm text-gray-500">Phạm vi: {product.priceLabel}</span>
-              </div>
-            ) : isHouseVariantProduct ? (
-              <div className="space-y-1">
-                <p className="text-4xl font-bold text-amber-700">
-                  {product.variants![selectedHouseVariant].priceLabel || selectedHousePrice!.toLocaleString("vi-VN") + "đ"}
-                </p>
-                <span className="text-sm text-gray-500">Phạm vi: {product.priceLabel}</span>
-              </div>
-            ) : isSandVariantProduct ? (
-              <p className="text-4xl font-bold text-amber-700">{selectedSandPrice!.toLocaleString("vi-VN")}đ</p>
-            ) : isWoodVariantProduct ? (
-              <p className="text-4xl font-bold text-amber-700">{selectedWoodPrice!.toLocaleString("vi-VN")}đ</p>
-            ) : isNhaTamCatProduct ? (
-              <div className="space-y-1">
-                <p className="text-4xl font-bold text-amber-700">{selectedNhaTamCatPrice!.toLocaleString("vi-VN")}đ</p>
-                <span className="text-sm text-gray-500">Phạm vi: {product.priceLabel}</span>
-              </div>
-            ) : product.priceLabel ? (
-              <span className="text-4xl font-bold text-amber-700">{product.priceLabel}</span>
-            ) : hasSale ? (
-              <div className="flex items-center gap-3">
-                <span className="text-4xl font-bold text-red-500">{product.salePrice!.toLocaleString("vi-VN")}đ</span>
-                <span className="text-xl text-gray-400 line-through">{product.price.toLocaleString("vi-VN")}đ</span>
-                <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
-                  -{Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
-                </span>
-              </div>
-            ) : product.price ? (
-              <span className="text-4xl font-bold text-amber-700">{product.price.toLocaleString("vi-VN")}đ</span>
-            ) : (
-              <span className="text-4xl font-bold text-amber-700">Liên hệ</span>
-            )}
-          </div>
-          <p className="text-gray-600">{product.description}</p>
+      {/* Breadcrumb */}
+      <nav className="text-sm text-gray-500 mb-6">
+        <a href="/" className="hover:text-amber-600 transition">Trang chủ</a>
+        <span className="mx-2">/</span>
+        <span className="text-gray-800 font-medium">{product.name}</span>
+      </nav>
 
+      <div className="flex flex-col lg:flex-row gap-10">
+        {/* Left: Image */}
+        <div className="lg:w-1/2">
+          <div className="sticky top-24">
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-amber-50 to-white border border-gray-100 shadow-lg">
+              <img
+                src={displayImage || "https://placehold.co/300x300/999/fff?text=No+Image"}
+                alt={product.name}
+                className="w-full aspect-square object-cover transition-all duration-300"
+              />
+              {hasSale && (
+                <span className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                  Giảm {Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
+                </span>
+              )}
+              {product.stock > 0 && product.stock <= 5 && (
+                <span className="absolute top-4 right-4 bg-orange-400 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+                  Sắp hết
+                </span>
+              )}
+              {product.stock === 0 && (
+                <span className="absolute top-4 right-4 bg-gray-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+                  Hết hàng
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Details */}
+        <div className="lg:w-1/2 space-y-6">
+          {/* Title & Stock */}
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-xs font-medium text-amber-600 bg-amber-100 px-3 py-1 rounded-full uppercase tracking-wide">
+                {product.category === "hamster" ? "🐹 Hamster" : product.category === "cage" ? "🏠 Lồng" : product.category === "food" ? "🍽 Thức ăn" : "🛏 Phụ kiện"}
+              </span>
+              {product.stock > 5 && (
+                <span className="text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full">
+                  Còn hàng
+                </span>
+              )}
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+          </div>
+
+          {/* Price */}
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl px-6 py-4 border border-amber-100">
+            {renderPrice()}
+          </div>
+
+          {/* Description */}
+          <div className="bg-white rounded-xl border border-gray-100 px-5 py-4">
+            <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+              <span>📝</span> Mô tả sản phẩm
+            </h3>
+            <p className="text-gray-600 leading-relaxed">{product.description}</p>
+          </div>
+
+          {/* Variant Selectors */}
           {isBearVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn kiểu lông:</p>
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn kiểu lông:
+              </p>
               <div className="flex flex-col gap-2">
                 {variantOptions.map((option) => (
-                  <button key={option.value} type="button" onClick={() => setSelectedVariant(option.value)}
-                    className={cn("text-left rounded-xl border px-4 py-3 transition",
-                      selectedVariant === option.value ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setSelectedVariant(option.value)}
+                    className={cn(
+                      "group text-left rounded-xl border-2 px-4 py-3 transition-all duration-200",
+                      "hover:shadow-md hover:-translate-y-0.5",
+                      selectedVariant === option.value
+                        ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+                        : "border-gray-200 bg-white hover:border-amber-300"
+                    )}
+                  >
                     <div className="font-medium text-gray-800">{option.label}</div>
                     <div className="text-sm text-gray-500">{option.description}</div>
                   </button>
@@ -162,13 +315,28 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
           {isWinterWhiteProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn kiểu Winter White:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn kiểu Winter White:
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {winterWhiteOptions.map((option) => (
-                  <button key={option.label} type="button" onClick={() => setSelectedWinterWhite(option.label)}
-                    className={cn("text-left rounded-xl border px-4 py-3 transition",
-                      selectedWinterWhite === option.label ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>                    <div className="font-medium text-gray-800">{option.label}</div>
-                    <div className="text-sm text-gray-500">{option.price}</div>
+                  <button
+                    key={option.label}
+                    type="button"
+                    onClick={() => setSelectedWinterWhite(option.label)}
+                    className={cn(
+                      "group rounded-xl border-2 px-4 py-3 transition-all duration-200 text-center",
+                      "hover:shadow-md hover:-translate-y-0.5",
+                      selectedWinterWhite === option.label
+                        ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+                        : "border-gray-200 bg-white hover:border-amber-300"
+                    )}
+                  >
+                    <div className="w-14 h-14 mx-auto mb-2 rounded-full overflow-hidden bg-gray-50 ring-1 ring-gray-200">
+                      <img src={option.image} alt={option.label} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="font-medium text-gray-800 text-sm">{option.label}</div>
+                    <div className="text-amber-600 font-semibold text-xs mt-1">{option.price}</div>
                   </button>
                 ))}
               </div>
@@ -177,52 +345,49 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
           {isFoodVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn loại thức ăn:</p>
-              <div className="flex flex-col gap-2">
-                {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedFoodVariant(index)}
-                    className={cn("text-left rounded-xl border px-4 py-3 transition flex justify-between items-center",
-                      selectedFoodVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800">{variant.label}</div>
-                    <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
-                  </button>
-                ))}
-              </div>
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn loại thức ăn:
+              </p>
+              {renderVariantList(product.variants!, selectedFoodVariant, setSelectedFoodVariant)}
             </div>
           )}
 
           {isSnackVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn loại ăn dặm:</p>
-              <div className="grid grid-cols-4 gap-2">
-                {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedSnackVariant(index)}
-                    className={cn("rounded-xl border px-2 py-2 transition text-center text-sm",
-                      selectedSnackVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800">{variant.label}</div>
-                    <div className="text-amber-600 font-semibold text-xs">{variant.price.toLocaleString("vi-VN")}đ</div>
-                  </button>
-                ))}
-              </div>
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn loại ăn dặm:
+              </p>
+              {renderVariantGrid(product.variants!, selectedSnackVariant, setSelectedSnackVariant, "grid-cols-4")}
             </div>
           )}
 
           {isWheelVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn loại bánh xe:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn loại bánh xe:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedWheelVariant(index)}
-                    className={cn("rounded-xl border px-3 py-3 transition text-left",
-                      selectedWheelVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setSelectedWheelVariant(index)}
+                    className={cn(
+                      "group rounded-xl border-2 px-3 py-3 transition-all duration-200 text-left",
+                      "hover:shadow-md hover:-translate-y-0.5",
+                      selectedWheelVariant === index
+                        ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+                        : "border-gray-200 bg-white hover:border-amber-300"
+                    )}
+                  >
                     <div className="font-medium text-gray-800 text-sm">{variant.label}</div>
                     <div className="text-amber-600 font-bold text-sm mt-0.5">
-                      {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
+                      {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "₫"}
                     </div>
                     {variant.wheelDetails && variant.wheelDetails.length > 0 && (
-                      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 mt-1.5">
+                      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 mt-2 pt-2 border-t border-gray-100">
                         {variant.wheelDetails.map((d, i) => (
-                          <div key={i} className="text-xs text-gray-500 whitespace-nowrap">
+                          <div key={i} className="text-xs text-gray-500">
                             {d.size}: <span className="font-medium text-gray-700">{d.price}</span>
                           </div>
                         ))}
@@ -236,15 +401,31 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
           {isHouseVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn loại nhà ngủ:</p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn loại nhà ngủ:
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                 {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedHouseVariant(index)}
-                    className={cn("rounded-xl border px-2 py-2.5 transition text-left",
-                      selectedHouseVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setSelectedHouseVariant(index)}
+                    className={cn(
+                      "group rounded-xl border-2 px-2 py-3 transition-all duration-200 text-left",
+                      "hover:shadow-md hover:-translate-y-0.5",
+                      selectedHouseVariant === index
+                        ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+                        : "border-gray-200 bg-white hover:border-amber-300"
+                    )}
+                  >
+                    {variant.image && (
+                      <div className="w-full aspect-square mb-2 rounded-lg overflow-hidden bg-gray-50">
+                        <img src={variant.image} alt={variant.label} className="w-full h-full object-cover" />
+                      </div>
+                    )}
                     <div className="font-medium text-gray-800 text-xs leading-snug">{variant.label}</div>
                     <div className="text-amber-600 font-bold text-xs mt-0.5">
-                      {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "đ"}
+                      {variant.priceLabel || variant.price.toLocaleString("vi-VN") + "₫"}
                     </div>
                     {variant.wheelDetails && variant.wheelDetails.length > 0 && (
                       <div className="mt-1 space-y-0">
@@ -263,30 +444,41 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
           {isSandVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn loại cát tắm:</p>
-              <div className="flex flex-col gap-2">
-                {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedSandVariant(index)}
-                    className={cn("text-left rounded-xl border px-4 py-3 transition flex justify-between items-center",
-                      selectedSandVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800">{variant.label}</div>
-                    <div className="text-amber-600 font-semibold">{variant.price.toLocaleString("vi-VN")}đ</div>
-                  </button>
-                ))}
-              </div>
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn loại cát tắm:
+              </p>
+              {renderVariantList(product.variants!, selectedSandVariant, setSelectedSandVariant)}
             </div>
           )}
 
           {isWoodVariantProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn phụ kiện:</p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn phụ kiện:
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedWoodVariant(index)}
-                    className={cn("rounded-xl border px-2 py-2.5 transition text-left",
-                      selectedWoodVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setSelectedWoodVariant(index)}
+                    className={cn(
+                      "group rounded-xl border-2 px-2 py-3 transition-all duration-200 text-left",
+                      "hover:shadow-md hover:-translate-y-0.5",
+                      selectedWoodVariant === index
+                        ? "border-amber-500 bg-amber-50 shadow-sm ring-2 ring-amber-200"
+                        : "border-gray-200 bg-white hover:border-amber-300"
+                    )}
+                  >
+                    {variant.image && (
+                      <div className="w-full aspect-square mb-2 rounded-lg overflow-hidden bg-gray-50">
+                        <img src={variant.image} alt={variant.label} className="w-full h-full object-cover" />
+                      </div>
+                    )}
                     <div className="font-medium text-gray-800 text-xs leading-snug">{variant.label}</div>
-                    <div className="text-amber-600 font-bold text-xs mt-0.5">{variant.price.toLocaleString("vi-VN")}đ</div>
+                    <div className="text-amber-600 font-bold text-xs mt-0.5">
+                      {variant.price.toLocaleString("vi-VN")}₫
+                    </div>
                   </button>
                 ))}
               </div>
@@ -295,25 +487,53 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
 
           {isNhaTamCatProduct && (
             <div className="space-y-3">
-              <p className="font-semibold text-amber-800">Chọn loại nhà tắm cát:</p>
-              <div className="grid grid-cols-4 gap-2">
-                {product.variants!.map((variant, index) => (
-                  <button key={index} type="button" onClick={() => setSelectedNhaTamCatVariant(index)}
-                    className={cn("rounded-xl border px-2 py-2.5 transition text-center",
-                      selectedNhaTamCatVariant === index ? "border-amber-500 bg-amber-50 shadow-sm" : "border-gray-200 bg-white hover:border-amber-300")}>
-                    <div className="font-medium text-gray-800 text-xs leading-snug">{variant.label}</div>
-                    <div className="text-amber-600 font-bold text-xs mt-0.5">{variant.price.toLocaleString("vi-VN")}đ</div>
-                  </button>
-                ))}
-              </div>
+              <p className="font-semibold text-gray-800 flex items-center gap-2">
+                <span>🎨</span> Chọn loại nhà tắm cát:
+              </p>
+              {renderVariantGrid(product.variants!, selectedNhaTamCatVariant, setSelectedNhaTamCatVariant, "grid-cols-4")}
             </div>
           )}
+
+          {/* Add to Cart Button */}
+          <button
+            type="button"
+            disabled={product.stock === 0}
+            className={cn(
+              "w-full py-4 rounded-2xl font-bold text-lg transition-all duration-200",
+              "hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
+              product.stock > 0
+                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            )}
+          >
+            {product.stock > 0 ? "🛒 Thêm vào giỏ hàng" : "🚫 Tạm hết hàng"}
+          </button>
+
+          {/* Quick Info */}
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-green-50 rounded-xl px-4 py-3 text-center border border-green-100">
+              <div className="text-lg">🚚</div>
+              <div className="text-xs font-medium text-green-700 mt-1">Giao hàng toàn quốc</div>
+            </div>
+            <div className="bg-blue-50 rounded-xl px-4 py-3 text-center border border-blue-100">
+              <div className="text-lg">🛡️</div>
+              <div className="text-xs font-medium text-blue-700 mt-1">Cam kết chất lượng</div>
+            </div>
+            <div className="bg-purple-50 rounded-xl px-4 py-3 text-center border border-purple-100">
+              <div className="text-lg">💬</div>
+              <div className="text-xs font-medium text-purple-700 mt-1">Tư vấn miễn phí</div>
+            </div>
+          </div>
         </div>
       </div>
 
+      {/* Related Products */}
       {related.length > 0 && (
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold text-amber-800 mb-6">Sản phẩm liên quan</h2>
+        <section className="mt-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-8 w-1 bg-amber-500 rounded-full"></div>
+            <h2 className="text-2xl font-bold text-gray-900">Sản phẩm liên quan</h2>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {related.map((p) => <ProductCard key={p.id} product={p} />)}
           </div>
@@ -322,9 +542,3 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
     </div>
   );
 }
-
-
-
-
-
-
