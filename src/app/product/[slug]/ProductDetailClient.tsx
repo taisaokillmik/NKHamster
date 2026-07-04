@@ -244,14 +244,8 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
                 Giảm {Math.round(((product.price - product.salePrice!) / product.price) * 100)}%
               </span>
             )}
-            {product.stock > 0 && product.stock <= 5 && (
-              <span className="rounded border border-orange-200 bg-orange-50 px-2 py-1 text-orange-700">Sắp hết</span>
-            )}
             {product.stock === 0 && (
               <span className="rounded border border-gray-300 bg-gray-50 px-2 py-1 text-gray-700">Hết hàng</span>
-            )}
-            {product.stock > 5 && (
-              <span className="rounded border border-green-200 bg-green-50 px-2 py-1 text-green-700">Còn hàng</span>
             )}
           </div>
         </section>
