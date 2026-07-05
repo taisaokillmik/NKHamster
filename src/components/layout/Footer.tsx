@@ -98,31 +98,35 @@ const Footer = () => (
           <ul className="space-y-4">
             <li className="flex items-start gap-3">
               <MapPin className="h-5 w-5 text-primary-400 flex-shrink-0 mt-0.5" />
-              <span className="text-sm text-gray-400">
-                TP. Hồ Chí Minh
-              </span>
+              <div className="flex flex-col gap-1 text-sm text-gray-400">
+                <span className="font-medium text-white">CN1: Nhà Bè</span>
+                <span>2137 Huỳnh Tấn Phát, KP7, Thị Trấn Nhà Bè, Huyện Nhà Bè, TPHCM</span>
+                <a
+                  href="https://zalo.me/0963107703"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  0963 107 703 (Zalo - Nhật Khoa)
+                </a>
+                <span className="text-gray-500">9:00 - 21:00</span>
+              </div>
             </li>
-            <li>
-              <a
-                href="https://zalo.me/0963107703"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary-400 transition-colors"
-              >
-                <Phone className="h-5 w-5 text-primary-400 flex-shrink-0" />
-                <span>0963 107 703 (Nhật Khoa)</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://zalo.me/0394210096"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary-400 transition-colors"
-              >
-                <Phone className="h-5 w-5 text-primary-400 flex-shrink-0" />
-                <span>0394 210 096 (Tuấn Phạm)</span>
-              </a>
+            <li className="flex items-start gap-3">
+              <MapPin className="h-5 w-5 text-primary-400 flex-shrink-0 mt-0.5" />
+              <div className="flex flex-col gap-1 text-sm text-gray-400">
+                <span className="font-medium text-white">CN2: Thủ Dầu Một</span>
+                <span>Số 9 Lào Cai, Chánh Nghĩa, Thủ Dầu Một (kế Hải Sản Tư Nhớ 2)</span>
+                <a
+                  href="https://zalo.me/0394210096"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  0394 210 096 (Zalo - Tuấn Phạm)
+                </a>
+                <span className="text-gray-500">8:00 - 22:00</span>
+              </div>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="h-5 w-5 text-primary-400 flex-shrink-0 mt-0.5" />
