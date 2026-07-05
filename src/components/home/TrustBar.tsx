@@ -21,7 +21,7 @@ const trustItems = [
   {
     icon: HeartHandshake,
     title: "Tư vấn tận tâm",
-    desc: "Hỗ trợ trọn đời cho bé Hamster của bạn",
+    desc: "Hỗ trợ chu đáo cho bé Hamster của bạn",
   },
 ];
 

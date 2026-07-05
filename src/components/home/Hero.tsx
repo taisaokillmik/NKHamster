@@ -108,7 +108,7 @@ const Hero = () => (
           >
             {[
               { icon: Heart, text: "Khỏe mạnh 100%" },
-              { icon: Shield, text: "Bảo hành trọn đời" },
+              { icon: Shield, text: "Uy tín lâu năm" },
               { text: "Giao toàn quốc" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-sm text-gray-400">
