@@ -1,5 +1,5 @@
 ﻿import Link from "next/link";
-import { Facebook, Mail, MapPin, PawPrint } from "lucide-react";
+import { Facebook, Mail, MapPin, PawPrint, Phone } from "lucide-react";
 
 const Footer = () => (
   <footer className="bg-gray-900 text-gray-300">
@@ -21,9 +21,7 @@ const Footer = () => (
               <Facebook className="h-3.5 w-3.5 text-gray-500 hover:text-primary-400" />
             </a>
             <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 hover:bg-primary-500/20 flex items-center justify-center transition-all duration-300" aria-label="Zalo">
-              <svg className="h-3.5 w-3.5 text-gray-500 hover:text-primary-400" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.164 17.156h-.01c-.5 0-.992-.24-1.296-.652L5.848 10.62c-.264-.356-.072-.788.364-.788.384 0 .74.128 1.012.364l3.942 3.112c.2.156.464.156.664 0l3.942-3.112c.272-.236.628-.364 1.012-.364.436 0 .628.432.364.788l-5.01 5.884c-.304.412-.796.652-1.296.652z"/>
-              </svg>
+              <Phone className="h-3.5 w-3.5 text-gray-500 hover:text-primary-400" />
             </a>
             <a href="https://www.tiktok.com/@nhatkhoahamster?_r=1&_t=ZS-97mXwUS3Dex" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-lg bg-white/5 hover:bg-primary-500/20 flex items-center justify-center transition-all duration-300" aria-label="TikTok">
               <svg className="h-3.5 w-3.5 text-gray-500 hover:text-primary-400" viewBox="0 0 24 24" fill="currentColor">
