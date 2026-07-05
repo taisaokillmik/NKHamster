@@ -43,7 +43,7 @@ const Header = () => {
           aria-label="NK Hamster - Trang chủ"
         >
           <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden shadow-warm group-hover:shadow-lg transition-shadow duration-300">
-            <img src="/banner.jpg" alt="NK Hamster" className="w-full h-full object-cover" />
+            <img src="/NKHamster/banner.jpg" alt="NK Hamster" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-display font-bold text-gray-900 leading-tight">
