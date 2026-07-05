@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Rabbit, Home, Apple, Puzzle } from "lucide-react";
 
 const categories = [
   {
     name: "Hamster",
     slug: "hamsters",
-    emoji: "🐹",
+    icon: Rabbit,
     desc: "Giống thuần chủng, khỏe mạnh",
     image: "/NKHamster/bearsat.jpg",
     color: "from-primary-50 to-secondary-50",
@@ -16,7 +16,7 @@ const categories = [
   {
     name: "Lồng",
     slug: "cages",
-    emoji: "🏠",
+    icon: Home,
     desc: "Đa dạng kích thước, cao cấp",
     image: "https://placehold.co/400x400/D1FAE5/065F46?text=Cage",
     color: "from-pastel-green to-emerald-50",
@@ -25,7 +25,7 @@ const categories = [
   {
     name: "Thức ăn",
     slug: "foods",
-    emoji: "🥜",
+    icon: Apple,
     desc: "Dinh dưỡng cao cấp, tự nhiên",
     image: "/NKHamster/tronngon.jpg",
     color: "from-pastel-pink to-rose-50",
@@ -34,7 +34,7 @@ const categories = [
   {
     name: "Phụ kiện",
     slug: "accessories",
-    emoji: "🎀",
+    icon: Puzzle,
     desc: "Bánh xe, nhà ngủ, đồ chơi",
     image: "/NKHamster/wcandytrong.jpg",
     color: "from-pastel-blue to-sky-50",
@@ -93,7 +93,7 @@ const CategoryGrid = () => (
               {/* Content */}
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-2xl">{cat.emoji}</span>
+                  <cat.icon className="h-6 w-6 text-primary-500" />
                   <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-primary-500 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
                 <h3 className={`font-display font-semibold text-gray-900 text-lg ${cat.textColor}`}>

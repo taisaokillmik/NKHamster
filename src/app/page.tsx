@@ -31,10 +31,10 @@ export default function Home() {
       <CategoryGrid />
       <FeatureStrip />
       <PetOrder />
-      <ProductList products={hamsters} title="🐹 Chuột Hamster nổi bật" />
-      <ProductList products={cages} title="🏠 Lồng mica bán chạy" columns={3} />
-      <ProductList products={foods} title="🍽 Thức ăn cho Hamster" />
-      <ProductList products={accessories} title="🛏 Phụ kiện nổi bật" />
+      <ProductList products={hamsters} title="Chuột Hamster nổi bật" />
+      <ProductList products={cages} title="Lồng mica bán chạy" columns={3} />
+      <ProductList products={foods} title="Thức ăn cho Hamster" />
+      <ProductList products={accessories} title="Phụ kiện nổi bật" />
       <BlogPreview blogs={blogs.slice(0, 3)} />
     </>
   );
