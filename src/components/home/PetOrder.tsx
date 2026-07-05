@@ -7,8 +7,8 @@ import Link from "next/link";
 const steps = [
   {
     step: "1",
-    title: "Chọn bé yêu thích",
-    desc: "Xem qua bộ sưu tập Hamster của chúng tôi và chọn bé mà bạn yêu thích nhất.",
+    title: "Chọn thú cưng yêu thích",
+    desc: "Thỏ Việt, Bọ Ú Việt, Nhím Cảnh, Sóc Bay, Thằn Lằn, Rồng Úc và nhiều loại khác.",
   },
   {
     step: "2",
@@ -36,10 +36,10 @@ const PetOrder = () => (
           Quy trình đặt hàng
         </span>
         <h2 className="section-title">
-          Cách đặt mua Hamster
+          Cách đặt mua thú cưng
         </h2>
         <p className="section-subtitle max-w-2xl mx-auto">
-          Chỉ 3 bước đơn giản để bạn có ngay một chú Hamster đáng yêu
+          Chỉ 3 bước đơn giản để bạn có ngay một bé thú cưng đáng yêu
         </p>
       </motion.div>
 
@@ -82,7 +82,7 @@ const PetOrder = () => (
           <Link href="/hamsters">
             <Button size="lg" className="group bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 !rounded-full shadow-warm hover:shadow-lg transition-all duration-300 text-base">
               <ShoppingCart className="mr-2 h-5 w-5" />
-              <span>Xem Hamster</span>
+              <span>Xem thú cưng</span>
             </Button>
           </Link>
           <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer">
