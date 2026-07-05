@@ -17,7 +17,7 @@ const Footer = () => (
                 NK Hamster
               </span>
               <span className="text-[11px] font-medium text-primary-400 leading-tight tracking-wider uppercase block">
-                Premium Pet Shop
+                Cửa hàng Hamster
               </span>
             </div>
           </div>
@@ -137,17 +137,10 @@ const Footer = () => (
 
     {/* Bottom Bar */}
     <div className="border-t border-gray-800">
-      <div className="premium-container py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="premium-container py-6 flex items-center justify-center">
         <p className="text-sm text-gray-500">
-          © 2025 NK Hamster. Made with{" "}
-          <Heart className="h-3.5 w-3.5 inline-block text-red-400 fill-red-400" />{" "}
-          for hamster lovers.
+          © 2025 NK Hamster. — Cửa hàng chuột Hamster uy tín tại TP.HCM.
         </p>
-        <div className="flex items-center gap-2 text-xs text-gray-600">
-          <span>Premium Pet Shop</span>
-          <span className="w-1 h-1 rounded-full bg-gray-700" />
-          <span>Uy tín & Chất lượng</span>
-        </div>
       </div>
     </div>
   </footer>

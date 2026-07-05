@@ -50,7 +50,7 @@ const Header = () => {
               NK Hamster
             </span>
             <span className="text-[11px] font-medium text-primary-500 leading-tight tracking-wider uppercase">
-              Premium Pet Shop
+              Cửa hàng Hamster
             </span>
           </div>
         </Link>

@@ -41,19 +41,6 @@ const Hero = () => (
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center lg:text-left pt-24 lg:pt-0"
         >
-          {/* Trust badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-primary-50 border border-primary-100/80 shadow-sm"
-          >
-            <Shield className="h-4 w-4 text-primary-500" />
-            <span className="text-sm font-medium text-primary-700">
-              Uy tín & Chất lượng
-            </span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
