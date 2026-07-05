@@ -4,8 +4,8 @@ import { Facebook, Phone, Mail, MapPin, PawPrint, Heart } from "lucide-react";
 const Footer = () => (
   <footer className="bg-gray-900 text-gray-300">
     {/* Main Footer */}
-    <div className="premium-container py-16 lg:py-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+    <div className="premium-container py-10 lg:py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
         {/* Brand */}
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3 mb-4">
@@ -21,11 +21,11 @@ const Footer = () => (
               </span>
             </div>
           </div>
-          <p className="text-sm text-gray-400 leading-relaxed mb-6 max-w-xs">
+          <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-xs">
             Cửa hàng bán chuột Hamster, lồng mica và phụ kiện uy tín tại TP.HCM. 
             Yêu thương bắt đầu từ những điều nhỏ bé.
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <a
               href="https://facebook.com/nkhamster"
               target="_blank"
@@ -49,8 +49,8 @@ const Footer = () => (
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-display font-semibold text-white mb-5">Danh mục</h4>
-          <ul className="space-y-3">
+          <h4 className="font-display font-semibold text-white mb-3">Danh mục</h4>
+          <ul className="space-y-2">
             {[
               { href: "/hamsters", label: "Hamster" },
               { href: "/cages", label: "Lồng" },
@@ -71,8 +71,8 @@ const Footer = () => (
 
         {/* Support */}
         <div>
-          <h4 className="font-display font-semibold text-white mb-5">Hỗ trợ</h4>
-          <ul className="space-y-3">
+          <h4 className="font-display font-semibold text-white mb-3">Hỗ trợ</h4>
+          <ul className="space-y-2">
             {[
               { href: "/about", label: "Giới thiệu" },
               { href: "/blog", label: "Blog & Hướng dẫn" },
@@ -94,8 +94,8 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="font-display font-semibold text-white mb-5">Liên hệ</h4>
-          <ul className="space-y-4">
+          <h4 className="font-display font-semibold text-white mb-3">Liên hệ</h4>
+          <ul className="space-y-3">
             <li className="flex items-start gap-3">
               <MapPin className="h-5 w-5 text-primary-400 flex-shrink-0 mt-0.5" />
               <div className="flex flex-col gap-1 text-sm text-gray-400">
@@ -141,12 +141,12 @@ const Footer = () => (
 
     {/* Bottom Bar */}
     <div className="border-t border-gray-800">
-      <div className="premium-container py-6 flex items-center justify-center">
-        <p className="text-sm text-gray-500">
+      <div className="premium-container py-4 flex items-center justify-center">
+        <p className="text-xs text-gray-500">
           © 2025 NK Hamster. — Cửa hàng chuột Hamster uy tín tại TP.HCM.
         </p>
       </div>
     </div>
-  </footer>
-);
-export default Footer;
+    </footer>
+  );
+  export default Footer;
