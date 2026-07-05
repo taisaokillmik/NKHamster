@@ -3,6 +3,7 @@ import CategoryGrid from "@/components/home/CategoryGrid";
 import ProductList from "@/components/home/ProductList";
 import TrustBar from "@/components/home/TrustBar";
 import FeatureStrip from "@/components/home/FeatureStrip";
+import PetOrder from "@/components/home/PetOrder";
 import BlogPreview from "@/components/home/BlogPreview";
 import { products } from "@/data/products";
 import { blogs } from "@/data/products";
@@ -29,6 +30,7 @@ export default function Home() {
       <TrustBar />
       <CategoryGrid />
       <FeatureStrip />
+      <PetOrder />
       <ProductList products={hamsters} title="🐹 Chuột Hamster nổi bật" />
       <ProductList products={cages} title="🏠 Lồng mica bán chạy" columns={3} />
       <ProductList products={foods} title="🍽 Thức ăn cho Hamster" />
