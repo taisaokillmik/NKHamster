@@ -20,7 +20,7 @@ const petTypes = [
   { icon: Bird, name: "Nhím Cảnh", color: "from-stone-400 to-stone-600", bg: "bg-stone-50", image: "/nhimcanh.jpg" },
   { icon: Dog, name: "Sóc Bay", color: "from-sky-400 to-blue-500", bg: "bg-sky-50", image: "/socbay.webp" },
   { icon: Fish, name: "Thằn Lằn", color: "from-lime-400 to-green-500", bg: "bg-lime-50", image: "/cattamth.jpg" },
-  { icon: DragonIcon, name: "Rồng Úc", color: "from-emerald-400 to-teal-500", bg: "bg-emerald-50", image: "/ronguc.jpg" },
+  { icon: DragonIcon, name: "Rồng Úc", color: "from-emerald-400 to-teal-500", bg: "bg-emerald-50", image: "/hcarot.jpg" },
 ];
 
 const steps = [
