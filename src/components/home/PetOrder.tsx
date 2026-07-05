@@ -15,12 +15,12 @@ const DragonIcon = () => (
 );
 
 const petTypes = [
-  { icon: Rabbit, name: "Thỏ Việt", color: "from-pink-400 to-rose-500", bg: "bg-pink-50" },
-  { icon: Bug, name: "Bọ Ú Việt", color: "from-amber-400 to-orange-500", bg: "bg-amber-50" },
-  { icon: Bird, name: "Nhím Cảnh", color: "from-stone-400 to-stone-600", bg: "bg-stone-50" },
-  { icon: Dog, name: "Sóc Bay", color: "from-sky-400 to-blue-500", bg: "bg-sky-50" },
-  { icon: Fish, name: "Thằn Lằn", color: "from-lime-400 to-green-500", bg: "bg-lime-50" },
-  { icon: DragonIcon, name: "Rồng Úc", color: "from-emerald-400 to-teal-500", bg: "bg-emerald-50" },
+  { icon: Rabbit, name: "Thỏ Việt", color: "from-pink-400 to-rose-500", bg: "bg-pink-50", image: "/thoviet.webp" },
+  { icon: Bug, name: "Bọ Ú Việt", color: "from-amber-400 to-orange-500", bg: "bg-amber-50", image: "/bou.webp" },
+  { icon: Bird, name: "Nhím Cảnh", color: "from-stone-400 to-stone-600", bg: "bg-stone-50", image: "/nhimcanh.jpg" },
+  { icon: Dog, name: "Sóc Bay", color: "from-sky-400 to-blue-500", bg: "bg-sky-50", image: "/socbay.webp" },
+  { icon: Fish, name: "Thằn Lằn", color: "from-lime-400 to-green-500", bg: "bg-lime-50", image: "/cattamth.jpg" },
+  { icon: DragonIcon, name: "Rồng Úc", color: "from-emerald-400 to-teal-500", bg: "bg-emerald-50", image: "/ronguc.jpg" },
 ];
 
 const steps = [
@@ -68,10 +68,15 @@ const PetOrder = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="premium-card p-5 text-center group hover:bg-white transition-all duration-500 cursor-pointer"
+            className="premium-card p-4 text-center group hover:bg-white transition-all duration-500 cursor-pointer"
           >
-            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pet.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-warm`}>
-              <pet.icon className="h-6 w-6 text-white" />
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-3 group-hover:scale-105 transition-transform duration-500">
+              <div className={`absolute inset-0 bg-gradient-to-br ${pet.color} opacity-20`} />
+              <img
+                src={pet.image}
+                alt={pet.name}
+                className="w-full h-full object-cover"
+              />
             </div>
             <h3 className="font-display font-semibold text-gray-900 text-sm">
               {pet.name}
@@ -131,12 +136,14 @@ const PetOrder = () => (
           Còn thắc mắc? Liên hệ ngay để được tư vấn miễn phí!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/hamsters">
-            <Button size="lg" className="group bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 !rounded-full shadow-warm hover:shadow-lg transition-all duration-300 text-base">
-              <ShoppingCart className="mr-2 h-5 w-5" />
-              <span>Xem thú cưng</span>
+          <a href="https://www.tiktok.com/@nkhamster" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="group bg-black hover:bg-gray-800 text-white px-8 py-4 !rounded-full shadow-warm hover:shadow-lg transition-all duration-300 text-base">
+              <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              </svg>
+              <span>TikTok</span>
             </Button>
-          </Link>
+          </a>
           <a href="https://zalo.me/0963107703" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="outline" className="px-8 py-4 !rounded-full border-2 border-primary-200 text-primary-600 hover:bg-primary-50 transition-all duration-300 text-base">
               <Phone className="mr-2 h-5 w-5" />
