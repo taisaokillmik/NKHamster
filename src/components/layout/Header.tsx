@@ -42,8 +42,8 @@ const Header = () => {
           className="relative flex items-center gap-3 group"
           aria-label="NK Hamster - Trang chủ"
         >
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 shadow-warm group-hover:shadow-lg transition-shadow duration-300">
-            <PawPrint className="h-5 w-5 text-white" />
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden shadow-warm group-hover:shadow-lg transition-shadow duration-300">
+            <img src="/NKHamster/banner.jpg" alt="NK Hamster" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-display font-bold text-gray-900 leading-tight">
