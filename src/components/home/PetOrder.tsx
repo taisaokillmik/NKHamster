@@ -19,8 +19,8 @@ const petTypes = [
   { icon: Bug, name: "Bọ Ú Việt", color: "from-amber-400 to-orange-500", bg: "bg-amber-50", image: "/bou.webp" },
   { icon: Bird, name: "Nhím Cảnh", color: "from-stone-400 to-stone-600", bg: "bg-stone-50", image: "/nhimcanh.jpg" },
   { icon: Dog, name: "Sóc Bay", color: "from-sky-400 to-blue-500", bg: "bg-sky-50", image: "/socbay.webp" },
-  { icon: Fish, name: "Thằn Lằn", color: "from-lime-400 to-green-500", bg: "bg-lime-50", image: "/cattamth.jpg" },
-  { icon: DragonIcon, name: "Rồng Úc", color: "from-emerald-400 to-teal-500", bg: "bg-emerald-50", image: "/hcarot.jpg" },
+  { icon: Fish, name: "Thằn Lằn", color: "from-lime-400 to-green-500", bg: "bg-lime-50", image: "/thanlan.jpg" },
+  { icon: DragonIcon, name: "Rồng Úc", color: "from-emerald-400 to-teal-500", bg: "bg-emerald-50", image: "/ronguc.jpg" },
 ];
 
 const steps = [
