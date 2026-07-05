@@ -13,8 +13,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi">
-      <body className="min-h-screen flex flex-col bg-hamster-50">
+    <html lang="vi" className="scroll-smooth">
+      <body className="min-h-screen flex flex-col bg-white font-sans text-gray-800 antialiased">
         <Header />
         <ErrorBoundary>
           <ToastProvider>

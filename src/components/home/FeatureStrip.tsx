@@ -1,36 +1,76 @@
-import Link from "next/link";
-import { Truck, ShieldCheck, MessageCircle } from "lucide-react";
+"use client";
+import { motion } from "framer-motion";
+import { Heart, Sparkles, Award, Smile } from "lucide-react";
 
 const features = [
-  { icon: ShieldCheck, title: "Hamster khoẻ mạnh 100%", desc: "Kiểm tra sức khoẻ trước khi giao" },
-  { icon: Truck, title: "Giao hàng toàn quốc", desc: "Đóng gói an toàn, ship tận cửa" },
-  { icon: MessageCircle, title: "Hỗ trợ Zalo 9–21h", desc: "Tư vấn tận tình trước và sau mua" },
+  {
+    icon: Heart,
+    title: "Yêu thương từng bé",
+    desc: "Mỗi chú Hamster đều được chăm sóc với tình yêu thương và sự tận tâm cao nhất.",
+  },
+  {
+    icon: Sparkles,
+    title: "Môi trường sạch sẽ",
+    desc: "Chuồng trại luôn được vệ sinh, đảm bảo môi trường sống tốt nhất cho các bé.",
+  },
+  {
+    icon: Award,
+    title: "Giống thuần chủng",
+    desc: "Chúng tôi chọn lọc những giống Hamster tốt nhất từ các trại uy tín.",
+  },
+  {
+    icon: Smile,
+    title: "Khách hàng hài lòng",
+    desc: "Hàng trăm khách hàng đã tin tưởng và hài lòng khi mua Hamster tại NK.",
+  },
 ];
 
 const FeatureStrip = () => (
-  <section className="container mx-auto px-4 py-6">
-    <div className="rounded-3xl border border-amber-200 bg-amber-50 p-6 shadow-sm">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {features.map(({ icon: Icon, title, desc }) => (
-          <div key={title} className="flex items-center gap-4">
-            <div className="rounded-2xl bg-amber-100 p-3 flex-shrink-0">
-              <Icon className="h-6 w-6 text-amber-600" />
+  <section className="section-spacing bg-gradient-to-b from-white/50 to-primary-50/30">
+    <div className="premium-container">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-14"
+      >
+        <span className="inline-block text-sm font-medium text-primary-500 uppercase tracking-widest mb-3">
+          Tại sao chọn NK Hamster?
+        </span>
+        <h2 className="section-title">
+          Chúng tôi yêu Hamster
+        </h2>
+        <p className="section-subtitle">
+          NK Hamster không chỉ là cửa hàng - chúng tôi là những người yêu động vật
+        </p>
+      </motion.div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {features.map((feat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: i * 0.12, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="premium-card p-6 md:p-8 flex items-start gap-5 group hover:bg-white transition-all duration-500"
+          >
+            <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <feat.icon className="h-7 w-7 text-primary-500" />
             </div>
             <div>
-              <p className="font-semibold text-amber-800">{title}</p>
-              <p className="text-sm text-gray-500">{desc}</p>
+              <h3 className="font-display font-semibold text-gray-900 text-lg mb-2">
+                {feat.title}
+              </h3>
+              <p className="text-gray-500 leading-relaxed">
+                {feat.desc}
+              </p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <div className="mt-5 pt-5 border-t border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="text-gray-600 text-sm">Chưa biết chọn loại nào? <strong>Tư vấn miễn phí!</strong></p>
-        <Link href="/contact" className="inline-flex items-center justify-center rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-medium px-5 py-2 text-sm transition-colors">
-          Liên hệ ngay
-        </Link>
       </div>
     </div>
   </section>
 );
-
 export default FeatureStrip;

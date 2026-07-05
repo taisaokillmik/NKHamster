@@ -1,7 +1,89 @@
-﻿@tailwind base;
+﻿@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-hamster-50 text-gray-800;
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#fefcf5] text-gray-800 font-sans leading-relaxed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-gray-900;
+  }
+
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+}
+
+@layer components {
+  .premium-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-title {
+    @apply text-heading-2 md:text-heading-1 font-display text-gray-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-body-lg text-gray-500 max-w-2xl mx-auto;
+  }
+
+  .premium-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-card border border-gray-100/60 shadow-soft hover:shadow-elevated transition-all duration-500;
+  }
+
+  .premium-image {
+    @apply rounded-card overflow-hidden;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-soft;
+  }
+
+  .organic-shape {
+    @apply absolute rounded-full opacity-30 blur-3xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500;
+  }
+}
+
+@layer utilities {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
 }

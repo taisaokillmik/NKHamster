@@ -9,6 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "clsx": "^2.1.0",
     "framer-motion": "^11.2.0",
     "lucide-react": "^0.395.0",
